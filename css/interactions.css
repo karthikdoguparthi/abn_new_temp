@@ -39,7 +39,7 @@
 .ab-text-link, .uc-card-link, .ip-jump a, .ip-policy-nav a,
 .site-footer a:not(:has(img)) { text-underline-offset: .3em; }
 .ab-card-top { justify-content: flex-end; }
-.ab-flow li.done { border-left: 2px solid #bfd0ff; }
+.ab-flow li.done { border-left: 2px solid #c9eaf8; }
 
 @media (hover: hover) and (pointer: fine) {
   .btn:not(:disabled):hover {
@@ -48,27 +48,27 @@
   }
   .ab-service:hover, .ip-deliverable:hover, .solution-card:hover {
     transform: translateY(-5px);
-    border-color: #8ca5f3;
+    border-color: #8fd9f7;
     box-shadow: 0 16px 32px rgb(25 48 100 / 11%);
   }
-  .ab-process article:hover { transform: translateY(-4px); border-color: #3154e8; }
+  .ab-process article:hover { transform: translateY(-4px); border-color: #f35009; }
   .ip-directory a:hover, .ip-next a:hover {
     transform: translateY(-3px);
-    background-color: #e2eaff;
+    background-color: #e5f7ff;
     box-shadow: 0 8px 18px rgb(25 48 100 / 9%);
   }
   .ab-text-link:hover, .uc-card-link:hover, .ip-jump a:hover,
   .ip-policy-nav a:hover, .site-footer a:not(:has(img)):hover { text-decoration: underline; }
-  .nav-link:hover { color: #3154e8; }
-  .nav-dropdown-item:hover { transform: translateX(3px); background-color: #edf2ff; }
-  .ip-timeline li:hover { transform: translateX(4px); border-color: #7a9cff; }
-  .ip-faq summary:hover { color: #3154e8; }
-  .ab-scenarios button:not(.selected):hover { background-color: #203452; border-color: #93aade; }
+  .nav-link:hover { color: #f35009; }
+  .nav-dropdown-item:hover { transform: translateX(3px); background-color: #f2fbff; }
+  .ip-timeline li:hover { transform: translateX(4px); border-color: #1aa9e8; }
+  .ip-faq summary:hover { color: #f35009; }
+  .ab-scenarios button:not(.selected):hover { background-color: #16314a; border-color: #8fd9f7; }
 }
 
 .btn:focus-visible, .ab-service:focus-visible, .ip-directory a:focus-visible,
 .ip-next a:focus-visible, .nav-link:focus-visible, .ip-faq summary:focus-visible {
-  outline: 3px solid #6688ef;
+  outline: 3px solid #1aa9e8;
   outline-offset: 4px;
 }
 @media (hover: none) {

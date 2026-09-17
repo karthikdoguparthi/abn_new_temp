@@ -5,7 +5,7 @@
 .contact-close{position:absolute;right:16px;top:12px;background:transparent;border:0;font-size:30px;cursor:pointer;color:inherit}
 #contact-form{display:grid;gap:14px}#contact-form label{display:grid;gap:6px;font-size:14px;font-weight:600}
 #contact-form input,#contact-form textarea{box-sizing:border-box;width:100%;font:inherit;font-size:16px;padding:12px;border:1px solid #c5cfe1;border-radius:9px;color:#14203b;background:#fff}#contact-form textarea{resize:vertical}
-#contact-form input:focus,#contact-form textarea:focus{outline:2px solid #3154e8;outline-offset:2px}
+#contact-form input:focus,#contact-form textarea:focus{outline:2px solid #f35009;outline-offset:2px}
 #contact-form .contact-trap{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 #contact-status{margin:0;font-weight:600}#contact-form button:disabled{opacity:.6;cursor:wait}
 @media(max-width:480px){#contact-dialog{padding:24px 18px}}

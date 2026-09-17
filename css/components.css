@@ -11,7 +11,7 @@
 
 .solution-card {
   background: #FFFFFF;
-  border: 18px solid #F5F3FF;
+  border: 18px solid #fff3ee;
   border-radius: 32px;
   padding: 24px 28px;
   display: flex;
@@ -24,7 +24,7 @@
 .solution-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 12px 30px rgba(139, 92, 246, 0.15);
-  border-color: #EDE9FE;
+  border-color: #ffe5d7;
 }
 
 .solution-icon-wrap {
@@ -127,8 +127,8 @@
 }
 
 .sandbox-tab-btn.active {
-  color: #38BDF8;
-  border-bottom-color: #38BDF8;
+  color: #1aa9e8;
+  border-bottom-color: #1aa9e8;
   background: rgba(56, 189, 248, 0.05);
 }
 
@@ -149,7 +149,7 @@
 .sandbox-badge {
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: #38BDF8;
+  color: #1aa9e8;
   background: rgba(56, 189, 248, 0.1);
   padding: 4px 10px;
   border-radius: var(--radius-full);
@@ -245,17 +245,17 @@
 }
 
 .log-entry.log-agent {
-  border-left-color: #38BDF8;
+  border-left-color: #1aa9e8;
   background: rgba(56, 189, 248, 0.04);
 }
 
 .log-entry.log-tool {
-  border-left-color: #F59E0B;
+  border-left-color: #f35009;
   background: rgba(245, 158, 11, 0.04);
 }
 
 .log-entry.log-verify {
-  border-left-color: #10B981;
+  border-left-color: #1aa9e8;
   background: rgba(16, 185, 129, 0.04);
 }
 
@@ -267,9 +267,9 @@
   margin-bottom: 4px;
 }
 
-.log-agent .log-role { color: #38BDF8; }
-.log-tool .log-role { color: #F59E0B; }
-.log-verify .log-role { color: #10B981; }
+.log-agent .log-role { color: #1aa9e8; }
+.log-tool .log-role { color: #f35009; }
+.log-verify .log-role { color: #1aa9e8; }
 
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(4px); }
@@ -459,11 +459,11 @@
   font-size: 2.25rem;
   font-weight: 800;
   font-family: var(--font-heading);
-  color: #38BDF8;
+  color: #1aa9e8;
 }
 
 .calc-metric-val.emerald {
-  color: #34D399;
+  color: #1aa9e8;
 }
 
 /* 6. Case Studies */
@@ -595,7 +595,7 @@
 }
 
 .footer-links a:hover {
-  color: #38BDF8;
+  color: #1aa9e8;
 }
 
 .office-info {
@@ -646,7 +646,7 @@
   left: 0;
   right: 0;
   width: 100%;
-  background: #0A192F;
+  background: #10243a;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 14px 24px;
   box-shadow: 0 -4px 24px rgba(0,0,0,0.25);

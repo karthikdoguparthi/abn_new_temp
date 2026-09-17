@@ -7,22 +7,22 @@
 
 :root {
   /* Color Palette - Sovereign Enterprise Navy & Slate */
-  --color-primary: #0A192F;
-  --color-primary-light: #112240;
-  --color-primary-dark: #060D1A;
+  --color-primary: #10243a;
+  --color-primary-light: #16314a;
+  --color-primary-dark: #081a29;
   
-  --color-brand-blue: #0284C7;
-  --color-brand-blue-hover: #0369A1;
-  --color-brand-cyan: #06B6D4;
-  --color-brand-emerald: #10B981;
-  --color-brand-indigo: #4F46E5;
+  --color-brand-blue: #1aa9e8;
+  --color-brand-blue-hover: #0d8fca;
+  --color-brand-cyan: #1aa9e8;
+  --color-brand-emerald: #1aa9e8;
+  --color-brand-indigo: #f35009;
   
   --color-surface-white: #FFFFFF;
   --color-surface-light: #F8FAFC;
-  --color-surface-subtle: #F1F5F9;
+  --color-surface-subtle: #f5fbfe;
   --color-surface-card: #FFFFFF;
-  --color-surface-dark: #0B1528;
-  --color-surface-darker: #070D18;
+  --color-surface-dark: #10243a;
+  --color-surface-darker: #081a29;
   
   --color-text-main: #0F172A;
   --color-text-muted: #475569;
@@ -336,7 +336,7 @@ button, input, select, textarea {
 .logo-symbol {
   width: 40px;
   height: 40px;
-  background: linear-gradient(135deg, #0A192F 0%, #0284C7 100%);
+  background: linear-gradient(135deg, #10243a 0%, #1aa9e8 100%);
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -654,10 +654,10 @@ button, input, select, textarea {
   flex-shrink: 0;
 }
 
-.node-icon.icon-planner { background: rgba(79, 70, 229, 0.2); color: #818CF8; }
-.node-icon.icon-executor { background: rgba(2, 132, 199, 0.2); color: #38BDF8; }
-.node-icon.icon-verifier { background: rgba(16, 185, 129, 0.2); color: #34D399; }
-.node-icon.icon-sovereign { background: rgba(245, 158, 11, 0.2); color: #FBBF24; }
+.node-icon.icon-planner { background: rgba(79, 70, 229, 0.2); color: #f35009; }
+.node-icon.icon-executor { background: rgba(2, 132, 199, 0.2); color: #1aa9e8; }
+.node-icon.icon-verifier { background: rgba(16, 185, 129, 0.2); color: #1aa9e8; }
+.node-icon.icon-sovereign { background: rgba(245, 158, 11, 0.2); color: #f35009; }
 
 .node-details {
   flex: 1;

@@ -5,7 +5,7 @@
 /* Video Hero / Intro Clip Banner */
 .hero-video-banner {
   position: relative;
-  background: #060D1A;
+  background: #081a29;
   border-radius: var(--radius-xl);
   overflow: hidden;
   margin-bottom: 40px;
@@ -39,7 +39,7 @@
   border-radius: var(--radius-full);
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: #38BDF8;
+  color: #1aa9e8;
 }
 
 .video-center-cta {
@@ -157,7 +157,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #0A192F 0%, #0284C7 100%);
+  background: linear-gradient(135deg, #10243a 0%, #1aa9e8 100%);
   color: #FFFFFF;
   padding: 12px 20px;
   border-radius: var(--radius-full);
@@ -288,7 +288,7 @@
 
 /* Prompt to D365 CRM Box */
 .crm-prompt-card {
-  background: linear-gradient(135deg, #0A192F 0%, #112240 100%);
+  background: linear-gradient(135deg, #10243a 0%, #16314a 100%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-xl);
   padding: 40px;
@@ -362,8 +362,8 @@
 }
 
 .prompt-tag:hover {
-  color: #38BDF8;
-  border-color: #38BDF8;
+  color: #1aa9e8;
+  border-color: #1aa9e8;
 }
 
 .d365-status-pill {
@@ -372,7 +372,7 @@
   gap: 6px;
   font-size: 0.75rem;
   font-family: var(--font-mono);
-  color: #10B981;
+  color: #1aa9e8;
 }
 
 /* Partner & NGO Logos Marquee */
@@ -428,7 +428,7 @@
 
 /* Launch Pad Sky Booster Visual */
 .launchpad-hero-card {
-  background: radial-gradient(circle at 50% 20%, #1E3E62 0%, #060D1A 80%);
+  background: radial-gradient(circle at 50% 20%, #16314a 0%, #081a29 80%);
   border-radius: var(--radius-xl);
   padding: 56px 40px;
   color: #FFFFFF;
@@ -579,7 +579,7 @@
 
 /* CoE Featured Service Section */
 .coe-card {
-  background: linear-gradient(135deg, #0A192F 0%, #172E4C 100%);
+  background: linear-gradient(135deg, #10243a 0%, #16314a 100%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-xl);
   padding: 48px;
