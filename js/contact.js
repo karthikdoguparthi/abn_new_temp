@@ -29,7 +29,7 @@
       location.assign('/thank-you.html');
       status.textContent = 'Thank you. Your enquiry has been submitted successfully.';
     } catch {
-      status.textContent = 'Your enquiry could not be confirmed. Your details are still here—please try again or email solution@activebrains.co.uk.';
+      status.textContent = 'Your enquiry could not be confirmed. Your details are still here. Please try again or email solution@activebrains.co.uk.';
     } finally { pending = false; submit.disabled = false; }
   });
 })();

@@ -1,4 +1,4 @@
-# ACTIVE BRAINS website — publication package
+# ACTIVE BRAINS website: publication package
 
 This is a static HTML, CSS and JavaScript website with 43 pages. It does not need an application build. Contact delivery uses the included Vercel function at `/api/contact`.
 

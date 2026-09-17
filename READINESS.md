@@ -1,4 +1,4 @@
-# Website readiness — 14 September 2026
+# Website readiness: 14 September 2026
 
 | Item | Result |
 |---|---|
