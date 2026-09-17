@@ -1,0 +1,4 @@
+/* Keep sideways entrances inside the page without creating a scroll container. */
+@supports (overflow: clip) {
+  main { overflow-x: clip; overflow-y: visible; }
+}

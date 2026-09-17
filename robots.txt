@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://abn-new.vercel.app/sitemap.xml

@@ -1,0 +1,84 @@
+/* Shared interaction treatment for every page. */
+.flow-card { position: relative; isolation: isolate; }
+.flow-card::before, .flow-card::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit;
+  pointer-events: none; z-index: -1; opacity: 0;
+  transition: opacity 300ms ease;
+}
+.flow-card::before {
+  background: linear-gradient(110deg, transparent 30%, rgb(49 84 232 / 6%) 43%, rgb(56 189 248 / 18%) 50%, rgb(49 84 232 / 6%) 57%, transparent 70%);
+  background-size: 300% 100%; background-position: 100% 0;
+}
+.flow-card::after {
+  background: radial-gradient(260px circle at var(--flow-x, 50%) var(--flow-y, 50%), rgb(73 136 255 / 14%), transparent 75%);
+}
+.ab-feature.flow-card::before {
+  background-image: linear-gradient(110deg, transparent 30%, rgb(255 255 255 / 6%) 43%, rgb(255 255 255 / 20%) 50%, rgb(255 255 255 / 6%) 57%, transparent 70%);
+}
+@keyframes card-light-flow { from { background-position: 100% 0; } to { background-position: -50% 0; } }
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .flow-card:hover::before { opacity: 1; animation: card-light-flow 2.8s ease-in-out infinite; }
+  .flow-card:hover::after { opacity: 1; }
+}
+.flow-card:focus-visible::after, .flow-card:focus-within::after { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .flow-card::before, .flow-card::after { display: none; }
+}
+:root { --interaction-duration: 220ms; --interaction-ease: cubic-bezier(.2,.7,.2,1); }
+.btn, .ab-service, .ip-deliverable, .solution-card, .ab-process article,
+.ip-directory a, .ip-next a, .ab-text-link, .uc-card-link,
+.nav-link, .nav-dropdown-item, .ip-jump a, .ip-policy-nav a,
+.ip-timeline li, .ip-faq summary, .ab-scenarios button {
+  transition: transform var(--interaction-duration) var(--interaction-ease),
+    box-shadow var(--interaction-duration) var(--interaction-ease),
+    border-color var(--interaction-duration) ease,
+    background-color var(--interaction-duration) ease,
+    color var(--interaction-duration) ease;
+}
+.ab-process article { border-top-width: 2px; }
+.ab-text-link, .uc-card-link, .ip-jump a, .ip-policy-nav a,
+.site-footer a:not(:has(img)) { text-underline-offset: .3em; }
+.ab-card-top { justify-content: flex-end; }
+.ab-flow li.done { border-left: 2px solid #bfd0ff; }
+
+@media (hover: hover) and (pointer: fine) {
+  .btn:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 18px rgb(25 48 100 / 16%);
+  }
+  .ab-service:hover, .ip-deliverable:hover, .solution-card:hover {
+    transform: translateY(-5px);
+    border-color: #8ca5f3;
+    box-shadow: 0 16px 32px rgb(25 48 100 / 11%);
+  }
+  .ab-process article:hover { transform: translateY(-4px); border-color: #3154e8; }
+  .ip-directory a:hover, .ip-next a:hover {
+    transform: translateY(-3px);
+    background-color: #e2eaff;
+    box-shadow: 0 8px 18px rgb(25 48 100 / 9%);
+  }
+  .ab-text-link:hover, .uc-card-link:hover, .ip-jump a:hover,
+  .ip-policy-nav a:hover, .site-footer a:not(:has(img)):hover { text-decoration: underline; }
+  .nav-link:hover { color: #3154e8; }
+  .nav-dropdown-item:hover { transform: translateX(3px); background-color: #edf2ff; }
+  .ip-timeline li:hover { transform: translateX(4px); border-color: #7a9cff; }
+  .ip-faq summary:hover { color: #3154e8; }
+  .ab-scenarios button:not(.selected):hover { background-color: #203452; border-color: #93aade; }
+}
+
+.btn:focus-visible, .ab-service:focus-visible, .ip-directory a:focus-visible,
+.ip-next a:focus-visible, .nav-link:focus-visible, .ip-faq summary:focus-visible {
+  outline: 3px solid #6688ef;
+  outline-offset: 4px;
+}
+@media (hover: none) {
+  .btn:hover, .ab-service:hover, .ip-deliverable:hover, .solution-card:hover,
+  .ab-process article:hover, .ip-directory a:hover, .ip-next a:hover,
+  .nav-dropdown-item:hover, .ip-timeline li:hover { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  .btn:hover, .ab-service:hover, .ip-deliverable:hover, .solution-card:hover,
+  .ab-process article:hover, .ip-directory a:hover, .ip-next a:hover,
+  .nav-dropdown-item:hover, .ip-timeline li:hover { transform: none !important; }
+}
