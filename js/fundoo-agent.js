@@ -3,9 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  if(!trigger||!panel||!input||!messages)return;
  trigger.setAttribute('role','button');trigger.setAttribute('tabindex','0');trigger.setAttribute('aria-label','Open website guide');trigger.setAttribute('aria-expanded','false');
  panel.setAttribute('role','region');panel.setAttribute('aria-label','Website guide');messages.setAttribute('aria-live','polite');input.setAttribute('aria-label','Topic to find on this website');
- let collapseTimer;
- function scheduleCollapse(){clearTimeout(collapseTimer);collapseTimer=setTimeout(()=>{if(panel.classList.contains('open')) setOpen(false);},5000);}
- function setOpen(open){panel.classList.toggle('open',open);trigger.classList.toggle('collapsed',!open);trigger.setAttribute('aria-expanded',String(open));if(open){input.focus();scheduleCollapse();}else trigger.focus();}
+ function setOpen(open){panel.classList.toggle('open',open);trigger.classList.toggle('collapsed',!open);trigger.setAttribute('aria-expanded',String(open));if(open){input.focus();}else trigger.focus();}
  trigger.addEventListener('click',()=>setOpen(!panel.classList.contains('open')));trigger.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();setOpen(!panel.classList.contains('open'));}});document.getElementById('fundoo-close')?.addEventListener('click',()=>setOpen(false));document.addEventListener('keydown',e=>{if(e.key==='Escape'&&panel.classList.contains('open'))setOpen(false);});
  setTimeout(()=>{if(!panel.classList.contains('open')) trigger.classList.add('collapsed');},5000);
  function append(text,user=false,links=[]){const item=document.createElement('div');item.className='msg-bubble '+(user?'msg-user':'msg-bot');item.textContent=text;for(const [label,url] of links){const a=document.createElement('a');a.href=url;a.textContent=label+' →';a.style.cssText='display:block;margin-top:10px;color:inherit;text-decoration:underline';item.append(a);}messages.append(item);messages.scrollTop=messages.scrollHeight;}
