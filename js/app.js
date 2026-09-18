@@ -15,6 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const button=document.createElement('button');button.className='mobile-submenu-button';button.type='button';button.setAttribute('aria-label','Expand '+icon.parentElement.querySelector('a').textContent);button.setAttribute('aria-expanded','false');icon.replaceWith(button);button.append(icon);
     button.addEventListener('click',()=>{const active=button.closest('.mobile-nav-item-has-children').classList.toggle('active');button.setAttribute('aria-expanded',String(active));});
   });
+  // Careers is a dedicated page, but remains reachable from every existing page.
+  const desktopMenu=document.querySelector('.nav-menu');
+  if(desktopMenu&&!desktopMenu.querySelector('a[href="careers.html"]')){const item=document.createElement('li');item.innerHTML='<a class="nav-link" href="careers.html">Careers</a>';desktopMenu.append(item);}
+  const mobileMenu=document.querySelector('.mobile-nav-menu');
+  if(mobileMenu&&!mobileMenu.querySelector('a[href="careers.html"]')){const item=document.createElement('li');item.innerHTML='<a href="careers.html">Careers</a>';const actionItem=[...mobileMenu.children].find(child=>child.querySelector('.btn'));mobileMenu.insertBefore(item,actionItem||null);}
+  document.querySelectorAll('.site-footer nav').forEach(footerNav=>{
+    const heading=footerNav.querySelector('h3');
+    if(heading&&/explore|company/i.test(heading.textContent)&&!footerNav.querySelector('a[href="careers.html"]')){const link=document.createElement('a');link.href='careers.html';link.textContent='Careers';footerNav.append(link);}
+  });
   // Give every desktop submenu a concise grouping and an icon that reflects its practice.
   // Individual pages share the header markup, so this keeps navigation consistent.
   const menuIcons={
