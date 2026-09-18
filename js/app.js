@@ -15,9 +15,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const button=document.createElement('button');button.className='mobile-submenu-button';button.type='button';button.setAttribute('aria-label','Expand '+icon.parentElement.querySelector('a').textContent);button.setAttribute('aria-expanded','false');icon.replaceWith(button);button.append(icon);
     button.addEventListener('click',()=>{const active=button.closest('.mobile-nav-item-has-children').classList.toggle('active');button.setAttribute('aria-expanded',String(active));});
   });
-  // Give every desktop submenu the same concise grouping and visual cue.
+  // Give every desktop submenu a concise grouping and an icon that reflects its practice.
   // Individual pages share the header markup, so this keeps navigation consistent.
+  const menuIcons={
+    'service-solution-design.html':'◈','service-architecture.html':'⌘','service-digital-strategy.html':'◉',
+    'service-ai-agents.html':'✦','service-business-apps.html':'▣','service-data-services.html':'▦',
+    'service-cloud.html':'☁','service-si-overview.html':'⇄','service-continuous-support.html':'↻',
+    'service-talent.html':'♙','service-web-portals.html':'▱','service-offshore-nearshore.html':'↔',
+    'tech-d365-crm.html':'▦','tech-d365-finance.html':'▤','tech-copilot.html':'✦',
+    'tech-fabric.html':'▦','tech-purview.html':'◉','tech-aws-bedrock.html':'☁',
+    'tech-google-vertex.html':'◌','tech-mobile-web.html':'▱','tech-iq.html':'⌕'
+  };
   document.querySelectorAll('.nav-dropdown-content').forEach(menu=>{
+    const existingItems=[...menu.querySelectorAll('.nav-dropdown-item')];
+    existingItems.forEach(item=>{const icon=item.querySelector('span')||document.createElement('span');if(!icon.parentElement)item.prepend(icon);icon.textContent=menuIcons[item.getAttribute('href')]||'•';});
     if(menu.querySelector('.nav-group-title')) return;
     const isTechnology = menu.closest('.nav-dropdown')?.querySelector('a')?.getAttribute('href') === 'technology.html';
     const headings = isTechnology
@@ -28,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach((item,index)=>{
       const heading=headings.find(([start])=>start===index);
       if(heading){const label=document.createElement('p');label.className='nav-group-title';label.textContent=heading[1];menu.insertBefore(label,item);}
-      const icon=document.createElement('span');icon.textContent='◇';item.prepend(icon);
+      const icon=document.createElement('span');icon.textContent=menuIcons[item.getAttribute('href')]||'•';item.prepend(icon);
     });
   });
   const banner=document.getElementById('cookie-banner');
