@@ -1,0 +1,18 @@
+/* Expanded Careers page content flow */
+.careers-why{background:linear-gradient(135deg,#fff 0%,#f3fbff 100%)}
+.careers-values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.careers-values-grid article{min-height:245px;padding:26px;border:1px solid #d6e9f1;border-radius:16px;background:#fff;transition:transform .25s ease,box-shadow .25s ease}
+.careers-values-grid article:nth-child(odd){border-top:3px solid #f35009}.careers-values-grid article:nth-child(even){border-top:3px solid #1aa9e8}
+.careers-values-grid article:hover{transform:translateY(-6px);box-shadow:0 18px 34px rgba(16,36,58,.1)}
+.careers-value-icon{display:grid;width:42px;height:42px;place-items:center;margin-bottom:25px;border-radius:12px;background:#fff0e9;color:#f35009;font-size:22px;font-weight:800}
+.careers-values-grid article:nth-child(even) .careers-value-icon{background:#eaf8ff;color:#1aa9e8}
+.careers-values-grid h3,.careers-approach-grid h3{margin:0 0 10px;color:#10243a;font-size:22px}
+.careers-values-grid p,.careers-approach-grid p{margin:0;color:#60718b;font-size:15px;line-height:1.7}
+.careers-technology{padding:100px 0;background:#10243a}.careers-technology .ab-eyebrow{color:#8fd9f7}.careers-technology .careers-heading h2{color:#fff}.careers-technology .careers-heading>p{color:#cde1ec}
+.careers-tech-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:#38536b;border:1px solid #38536b;border-radius:16px;overflow:hidden}
+.careers-tech-grid article{min-height:254px;padding:25px;background:#16314a;transition:background .25s ease}.careers-tech-grid article:hover{background:#1b425f}
+.careers-tech-grid span{display:block;margin-bottom:42px;color:#f35009;font-size:12px;font-weight:800;letter-spacing:.12em}.careers-tech-grid h3{margin:0 0 12px;color:#fff;font-size:19px;line-height:1.25}.careers-tech-grid p{margin:0;color:#c9dbe5;font-size:14px;line-height:1.65}
+.careers-approach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid #d7e8ef;border-left:1px solid #d7e8ef}.careers-approach-grid article{min-height:160px;padding:30px;border-right:1px solid #d7e8ef;border-bottom:1px solid #d7e8ef;background:#fff}
+.careers-approach-grid article:nth-child(4n+1) h3,.careers-approach-grid article:nth-child(4n+4) h3{color:#f35009}.careers-approach-grid article:nth-child(4n+2) h3,.careers-approach-grid article:nth-child(4n+3) h3{color:#0d8fca}
+@media(max-width:1000px){.careers-values-grid{grid-template-columns:repeat(2,1fr)}.careers-tech-grid{grid-template-columns:repeat(3,1fr)}.careers-tech-grid article{min-height:220px}}
+@media(max-width:640px){.careers-values-grid,.careers-tech-grid,.careers-approach-grid{grid-template-columns:1fr}.careers-values-grid article{min-height:0}.careers-technology{padding:65px 0}.careers-tech-grid{gap:1px}.careers-tech-grid article{min-height:0;padding:24px}.careers-tech-grid span{margin-bottom:22px}.careers-approach-grid article{min-height:0;padding:24px}}
