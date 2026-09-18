@@ -27,19 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     'tech-google-vertex.html':'◌','tech-mobile-web.html':'▱','tech-iq.html':'⌕'
   };
   document.querySelectorAll('.nav-dropdown-content').forEach(menu=>{
-    const existingItems=[...menu.querySelectorAll('.nav-dropdown-item')];
-    existingItems.forEach(item=>{const icon=item.querySelector('span')||document.createElement('span');if(!icon.parentElement)item.prepend(icon);icon.textContent=menuIcons[item.getAttribute('href')]||'•';});
-    if(menu.querySelector('.nav-group-title')) return;
-    const isTechnology = menu.closest('.nav-dropdown')?.querySelector('a')?.getAttribute('href') === 'technology.html';
-    const headings = isTechnology
-      ? [[0,'MICROSOFT ECOSYSTEM'],[5,'CLOUD & ENGINEERING']]
-      : [[0,'ADVISE & DESIGN'],[3,'BUILD & CONNECT'],[8,'OPERATE & GROW']];
-    const items=[...menu.querySelectorAll('.nav-dropdown-item')];
-    menu.classList.add('nav-mega-menu');
-    items.forEach((item,index)=>{
-      const heading=headings.find(([start])=>start===index);
-      if(heading){const label=document.createElement('p');label.className='nav-group-title';label.textContent=heading[1];menu.insertBefore(label,item);}
-      const icon=document.createElement('span');icon.textContent=menuIcons[item.getAttribute('href')]||'•';item.prepend(icon);
+    if(!menu.querySelector('.nav-group-title')){
+      const isTechnology = menu.closest('.nav-dropdown')?.querySelector('a')?.getAttribute('href') === 'technology.html';
+      const headings = isTechnology
+        ? [[0,'MICROSOFT ECOSYSTEM'],[5,'CLOUD & ENGINEERING']]
+        : [[0,'ADVISE & DESIGN'],[3,'BUILD & CONNECT'],[8,'OPERATE & GROW']];
+      const items=[...menu.querySelectorAll('.nav-dropdown-item')];
+      menu.classList.add('nav-mega-menu');
+      items.forEach((item,index)=>{const heading=headings.find(([start])=>start===index);if(heading){const label=document.createElement('p');label.className='nav-group-title';label.textContent=heading[1];menu.insertBefore(label,item);}});
+    }
+    menu.querySelectorAll('.nav-dropdown-item').forEach(item=>{
+      const icons=[...item.children].filter(child=>child.tagName==='SPAN');
+      const icon=icons.shift()||document.createElement('span');
+      icons.forEach(extra=>extra.remove());
+      if(!icon.parentElement)item.prepend(icon);
+      icon.textContent=menuIcons[item.getAttribute('href')]||'•';
     });
   });
   const banner=document.getElementById('cookie-banner');
