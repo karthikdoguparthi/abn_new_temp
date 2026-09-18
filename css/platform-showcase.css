@@ -1,0 +1,13 @@
+/* Homepage technology showcase refinements */
+.ab-platforms{padding-bottom:92px}
+.platform-showcase-heading{margin-bottom:36px}
+.platform-showcase-heading .ab-eyebrow{letter-spacing:.16em}
+.platform-showcase-heading h2{max-width:900px;font-size:clamp(32px,3.8vw,52px);text-wrap:balance}
+.platform-showcase-heading>p:last-child{max-width:720px;margin:18px auto 0;font-size:17px}
+.platform-card-grid{align-items:stretch}
+.platform-card{min-height:350px;padding:28px 26px 24px}
+.platform-card h3{font-size:clamp(21px,1.65vw,25px);line-height:1.16}
+.platform-card>p:not(.platform-card-eyebrow):not(.platform-card-action){margin:13px 0 21px;font-size:15px;line-height:1.55}
+.platform-card-icon{margin-bottom:21px}
+@media(max-width:1000px){.platform-card{min-height:300px}}
+@media(max-width:640px){.ab-platforms{padding:62px 0}.platform-showcase-heading h2{font-size:34px}.platform-card{min-height:260px}.platform-showcase-heading>p:last-child{margin-top:14px}}
