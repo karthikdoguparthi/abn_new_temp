@@ -2,7 +2,7 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   if (reduced.matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
-  const selector = '.ab-service, .ip-deliverable, .solution-card, .ab-process article, .ip-directory a, .ip-next a, .ip-timeline li, .ab-section-heading, .ip-section > h2, .ip-split > div, .ip-faq details, .legal-section, .utility-page > *';
+  const selector = '.ab-service, .ip-deliverable, .solution-card, .ab-process article, .ip-directory a, .ip-next a, .ip-timeline li, .ab-section-heading, .ip-section > h2, .ip-split > div, .ip-faq details, .legal-section, .utility-page > *, .careers-hero .container > *, .careers-heading, .career-card, .careers-split > div, .hiring-steps li, .careers-final .container > *';
   const candidates = [...document.querySelectorAll('main ' + selector.split(', ').join(', main '))];
   const targets = candidates.filter(el => !candidates.some(parent => parent !== el && parent.contains(el)));
   let frame = 0, printing = false, lastTime = 0, initialized = false;
