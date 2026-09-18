@@ -44,6 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
       icon.textContent=menuIcons[item.getAttribute('href')]||'•';
     });
   });
+  document.querySelectorAll('.mobile-nav-submenu a').forEach(link=>{
+    let icon=link.querySelector('.mobile-menu-icon');
+    if(!icon){icon=document.createElement('span');icon.className='mobile-menu-icon';link.prepend(icon);}
+    icon.textContent=menuIcons[link.getAttribute('href')]||'•';
+  });
   const banner=document.getElementById('cookie-banner');
   try{if(localStorage.getItem('ab_cookie_consent_v2')&&banner)banner.style.display='none';}catch{}
   for(const [id,value] of [['accept-cookies','accepted'],['decline-cookies','essential_only']]){
