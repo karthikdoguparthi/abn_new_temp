@@ -1,5 +1,5 @@
 (() => {
-  const cards = document.querySelectorAll('.ab-service, .ip-deliverable, .solution-card, .ab-process article, .ip-directory a, .ip-next a, .ip-timeline li');
+  const cards = document.querySelectorAll('.flow-card, .ab-service, .ip-deliverable, .solution-card, .ab-process article, .ip-directory a, .ip-next a, .ip-timeline li, .career-card, .careers-tech-grid article, .careers-approach-grid article, .hiring-steps li, .careers-values-grid article, .platform-card, .card, .value, .step, .cap, .life-card, .client');
   const motion = matchMedia('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)');
   cards.forEach(card => {
     card.classList.add('flow-card');
