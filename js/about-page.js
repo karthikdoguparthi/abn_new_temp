@@ -1,6 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const m = document.getElementById('main-content');
-  if (!m) return;
+const m = document.getElementById('main-content');
+if (m) {
   
   const events = [
     ['2002', 'Active Brains begins', 'Established in the UK with a focus on technology solutions designed around the needs of businesses.'],
@@ -100,13 +99,13 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="ab-eyebrow">2002 → TODAY</p>
       <h2>Our journey</h2>
       <div class="ip-cards" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-        ${events.map(e => `
+        ${events.map(e => \`
           <article class="ip-deliverable flow-card">
-            <span class="ab-eyebrow">${e[0]}</span>
-            <h3 style="margin-top: 8px;">${e[1]}</h3>
-            <p>${e[2]}</p>
+            <span class="ab-eyebrow">\${e[0]}</span>
+            <h3 style="margin-top: 8px;">\${e[1]}</h3>
+            <p>\${e[2]}</p>
           </article>
-        `).join('')}
+        \`).join('')}
       </div>
     </section>
 
@@ -114,12 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="ab-eyebrow">CORE VALUES</p>
       <h2>How we work matters as much as what we deliver.</h2>
       <div class="ip-cards" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
-        ${values.map((v, i) => `
+        ${values.map((v, i) => \`
           <article class="ip-deliverable flow-card">
-            <h3>${v[0]}</h3>
-            <p>${v[1]}</p>
+            <h3>\${v[0]}</h3>
+            <p>\${v[1]}</p>
           </article>
-        `).join('')}
+        \`).join('')}
       </div>
     </section>
 
@@ -133,14 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
           ${[['Understand', 'We listen to your organisation, users, processes and constraints.'],
              ['Shape', 'We define the opportunity, architecture and practical route forward.'],
              ['Build', 'Our specialists design, develop, integrate and implement the solution.'],
-             ['Improve', 'We support, optimise and evolve the solution as your organisation changes.']].map(s => `
+             ['Improve', 'We support, optimise and evolve the solution as your organisation changes.']].map(s => \`
             <li>
               <div>
-                <h3>${s[0]}</h3>
-                <p>${s[1]}</p>
+                <h3>\${s[0]}</h3>
+                <p>\${s[1]}</p>
               </div>
             </li>
-          `).join('')}
+          \`).join('')}
         </ol>
       </div>
     </section>
@@ -149,11 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <p class="ab-eyebrow">WHAT WE BRING</p>
       <h2>One team. Multiple disciplines. One business goal.</h2>
       <div class="ip-cards" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
-        ${caps.map((c, i) => `
+        ${caps.map((c, i) => \`
           <article class="ip-deliverable flow-card" style="display: flex; align-items: center; justify-content: center; text-align: center; min-height: 120px;">
-            <h3 style="margin: 0; font-size: 1.125rem;">${c}</h3>
+            <h3 style="margin: 0; font-size: 1.125rem;">\${c}</h3>
           </article>
-        `).join('')}
+        \`).join('')}
       </div>
     </section>
 
@@ -167,12 +166,12 @@ document.addEventListener('DOMContentLoaded', () => {
            ['Practical solutions', 'We focus on what can actually work within your organisation.'],
            ['Experienced delivery', 'We bring technical and business expertise together throughout delivery.'],
            ['Transparent communication', 'We keep conversations clear, practical and focused on progress.'],
-           ['Solutions built to evolve', 'We consider the future — not just the immediate requirement.']].map((x, i) => `
-          <details ${i === 0 ? 'open' : ''}>
-            <summary>${x[0]}</summary>
-            <p>${x[1]}</p>
+           ['Solutions built to evolve', 'We consider the future — not just the immediate requirement.']].map((x, i) => \`
+          <details \${i === 0 ? 'open' : ''}>
+            <summary>\${x[0]}</summary>
+            <p>\${x[1]}</p>
           </details>
-        `).join('')}
+        \`).join('')}
       </div>
     </section>
 
@@ -181,11 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <h2>Good technology starts with good people.</h2>
       <p class="uc-context">Active Brains is built around people who enjoy learning, solving problems and sharing what they know.</p>
       <div class="ip-cards" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top: 40px; margin-bottom: 40px;">
-        ${['Learn', 'Create', 'Collaborate', 'Grow'].map((x, i) => `
-          <article class="ip-deliverable flow-card" style="display: flex; align-items: center; justify-content: center; min-height: 140px; background: ${i%2===0?'var(--color-surface-subtle)':'#fff'};">
-            <h3 style="margin: 0; font-size: 1.25rem; color: var(--color-primary);">${x}</h3>
+        ${['Learn', 'Create', 'Collaborate', 'Grow'].map((x, i) => \`
+          <article class="ip-deliverable flow-card" style="display: flex; align-items: center; justify-content: center; min-height: 140px; background: \${i%2===0?'var(--color-surface-subtle)':'#fff'};">
+            <h3 style="margin: 0; font-size: 1.25rem; color: var(--color-primary);">\${x}</h3>
           </article>
-        `).join('')}
+        \`).join('')}
       </div>
       <a class="btn btn-primary" href="careers.html">Explore careers ↗</a>
     </section>
@@ -206,5 +205,5 @@ document.addEventListener('DOMContentLoaded', () => {
         <a aria-haspopup="dialog" data-contact-open="" href="#contact-dialog">Have a business challenge worth solving? ↗</a>
       </div>
     </nav>
-  `;
+  \`;
 });
