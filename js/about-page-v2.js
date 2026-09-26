@@ -35,7 +35,6 @@ if (main) {
           <h1>Technology built around <em>your business.</em></h1>
           <p class="about-lead">Active Brains brings business thinking, architecture and engineering into one practical conversation, helping organisations make confident progress with technology.</p>
           <div class="about-actions"><a class="btn btn-primary" href="#journey">Explore our story <span>→</span></a><a class="about-text-link" data-contact-open href="#contact-dialog">Start a conversation</a></div>
-          <p class="about-hero-meta">Established 2002 <span>•</span> UK and European delivery <span>•</span> Built for practical outcomes</p>
         </div>
       </section>
 
