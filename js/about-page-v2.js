@@ -1,7 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const main = document.getElementById('main-content');
-  if (!main) return;
-
+const main = document.getElementById('main-content');
+if (main) {
   const milestones = [
     ['2002', 'The company begins', 'Active Brains was established to help organisations make technology choices that are practical, understandable and grounded in the realities of the business.'],
     ['Early years', 'Building a delivery foundation', 'Our work expanded across software, web, data and IT services, creating a broad foundation for reliable technology delivery.'],
@@ -71,15 +69,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <section class="about-final"><div class="container about-reveal"><p class="ab-eyebrow">LET'S TALK</p><h2>Have a business challenge<br/>worth solving?</h2><p>Tell us what is changing, what is difficult and what you would like to improve. We will help identify a useful starting point.</p><a class="btn" data-contact-open href="#contact-dialog">Talk to our team <span>→</span></a></div></section>
     </div>`;
-
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window) || !Element.prototype.animate) return;
-  const observer = new IntersectionObserver((entries) => entries.forEach(({ target, isIntersecting }) => {
-    if (!isIntersecting || target.dataset.revealed) return;
-    target.dataset.revealed = 'true';
-    const index = [...document.querySelectorAll('.about-reveal')].indexOf(target);
-    const x = index % 3 === 0 ? '-30px' : index % 3 === 1 ? '30px' : '0px';
-    target.animate([{ opacity: 0, translate: `${x} 20px` }, { opacity: 1, translate: '0 0' }], { duration: 780, easing: 'cubic-bezier(.4,0,.2,1)', fill: 'both' });
-    observer.unobserve(target);
-  }), { threshold: .12 });
-  document.querySelectorAll('.about-reveal').forEach((element) => observer.observe(element));
-});
+}
