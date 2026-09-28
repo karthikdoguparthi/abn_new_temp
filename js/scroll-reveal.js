@@ -59,7 +59,8 @@ const selector = '.about-reveal, .ab-service, .ip-deliverable, .solution-card, .
   reduced.addEventListener('change', schedule);
   window.addEventListener('beforeprint', () => { printing = true; items.forEach(item => { item.progress = 1; item.animation.currentTime = 1000; }); });
   window.addEventListener('afterprint', () => { printing = false; measure(); });
-  if ('ResizeObserver' in window) new ResizeObserver(measure).observe(document.querySelector('main'));
+  const revealRoot = document.querySelector('main') || document.getElementById('main-content');
+  if ('ResizeObserver' in window && revealRoot) new ResizeObserver(measure).observe(revealRoot);
   document.fonts?.ready.then(measure);
   measure();
 })();
