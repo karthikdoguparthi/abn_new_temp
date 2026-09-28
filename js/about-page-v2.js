@@ -24,8 +24,15 @@ if (main) {
     ['04', 'Improve', 'Support, optimise and evolve the solution as the organisation changes.']
   ];
 
-  const capabilities = ['Business understanding', 'Solution architecture', 'Business applications', 'Data and analytics', 'Cloud platforms', 'AI and automation', 'Integration'];
-
+  const capabilities = [
+    ['Business understanding', 'Aligning technology initiatives with core business objectives to drive real value.'],
+    ['Solution architecture', 'Designing scalable, secure, and resilient systems tailored to your operational needs.'],
+    ['Business applications', 'Developing intuitive tools that streamline processes and improve team productivity.'],
+    ['Data and analytics', 'Transforming complex data into actionable insights for confident decision-making.'],
+    ['Cloud platforms', 'Leveraging modern cloud infrastructure for flexibility, cost-efficiency, and scale.'],
+    ['AI and automation', 'Enhancing human capabilities with intelligent models and automated workflows.'],
+    ['Integration', 'Connecting disparate systems to create a seamless and unified technical ecosystem.']
+  ];
   main.innerHTML = `
     <div class="about-v2">
       <section class="about-hero" id="top">
@@ -50,7 +57,7 @@ if (main) {
 
       <section class="about-approach" id="approach"><div class="container"><div class="about-section-heading about-reveal"><p class="ab-eyebrow">OUR APPROACH</p><h2>Start with the problem.<br/>Build towards the outcome.</h2><p>Clear stages give teams the confidence to make progress without losing sight of the business context.</p></div><div class="about-steps">${approach.map(([number,title,copy]) => `<article class="about-step about-reveal flow-card"><h3>${title}</h3><p>${copy}</p></article>`).join('')}</div></div></section>
 
-      <section class="about-section about-capabilities" id="what-we-bring"><div class="container"><div class="about-section-heading about-reveal"><p class="ab-eyebrow">WHAT WE BRING</p><h2>One team. Multiple disciplines.<br/>One business goal.</h2></div><div class="about-capability-grid">${capabilities.map((item, index) => `<article class="about-capability about-reveal flow-card"><h3>${item}</h3></article>`).join('')}</div></div></section>
+      <section class="about-section about-capabilities" id="what-we-bring"><div class="container"><div class="about-section-heading about-reveal"><p class="ab-eyebrow">WHAT WE BRING</p><h2>One team. Multiple disciplines.<br/>One business goal.</h2></div><div class="about-capability-grid">${capabilities.map(([title, desc], index) => `<article class="about-capability about-reveal flow-card"><h3>${title}</h3><p>${desc}</p></article>`).join('')}</div></div></section>
 
       <section class="about-expect"><div class="container about-expect-grid"><div class="about-reveal flow-card"><p class="ab-eyebrow">WHAT CLIENTS CAN EXPECT</p><h2>A technology partner that understands the work behind the technology.</h2><p>We keep the important decisions clear, the delivery practical and the next step visible.</p></div><div class="about-expect-list">${[['Clear thinking','Complex technology decisions explained in language that supports confident action.'],['Practical solutions','Recommendations shaped around the operating reality, not a product checklist.'],['Experienced delivery','Business and technical expertise working together through the work.'],['Open communication','Direct conversations, clear assumptions and honest progress updates.'],['Long-term thinking','Solutions designed to be supported, improved and understood by the next team.']].map(([title,copy]) => `<article class="about-reveal flow-card"><h3>${title}</h3><p>${copy}</p></article>`).join('')}</div></div></section>
 
