@@ -12,7 +12,7 @@ The included `vercel.json` records those static-site settings and basic response
 
 ## Contact behaviour
 
-Contact buttons on all 43 pages open a shared enquiry form. The Vercel endpoint sends name, email, company, message and source page to **solution@activebrains.co.uk**, with Reply-To set to the visitor’s address. Delivery errors retain the form contents; success appears only after the email provider accepts the request. Repeated retries of the same submission use an idempotency key.
+Contact buttons across all 46 pages open a responsive two-column form, tailored for general, service, technology, research, Launch Pad or careers enquiries. Career opportunity links preselect the relevant role. The Vercel endpoint sends name, email, company, phone, interest, message, form type and source page, plus any supplied timeframe, idea stage or portfolio URL to **solution@activebrains.co.uk**, with Reply-To set to the visitor’s address. Emails include a labeled HTML table and a plain-text version. Delivery errors retain the form contents; success appears only after the email provider accepts the request. Repeated retries of the same submission use an idempotency key.
 
 ### Activate email delivery
 
