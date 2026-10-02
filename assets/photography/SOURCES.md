@@ -27,7 +27,7 @@ Sources: [Pexels](https://www.pexels.com/license/) and [Unsplash](https://unspla
 | `services-ai-agents-hero` | services-ai-agents.html: hero | [Source](https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483873/) |
 | `services-ai-agents-practice` | services-ai-agents.html: practice section | [Source](https://www.pexels.com/photo/person-using-macbook-air-6330644/) |
 | `service-architecture-hero` | service-architecture.html: hero | [Source](https://www.pexels.com/photo/server-racks-on-data-center-4508751/) |
-| `service-architecture-practice` | service-architecture.html: practice section | [Source](https://www.pexels.com/photo/photo-of-a-person-pointing-sticky-notes-on-the-whiteboard-8866800/) |
+| `enterprise-architecture-user` | service-architecture.html: practice section | User-provided `9.png`; local original: `enterprise-architecture-user-original.png` |
 | `service-business-apps-hero` | service-business-apps.html: hero | [Source](https://www.pexels.com/photo/photo-of-person-in-front-of-laptop-3228682/) |
 | `service-business-apps-practice` | service-business-apps.html: practice section | [Source](https://www.pexels.com/photo/colleagues-having-a-business-meeting-6340632/) |
 | `services-business-apps-hero` | services-business-apps.html: hero | [Source](https://www.pexels.com/photo/person-using-a-smartphone-5077393/) |

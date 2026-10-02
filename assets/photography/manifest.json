@@ -173,13 +173,13 @@
     "height": 853
   },
   {
-    "asset": "service-architecture-practice",
-    "sourceId": "8866800",
-    "source": "https://www.pexels.com/photo/photo-of-a-person-pointing-sticky-notes-on-the-whiteboard-8866800/",
+    "asset": "enterprise-architecture-user",
+    "sourceId": "user-enterprise-architecture-9",
+    "source": "assets/photography/enterprise-architecture-user-original.png",
     "location": "service-architecture.html: practice section",
-    "alt": "Photo of a person pointing sticky notes on the whiteboard",
+    "alt": "Enterprise architecture connecting people, processes, data, applications, technology, strategy, governance and integration",
     "width": 1280,
-    "height": 1920
+    "height": 631
   },
   {
     "asset": "service-business-apps-hero",
