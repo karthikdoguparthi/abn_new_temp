@@ -9,13 +9,13 @@
     "height": 1920
   },
   {
-    "asset": "apps-practice",
-    "sourceId": "7988114",
-    "source": "https://www.pexels.com/photo/a-person-using-laptop-7988114/",
+    "asset": "phase2-apps-practice",
+    "sourceId": "phase2-image55",
+    "source": "assets/phase2-originals/image55.png",
     "location": "apps.html: practice section",
-    "alt": "A person using laptop",
+    "alt": "Designing and building a digital application",
     "width": 1280,
-    "height": 854
+    "height": 721
   },
   {
     "asset": "data-hero",
@@ -54,13 +54,13 @@
     "height": 853
   },
   {
-    "asset": "research-hero",
-    "sourceId": "4254171",
-    "source": "https://www.pexels.com/photo/solar-technician-inspecting-solar-panel-4254171/",
+    "asset": "phase2-research-hero",
+    "sourceId": "phase2-image5b",
+    "source": "assets/phase2-originals/image5b.png",
     "location": "research.html: hero",
-    "alt": "Solar technician inspecting solar panel",
+    "alt": "Research workspace with scientific instruments and emerging technologies",
     "width": 1280,
-    "height": 853
+    "height": 722
   },
   {
     "asset": "research-practice",
@@ -108,22 +108,22 @@
     "height": 853
   },
   {
-    "asset": "si-hero",
-    "sourceId": "17483868",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-how-machine-learning-is-inspired-by-neuroscience-and-the-human-brain-it-was-created-by-novoto-studio-as-par-17483868/",
+    "asset": "phase2-si-hero",
+    "sourceId": "phase2-image57",
+    "source": "assets/phase2-originals/image57.png",
     "location": "si.html: hero",
-    "alt": "An abstract purple brain illustrating machine learning",
+    "alt": "Illustration of a researcher considering advanced AI possibilities",
     "width": 1280,
-    "height": 720
+    "height": 722
   },
   {
-    "asset": "si-practice",
-    "sourceId": "18068768",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-ethics-research-understanding-the-human-involvement-in-data-labelling-it-was-created-by-ariel-lu-as-part-of-18068768/",
+    "asset": "phase2-si-practice",
+    "sourceId": "phase2-image59",
+    "source": "assets/phase2-originals/image59.png",
     "location": "si.html: practice section",
-    "alt": "Layered textures in an illustration of human involvement in AI",
+    "alt": "Illustration of potential applications of advanced intelligence",
     "width": 1280,
-    "height": 721
+    "height": 722
   },
   {
     "asset": "service-ai-agents-hero",
@@ -135,11 +135,11 @@
     "height": 720
   },
   {
-    "asset": "service-ai-agents-practice",
-    "sourceId": "5473301",
-    "source": "https://www.pexels.com/photo/a-person-using-a-computer-5473301/",
+    "asset": "ai-agent-evaluation",
+    "sourceId": "5475814",
+    "source": "https://www.pexels.com/photo/person-holding-black-tablet-computer-5475814/",
     "location": "service-ai-agents.html: practice section",
-    "alt": "A person using a computer",
+    "alt": "Colleagues reviewing technical charts and system behaviour on a laptop",
     "width": 1280,
     "height": 853
   },
@@ -216,22 +216,22 @@
     "height": 1920
   },
   {
-    "asset": "service-cloud-hero",
-    "sourceId": "5408005",
-    "source": "https://www.pexels.com/photo/corridor-with-lockers-with-servers-5408005/",
+    "asset": "cloud-network-ports",
+    "sourceId": "1597776",
+    "source": "https://www.pexels.com/photo/close-up-of-network-cables-with-server-ports-1597776/",
     "location": "service-cloud.html: hero",
-    "alt": "Corridor with lockers with servers",
+    "alt": "Green network cables connecting server ports",
     "width": 1280,
-    "height": 1924
+    "height": 853
   },
   {
-    "asset": "service-cloud-practice",
-    "sourceId": "6804586",
-    "source": "https://www.pexels.com/photo/man-connecting-computer-cables-6804586/",
+    "asset": "cloud-patch-panel",
+    "sourceId": "4716292",
+    "source": "https://www.pexels.com/photo/blue-wires-connected-to-server-4716292/",
     "location": "service-cloud.html: practice section",
-    "alt": "Man connecting computer cables",
+    "alt": "Blue network cables arranged across a data centre patch panel",
     "width": 1280,
-    "height": 1920
+    "height": 852
   },
   {
     "asset": "services-cloud-hero",
@@ -250,15 +250,6 @@
     "alt": "Plastic panel of data machine in server room",
     "width": 1280,
     "height": 1924
-  },
-  {
-    "asset": "service-continuous-support-hero",
-    "sourceId": "7504886",
-    "source": "https://www.pexels.com/photo/man-wearing-headset-while-working-at-the-office-7504886/",
-    "location": "service-continuous-support.html: hero",
-    "alt": "Man wearing headset while working at the office",
-    "width": 1280,
-    "height": 853
   },
   {
     "asset": "service-continuous-support-practice",
@@ -306,13 +297,13 @@
     "height": 1920
   },
   {
-    "asset": "service-digital-strategy-hero",
-    "sourceId": "6913320",
-    "source": "https://www.pexels.com/photo/man-person-people-laptop-6913320/",
+    "asset": "digital-strategy-planning",
+    "sourceId": "9433161",
+    "source": "https://www.pexels.com/photo/colleagues-doing-work-together-9433161/",
     "location": "service-digital-strategy.html: hero",
-    "alt": "Man person people laptop",
+    "alt": "Colleagues reviewing charts and planning priorities together",
     "width": 1280,
-    "height": 853
+    "height": 1920
   },
   {
     "asset": "service-digital-strategy-practice",
@@ -351,22 +342,13 @@
     "height": 852
   },
   {
-    "asset": "service-si-overview-practice",
-    "sourceId": "36706460",
-    "source": "https://www.pexels.com/photo/developer-working-on-code-in-a-modern-office-36706460/",
-    "location": "service-si-overview.html: practice section",
-    "alt": "Developer working on code in a modern office",
-    "width": 1280,
-    "height": 960
-  },
-  {
-    "asset": "service-solution-design-hero",
-    "sourceId": "4623479",
-    "source": "https://www.pexels.com/photo/a-meeting-in-the-office-4623479/",
+    "asset": "solution-design-workshop",
+    "sourceId": "6340653",
+    "source": "https://www.pexels.com/photo/colleagues-having-a-business-meeting-6340653/",
     "location": "service-solution-design.html: hero",
-    "alt": "A meeting in the office",
+    "alt": "Colleagues planning a solution around a table with notes, laptops and a projected presentation",
     "width": 1280,
-    "height": 1811
+    "height": 855
   },
   {
     "asset": "service-solution-design-practice",
@@ -396,22 +378,22 @@
     "height": 1920
   },
   {
-    "asset": "service-talent-hero",
-    "sourceId": "8518660",
-    "source": "https://www.pexels.com/photo/office-team-working-in-the-office-8518660/",
+    "asset": "talent-welcome-handshake",
+    "sourceId": "7644148",
+    "source": "https://www.pexels.com/photo/businesspeople-shaking-hands-7644148/",
     "location": "service-talent.html: hero",
-    "alt": "Office team working in the office",
-    "width": 1280,
-    "height": 1920
-  },
-  {
-    "asset": "service-talent-practice",
-    "sourceId": "7156097",
-    "source": "https://www.pexels.com/photo/teacher-looking-at-a-white-board-7156097/",
-    "location": "service-talent.html: practice section",
-    "alt": "Teacher looking at a white board",
+    "alt": "Two business professionals shaking hands as they begin working together",
     "width": 1280,
     "height": 853
+  },
+  {
+    "asset": "talent-training-wide",
+    "sourceId": "talent-training-wide",
+    "source": "Generated with built-in imagegen",
+    "location": "service-talent.html: practice section",
+    "alt": "Team discussing talent development in a professional workshop",
+    "width": 1280,
+    "height": 512
   },
   {
     "asset": "services-talent-hero",
@@ -432,24 +414,6 @@
     "height": 853
   },
   {
-    "asset": "service-web-portals-hero",
-    "sourceId": "3850246",
-    "source": "https://www.pexels.com/photo/notebook-with-smartphone-showing-photo-gallery-app-on-screen-3850246/",
-    "location": "service-web-portals.html: hero",
-    "alt": "Notebook with smartphone showing photo gallery app on screen",
-    "width": 1280,
-    "height": 1920
-  },
-  {
-    "asset": "service-web-portals-practice",
-    "sourceId": "16129703",
-    "source": "https://www.pexels.com/photo/man-coding-on-computers-sitting-at-desk-16129703/",
-    "location": "service-web-portals.html: practice section",
-    "alt": "Man coding on computers sitting at desk",
-    "width": 1280,
-    "height": 960
-  },
-  {
     "asset": "services-coe-hero",
     "sourceId": "9301152",
     "source": "https://www.pexels.com/photo/woman-giving-presentation-in-office-9301152/",
@@ -468,13 +432,13 @@
     "height": 853
   },
   {
-    "asset": "tech-aws-bedrock-hero",
-    "sourceId": "18068554",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-by-how-ai-tools-can-disguise-biases-and-the-importance-of-research-for-responsible-deployment-it-was-crea-18068554/",
+    "asset": "phase2-tech-aws-bedrock-hero",
+    "sourceId": "phase2-image46",
+    "source": "assets/phase2-originals/image46.png",
     "location": "tech-aws-bedrock.html: hero",
-    "alt": "Interwoven forms illustrating responsible AI research",
+    "alt": "Cloud AI services connecting enterprise data and applications",
     "width": 1280,
-    "height": 2273
+    "height": 720
   },
   {
     "asset": "tech-aws-bedrock-practice",
@@ -504,40 +468,40 @@
     "height": 852
   },
   {
-    "asset": "tech-copilot-hero",
-    "sourceId": "17486100",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-represents-storage-of-collected-data-in-ai-it-was-created-by-wes-cockx-as-part-of-the-visualising-ai-project-launched-17486100/",
+    "asset": "phase2-tech-copilot-hero",
+    "sourceId": "phase2-image3c",
+    "source": "assets/phase2-originals/image3c.png",
     "location": "tech-copilot.html: hero",
-    "alt": "Connected forms illustrating the storage of data in AI",
+    "alt": "AI assistant connected to business applications",
+    "width": 1280,
+    "height": 588
+  },
+  {
+    "asset": "phase2-tech-copilot-practice",
+    "sourceId": "phase2-image3e",
+    "source": "assets/phase2-originals/image3e.png",
+    "location": "tech-copilot.html: practice section",
+    "alt": "Person working with an AI assistant and business dashboard",
     "width": 1280,
     "height": 720
   },
   {
-    "asset": "tech-copilot-practice",
-    "sourceId": "7988087",
-    "source": "https://www.pexels.com/photo/a-man-sitting-in-front-of-the-computer-while-working-7988087/",
-    "location": "tech-copilot.html: practice section",
-    "alt": "A man sitting in front of the computer while working",
-    "width": 1280,
-    "height": 854
-  },
-  {
-    "asset": "tech-d365-crm-hero",
-    "sourceId": "8866777",
-    "source": "https://www.pexels.com/photo/woman-wearing-headset-smiling-8866777/",
+    "asset": "phase2-tech-d365-crm-hero",
+    "sourceId": "phase2-image36",
+    "source": "assets/phase2-originals/image36.png",
     "location": "tech-d365-crm.html: hero",
-    "alt": "Woman wearing headset smiling",
+    "alt": "Sales and customer service analytics dashboard",
     "width": 1280,
-    "height": 1920
+    "height": 788
   },
   {
-    "asset": "tech-d365-crm-practice",
-    "sourceId": "7709291",
-    "source": "https://www.pexels.com/photo/woman-with-black-headset-and-mouthpiece-sitting-in-front-of-laptop-7709291/",
+    "asset": "phase2-tech-d365-crm-practice",
+    "sourceId": "phase2-image38",
+    "source": "assets/phase2-originals/image38.png",
     "location": "tech-d365-crm.html: practice section",
-    "alt": "Woman with black headset and mouthpiece sitting in front of laptop",
+    "alt": "Customer data connected to AI-powered insights",
     "width": 1280,
-    "height": 1920
+    "height": 720
   },
   {
     "asset": "tech-d365-finance-hero",
@@ -549,13 +513,13 @@
     "height": 854
   },
   {
-    "asset": "tech-d365-finance-practice",
-    "sourceId": "20500268",
-    "source": "https://www.pexels.com/photo/calculator-20500268/",
+    "asset": "phase2-tech-d365-finance-practice",
+    "sourceId": "phase2-image3a",
+    "source": "assets/phase2-originals/image3a.png",
     "location": "tech-d365-finance.html: practice section",
-    "alt": "Calculator",
+    "alt": "Finance dashboard with revenue charts and reports",
     "width": 1280,
-    "height": 1919
+    "height": 720
   },
   {
     "asset": "tech-fabric-hero",
@@ -567,40 +531,40 @@
     "height": 853
   },
   {
-    "asset": "tech-fabric-practice",
-    "sourceId": "35638690",
-    "source": "https://www.pexels.com/photo/finance-professional-analyzing-data-on-calculator-and-monitor-35638690/",
+    "asset": "fabric-analytics-user",
+    "sourceId": "fabric-analytics-user",
+    "source": "User-provided 7.png",
     "location": "tech-fabric.html: practice section",
-    "alt": "Finance professional analyzing data on calculator and monitor",
+    "alt": "Data analytics dashboards connected to a laptop",
     "width": 1280,
-    "height": 720
+    "height": 768
   },
   {
-    "asset": "tech-google-vertex-hero",
-    "sourceId": "17483874",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-by-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-pr-17483874/",
+    "asset": "phase2-tech-google-vertex-hero",
+    "sourceId": "phase2-image48",
+    "source": "assets/phase2-originals/image48.png",
     "location": "tech-google-vertex.html: hero",
-    "alt": "Transparent geometric layers illustrating a deep learning network",
+    "alt": "AI model development and evaluation platform",
     "width": 1280,
     "height": 720
   },
   {
-    "asset": "tech-google-vertex-practice",
-    "sourceId": "34803968",
-    "source": "https://www.pexels.com/photo/programming-code-editors-on-computer-screen-34803968/",
+    "asset": "vertex-cloud-workflow-user",
+    "sourceId": "user-vertex-4",
+    "source": "User-provided image: 4.png",
     "location": "tech-google-vertex.html: practice section",
-    "alt": "Programming code editors on computer screen",
+    "alt": "Cloud AI connecting business data with analytics and applications",
     "width": 1280,
-    "height": 853
+    "height": 768
   },
   {
-    "asset": "tech-iq-hero",
-    "sourceId": "3747576",
-    "source": "https://www.pexels.com/photo/photo-of-books-on-shelves-3747576/",
+    "asset": "phase2-tech-iq-hero",
+    "sourceId": "phase2-image44",
+    "source": "assets/phase2-originals/image44.png",
     "location": "tech-iq.html: hero",
-    "alt": "Photo of books on shelves",
+    "alt": "Enterprise knowledge search across connected sources",
     "width": 1280,
-    "height": 853
+    "height": 720
   },
   {
     "asset": "tech-iq-practice",
@@ -630,31 +594,31 @@
     "height": 853
   },
   {
-    "asset": "tech-mobile-web-hero",
-    "sourceId": "5054358",
-    "source": "https://www.pexels.com/photo/person-using-a-smartphone-5054358/",
+    "asset": "phase2-tech-mobile-web-hero",
+    "sourceId": "phase2-image4c",
+    "source": "assets/phase2-originals/image4c.png",
     "location": "tech-mobile-web.html: hero",
-    "alt": "Person using a smartphone",
+    "alt": "Responsive digital experiences across mobile and desktop devices",
     "width": 1280,
-    "height": 1920
+    "height": 720
   },
   {
-    "asset": "tech-mobile-web-practice",
-    "sourceId": "9553905",
-    "source": "https://www.pexels.com/photo/man-writing-a-code-on-a-computer-and-laptop-9553905/",
+    "asset": "phase2-tech-mobile-web-practice",
+    "sourceId": "phase2-image4e",
+    "source": "assets/phase2-originals/image4e.png",
     "location": "tech-mobile-web.html: practice section",
-    "alt": "Man writing a code on a computer and laptop",
+    "alt": "Web and mobile application design and development",
     "width": 1280,
-    "height": 1920
+    "height": 720
   },
   {
-    "asset": "tech-purview-hero",
-    "sourceId": "5483240",
-    "source": "https://www.pexels.com/photo/laptop-with-cyber-security-text-on-the-screen-5483240/",
+    "asset": "phase2-tech-purview-hero",
+    "sourceId": "phase2-image42",
+    "source": "assets/phase2-originals/image42.png",
     "location": "tech-purview.html: hero",
-    "alt": "Laptop with cyber security text on the screen",
+    "alt": "Data governance connecting secure business information",
     "width": 1280,
-    "height": 1920
+    "height": 720
   },
   {
     "asset": "tech-purview-practice",
@@ -672,10 +636,13 @@
     "location": "index.html: hero"
   },
   {
-    "asset": "intelligence",
-    "sourceId": "17485709",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-visualises-the-input-and-output-of-neural-networks-and-how-ai-systems-perceive-data-it-was-created-by-rose-pilkington-17485709/",
-    "location": "index.html: AI card"
+    "asset": "home-ai-digital-hand",
+    "sourceId": "user-hd-1",
+    "source": "assets/photography/home-ai-digital-hand-original.png",
+    "location": "index.html: AI card",
+    "width": 1280,
+    "height": 774,
+    "alt": "Digital robotic hand interacting with a glowing blue interface"
   },
   {
     "asset": "analytics",
@@ -714,31 +681,31 @@
     "height": 853
   },
   {
-    "asset": "about-life",
-    "sourceId": "3285203",
-    "source": "https://www.pexels.com/photo/man-teaching-woman-in-front-of-monitor-3285203/",
+    "asset": "phase2-about-life",
+    "sourceId": "phase2-image52",
+    "source": "assets/phase2-originals/image52.png",
     "location": "about.html: life at Active Brains",
-    "alt": "Man teaching woman in front of monitor",
+    "alt": "Colleagues celebrating shared progress",
     "width": 1280,
-    "height": 853
+    "height": 721
   },
   {
-    "asset": "about-values",
-    "sourceId": "39219951",
-    "source": "https://www.pexels.com/photo/team-collaboration-with-sticky-notes-on-board-39219951/",
+    "asset": "phase2-about-values",
+    "sourceId": "phase2-image50",
+    "source": "assets/phase2-originals/image50.png",
     "location": "about.html: values",
-    "alt": "Colleagues discussing ideas beside a wall of sticky notes",
+    "alt": "Team planning, collaborating and reviewing improvements",
     "width": 1280,
-    "height": 720
+    "height": 561
   },
   {
-    "asset": "about-capabilities",
-    "sourceId": "7793688",
-    "source": "https://www.pexels.com/photo/colleagues-working-and-planning-inside-an-office-7793688/",
+    "asset": "phase2-about-capabilities",
+    "sourceId": "phase2-image54",
+    "source": "assets/phase2-originals/image54.png",
     "location": "about.html: capabilities",
-    "alt": "Colleagues working and planning inside an office",
+    "alt": "Team connecting trust, collaboration, growth and success",
     "width": 1280,
-    "height": 1920
+    "height": 721
   },
   {
     "asset": "about-ecosystem",
@@ -802,5 +769,25 @@
     "alt": "Businesspeople doing a hand shake",
     "width": 1280,
     "height": 855
+  },
+  {
+    "asset": "about-client-relationships-cc0",
+    "sourceId": "pxhere-1436889",
+    "source": "https://pxhere.com/en/photo/1436889",
+    "license": "CC0 1.0, as stated on source page; verified 2026-10-01",
+    "location": "about.html: Client voices heading",
+    "alt": "Business colleagues shaking hands during a meeting",
+    "width": 1200,
+    "height": 702
+  },
+  {
+    "asset": "about-strategy-meeting-cc0",
+    "sourceId": "pxhere-1453379",
+    "source": "https://pxhere.com/en/photo/1453379",
+    "license": "CC0 as stated by source, verified 2026-10-01",
+    "location": "about.html: Our approach heading",
+    "alt": "Business professionals discussing a delivery plan in a meeting",
+    "width": 1200,
+    "height": 799
   }
 ]

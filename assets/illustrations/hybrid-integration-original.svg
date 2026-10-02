@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" fill="none">
+<title>Connected on-premises and cloud systems</title>
+<desc>Original systems integration illustration showing an integration hub linking servers, cloud applications, and data with a verified transaction.</desc>
+<defs><linearGradient id="bg" x2="1280" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#e9f7fc"/><stop offset="1" stop-color="#cfe9f5"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#173b59" flood-opacity=".14"/></filter></defs>
+<path fill="url(#bg)" d="M0 0h1280v560H0z"/>
+<circle cx="640" cy="275" r="216" stroke="#a5d5e5" stroke-width="2" stroke-dasharray="5 10"/><circle cx="640" cy="275" r="168" fill="#f5fcff" opacity=".6"/>
+<path d="M347 280h175M758 248h90q20 0 20-20v-53h61M758 310h90q20 0 20 20v66h61" stroke="#6ab6d0" stroke-width="5" stroke-linecap="round"/>
+<path d="m491 269 12 11-12 11m397-127 12 11-12 11m-12 210 12 11-12 11" stroke="#208fb9" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#shadow)"><rect x="120" y="145" width="227" height="270" rx="22" fill="#fff"/>
+<rect x="158" y="191" width="151" height="46" rx="9" fill="#193c58"/><rect x="158" y="248" width="151" height="46" rx="9" fill="#193c58"/><rect x="158" y="305" width="151" height="46" rx="9" fill="#193c58"/>
+<g fill="#71d3e8"><circle cx="178" cy="214" r="5"/><circle cx="178" cy="271" r="5"/><circle cx="178" cy="328" r="5"/></g><g stroke="#87a9bf" stroke-width="4" stroke-linecap="round"><path d="M199 214h33M199 271h33M199 328h33M273 214h13M273 271h13M273 328h13"/></g>
+<text x="233" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#23465f">On-premises</text>
+</g>
+<g filter="url(#shadow)"><rect x="521" y="163" width="238" height="230" rx="36" fill="#173b57"/>
+<path d="m640 201 44 25v50l-44 25-44-25v-50z" fill="#ff640f"/><path d="m596 226 44 25 44-25m-44 25v50" stroke="#ffc091" stroke-width="3"/>
+<text x="640" y="338" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" font-weight="700" fill="#fff">Integration hub</text><text x="640" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#9bcbdf">Route • Transform • Verify</text>
+</g>
+<g filter="url(#shadow)"><rect x="929" y="70" width="231" height="196" rx="22" fill="#fff"/>
+<path d="M1000 183a25 25 0 0 1-2-50 38 38 0 0 1 73-8 29 29 0 1 1 15 58z" fill="#d8f0fb" stroke="#219ac5" stroke-width="4"/>
+<path d="m1027 154 10 10 21-24" stroke="#219ac5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="1044" y="235" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#23465f">Cloud applications</text>
+<rect x="929" y="301" width="231" height="196" rx="22" fill="#fff"/>
+<path d="M1000 350v73c0 27 89 27 89 0v-73" fill="#e7f5fc" stroke="#219ac5" stroke-width="3"/><ellipse cx="1044.5" cy="350" rx="44.5" ry="15" fill="#b6e3f3" stroke="#219ac5" stroke-width="3"/>
+<path d="M1000 376c0 25 89 25 89 0m-89 24c0 25 89 25 89 0" stroke="#219ac5" stroke-width="3"/>
+<text x="1044" y="474" text-anchor="middle" font-family="Arial,sans-serif" font-size="19" font-weight="700" fill="#23465f">Business data</text>
+</g>
+<rect x="507" y="440" width="268" height="47" rx="23.5" fill="#fff"/><circle cx="538" cy="463" r="13" fill="#159ec2"/><path d="m532 463 4 4 8-9" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><text x="561" y="469" font-family="Arial,sans-serif" font-size="16" fill="#396580">Transaction verified</text>
+<circle cx="398" cy="153" r="8" fill="#ff792e"/><circle cx="822" cy="435" r="5" fill="#54b9d5"/>
+</svg>

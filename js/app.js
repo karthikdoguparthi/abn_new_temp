@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // The dedicated Careers page uses the same complete navigation as the rest of the site.
   if(document.body.classList.contains('careers-page')){
     const menus={
-      services:[['service-solution-design.html','Solution Design Consulting'],['service-architecture.html','Enterprise Architecture'],['service-ai-agents.html','AI & Autonomous Agents'],['service-business-apps.html','Business Apps & Workplace'],['service-digital-strategy.html','Digital Strategy & Vision'],['service-cloud.html','Cloud Services (UK & EU)'],['service-data-services.html','Data Services & Fabric'],['service-si-overview.html','Hybrid Systems Integration'],['service-continuous-support.html','Continuous Support & AMC'],['service-talent.html','Talent & Manpower Augmentation'],['service-web-portals.html','Customer Facing Web Portals'],['service-offshore-nearshore.html','Offshore & Nearshore Delivery']],
+      services:[['service-solution-design.html','Solution Design Consulting'],['service-architecture.html','Enterprise Architecture'],['service-ai-agents.html','AI & Autonomous Agents'],['service-business-apps.html','Business Apps & Workplace'],['service-digital-strategy.html','Digital Strategy & Vision'],['service-cloud.html','Cloud Services'],['service-data-services.html','Data Services & Fabric'],['service-si-overview.html','Hybrid Systems Integration'],['service-continuous-support.html','Continuous Support & AMC'],['service-talent.html','Talent & Manpower Augmentation'],['service-web-portals.html','Customer Facing Web Portals'],['service-offshore-nearshore.html','Offshore & Nearshore Delivery']],
       technology:[['tech-d365-crm.html','Dynamics 365 Sales & Customer Service'],['tech-d365-finance.html','Dynamics 365 Finance & Operations'],['tech-copilot.html','Microsoft Copilot Studio & AI Applications'],['tech-fabric.html','Microsoft Fabric'],['tech-purview.html','Microsoft Purview'],['tech-iq.html','Enterprise Knowledge & Search'],['tech-aws-bedrock.html','AWS & Amazon Bedrock'],['tech-google-vertex.html','Google Cloud & Vertex AI'],['tech-mobile-web.html','Mobile & Web Engineering']]
     };
     const buildLinks=entries=>entries.map(([href,label])=>`<a class="nav-dropdown-item" href="${href}">${label}</a>`).join('');
@@ -42,14 +42,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // Give every desktop submenu a concise grouping and an icon that reflects its practice.
   // Individual pages share the header markup, so this keeps navigation consistent.
   const menuIcons={
-    'service-solution-design.html':'◈','service-architecture.html':'⌘','service-digital-strategy.html':'◉',
-    'service-ai-agents.html':'✦','service-business-apps.html':'▣','service-data-services.html':'▦',
-    'service-cloud.html':'☁','service-si-overview.html':'⇄','service-continuous-support.html':'↻',
-    'service-talent.html':'♙','service-web-portals.html':'▱','service-offshore-nearshore.html':'↔',
-    'tech-d365-crm.html':'▦','tech-d365-finance.html':'▤','tech-copilot.html':'✦',
-    'tech-fabric.html':'▦','tech-purview.html':'◉','tech-aws-bedrock.html':'☁',
-    'tech-google-vertex.html':'◌','tech-mobile-web.html':'▱','tech-iq.html':'⌕'
-  };
+    "service-solution-design.html": "assets/icons/navigation/design.svg",
+    "service-architecture.html": "assets/icons/navigation/architecture.svg",
+    "service-digital-strategy.html": "assets/icons/navigation/strategy.svg",
+    "service-ai-agents.html": "assets/icons/navigation/ai.svg",
+    "service-business-apps.html": "assets/icons/navigation/apps.svg",
+    "service-data-services.html": "assets/icons/navigation/data.svg",
+    "service-cloud.html": "assets/icons/navigation/cloud.svg",
+    "service-si-overview.html": "assets/icons/navigation/integration.svg",
+    "service-continuous-support.html": "assets/icons/navigation/support.svg",
+    "service-talent.html": "assets/icons/navigation/talent.svg",
+    "service-web-portals.html": "assets/icons/navigation/web.svg",
+    "service-offshore-nearshore.html": "assets/icons/navigation/global.svg",
+    "tech-d365-crm.html": "assets/brands/dynamics-365.svg",
+    "tech-d365-finance.html": "assets/brands/dynamics-365.svg",
+    "tech-copilot.html": "assets/brands/copilot-studio.svg",
+    "tech-fabric.html": "assets/brands/microsoft-fabric.svg",
+    "tech-purview.html": "assets/brands/microsoft-purview.svg",
+    "tech-aws-bedrock.html": "assets/brands/aws.svg",
+    "tech-google-vertex.html": "assets/brands/google-cloud.svg",
+    "tech-microsoft.html": "assets/brands/microsoft-azure.svg",
+    "tech-mobile-web.html": "assets/icons/navigation/web.svg",
+    "tech-iq.html": "assets/icons/navigation/search.svg"
+};
+  function setMenuIcon(icon,href){
+    icon.classList.add("nav-product-icon");icon.setAttribute("aria-hidden","true");
+    const image=document.createElement("img");image.src=menuIcons[href]||"assets/icons/navigation/apps.svg";image.alt="";image.width=24;image.height=24;icon.replaceChildren(image);
+  }
   document.querySelectorAll('.nav-dropdown-content').forEach(menu=>{
     if(!menu.querySelector('.nav-group-title')){
       const isTechnology = menu.closest('.nav-dropdown')?.querySelector('a')?.getAttribute('href') === 'technology.html';
@@ -65,13 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const icon=icons.shift()||document.createElement('span');
       icons.forEach(extra=>extra.remove());
       if(!icon.parentElement)item.prepend(icon);
-      icon.textContent=menuIcons[item.getAttribute('href')]||'•';
+      setMenuIcon(icon,item.getAttribute('href'));
     });
   });
   document.querySelectorAll('.mobile-nav-submenu a').forEach(link=>{
     let icon=link.querySelector('.mobile-menu-icon');
     if(!icon){icon=document.createElement('span');icon.className='mobile-menu-icon';link.prepend(icon);}
-    icon.textContent=menuIcons[link.getAttribute('href')]||'•';
+    setMenuIcon(icon,link.getAttribute('href'));
   });
   const banner=document.getElementById('cookie-banner');
   try{if(localStorage.getItem('ab_cookie_consent_v2')&&banner)banner.style.display='none';}catch{}

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" fill="none">
+<title>Customer portal across desktop and mobile</title>
+<desc>Original illustration of a customer dashboard with documents, request progress, and a completed mobile task.</desc>
+<defs>
+ <linearGradient id="bg" x2="1280" y2="640" gradientUnits="userSpaceOnUse"><stop stop-color="#e8f7ff"/><stop offset="1" stop-color="#c7e6f2"/></linearGradient>
+ <linearGradient id="screen" x2="700" y2="500" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#f3f8fc"/></linearGradient>
+ <filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#173d60" flood-opacity=".18"/></filter>
+</defs>
+<path fill="url(#bg)" d="M0 0h1280v640H0z"/>
+<circle cx="1120" cy="100" r="280" fill="#f3fbff" opacity=".55"/>
+<circle cx="100" cy="670" r="280" fill="#8bcfe9" opacity=".18"/>
+<path d="M35 140h100M85 90v100M1160 450h70M1195 415v70" stroke="#91c5d9" stroke-width="2" opacity=".5"/>
+<g filter="url(#shadow)">
+ <rect x="172" y="80" width="800" height="450" rx="24" fill="#16304c"/>
+ <rect x="184" y="92" width="776" height="420" rx="15" fill="url(#screen)"/>
+ <path d="M199 92h746a15 15 0 0 1 15 15v37H184v-37a15 15 0 0 1 15-15" fill="#e6eef5"/>
+ <circle cx="210" cy="118" r="5" fill="#fb6424"/><circle cx="229" cy="118" r="5" fill="#aac4d4"/><circle cx="248" cy="118" r="5" fill="#aac4d4"/>
+ <rect x="400" y="105" width="310" height="25" rx="8" fill="#fff"/>
+ <path d="M418 116v-3a4 4 0 0 1 8 0v3m-9 0h10v8h-10z" stroke="#7496ad" stroke-width="2"/>
+ <rect x="444" y="115" width="124" height="5" rx="2.5" fill="#c5d9e6"/>
+ <path fill="#16304c" d="M184 144h160v368H199a15 15 0 0 1-15-15z"/>
+ <rect x="208" y="174" width="28" height="28" rx="8" fill="#ff5a0a"/>
+ <path d="m215 188 5 5 9-12" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+ <rect x="248" y="180" width="65" height="6" rx="3" fill="#fff"/><rect x="248" y="193" width="43" height="4" rx="2" fill="#7fa2be"/>
+ <rect x="198" y="232" width="132" height="35" rx="7" fill="#284b69"/>
+ <g fill="#9cbed4"><rect x="216" y="245" width="11" height="11" rx="2"/><rect x="239" y="248" width="69" height="5" rx="2"/><rect x="216" y="288" width="11" height="11" rx="2"/><rect x="239" y="291" width="54" height="5" rx="2"/><rect x="216" y="331" width="11" height="11" rx="2"/><rect x="239" y="334" width="62" height="5" rx="2"/></g>
+ <text x="375" y="192" font-family="Arial,sans-serif" font-size="23" font-weight="700" fill="#18334e">Your workspace</text>
+ <text x="375" y="217" font-family="Arial,sans-serif" font-size="13" fill="#68859c">Everything you need, in one place.</text>
+ <rect x="375" y="243" width="240" height="99" rx="12" fill="#e2f3fc"/>
+ <rect x="632" y="243" width="220" height="99" rx="12" fill="#fff0e5"/>
+ <text x="394" y="272" font-family="Arial,sans-serif" font-size="13" fill="#54758e">Active requests</text><text x="394" y="320" font-family="Arial,sans-serif" font-size="35" font-weight="700" fill="#18334e">03</text>
+ <text x="651" y="272" font-family="Arial,sans-serif" font-size="13" fill="#8a6048">Documents ready</text><text x="651" y="320" font-family="Arial,sans-serif" font-size="35" font-weight="700" fill="#e65513">08</text>
+ <rect x="375" y="360" width="477" height="118" rx="12" fill="#fff" stroke="#dce9f1"/>
+ <text x="394" y="389" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="#18334e">Your latest request</text>
+ <path d="M414 427h354" stroke="#d8e8f0" stroke-width="5" stroke-linecap="round"/><path d="M414 427h220" stroke="#22a9d6" stroke-width="5"/>
+ <g fill="#22a9d6"><circle cx="414" cy="427" r="9"/><circle cx="525" cy="427" r="9"/><circle cx="634" cy="427" r="9"/></g><circle cx="760" cy="427" r="9" fill="#d8e8f0"/>
+ <text x="394" y="459" font-family="Arial,sans-serif" font-size="11" fill="#68859c">Submitted</text><text x="608" y="459" font-family="Arial,sans-serif" font-size="11" fill="#68859c">In review</text>
+ <path d="M140 530h860l-38 23a38 38 0 0 1-19 5H197a38 38 0 0 1-19-5z" fill="#9ebccc"/>
+ <path d="M495 530h150l-9 9H504z" fill="#799aaf"/>
+</g>
+<g filter="url(#shadow)">
+ <rect x="891" y="220" width="211" height="354" rx="29" fill="#16304c"/>
+ <rect x="901" y="230" width="191" height="334" rx="21" fill="#fff"/>
+ <rect x="965" y="241" width="63" height="5" rx="2.5" fill="#cadce7"/>
+ <circle cx="996" cy="330" r="43" fill="#e4f5fc"/>
+ <circle cx="996" cy="330" r="28" fill="#16a6d4"/>
+ <path d="m983 330 9 9 17-19" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+ <text x="996" y="399" text-anchor="middle" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#18334e">All done.</text>
+ <text x="996" y="426" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#68859c">Your request is received.</text>
+ <rect x="922" y="460" width="149" height="43" rx="9" fill="#ff5a0a"/>
+ <text x="996" y="487" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#fff">View progress</text>
+ <rect x="968" y="544" width="57" height="4" rx="2" fill="#cadce7"/>
+</g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" fill="none">
+<title>From customer request to completion</title>
+<desc>Original illustration of three connected steps: submit a document, review the request, and confirm completion.</desc>
+<defs>
+<linearGradient id="background" x2="1280" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#edf8fc"/><stop offset="1" stop-color="#d4ebf5"/></linearGradient>
+<filter id="shadow" x="-30%" y="-30%" width="170%" height="180%"><feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#184568" flood-opacity=".12"/></filter>
+</defs>
+<path fill="url(#background)" d="M0 0h1280v560H0z"/>
+<circle cx="50" cy="530" r="190" fill="#b1deed" opacity=".3"/><circle cx="1215" cy="-55" r="250" fill="#fff" opacity=".4"/>
+<path d="M170 287h932" stroke="#a6c9da" stroke-width="4" stroke-dasharray="8 10"/>
+<path d="m423 276 12 11-12 11m422-22 12 11-12 11" stroke="#3885a8" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#shadow)">
+<rect x="86" y="102" width="300" height="356" rx="22" fill="#fff"/>
+<rect x="490" y="102" width="300" height="356" rx="22" fill="#fff"/>
+<rect x="894" y="102" width="300" height="356" rx="22" fill="#fff"/>
+</g>
+<g font-family="Arial,sans-serif">
+<g font-size="14" font-weight="700" fill="#8da8b8"><text x="111" y="137">01</text><text x="515" y="137">02</text><text x="919" y="137">03</text></g>
+<circle cx="236" cy="231" r="74" fill="#e9f6fc"/>
+<path d="M199 177h49l26 27v81a8 8 0 0 1-8 8h-67a8 8 0 0 1-8-8V185a8 8 0 0 1 8-8" fill="#fff" stroke="#379dc3" stroke-width="3"/>
+<path d="M248 178v26h26M209 222h47M209 238h35" stroke="#94c9de" stroke-width="4" stroke-linecap="round"/>
+<rect x="229" y="252" width="63" height="53" rx="13" fill="#ff5a0a"/>
+<path d="M260 291v-23m-9 9 9-9 9 9" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="236" y="357" text-anchor="middle" font-size="25" font-weight="700" fill="#18334e">Submit</text>
+<text x="236" y="387" text-anchor="middle" font-size="15" fill="#6c879b">Share the details securely</text>
+<rect x="165" y="414" width="142" height="5" rx="2.5" fill="#e2edf4"/>
+<circle cx="640" cy="231" r="74" fill="#fff0e5"/>
+<rect x="590" y="187" width="100" height="95" rx="12" fill="#fff" stroke="#ec9c6b" stroke-width="3"/>
+<g fill="#ff5a0a"><rect x="605" y="205" width="13" height="13" rx="4"/><rect x="605" y="230" width="13" height="13" rx="4"/></g>
+<path d="M630 212h39M630 237h26" stroke="#d0dfe8" stroke-width="5" stroke-linecap="round"/>
+<circle cx="681" cy="275" r="26" fill="#193a57"/><path d="m700 296 15 15" stroke="#193a57" stroke-width="9" stroke-linecap="round"/>
+<circle cx="681" cy="275" r="16" stroke="#9adaf0" stroke-width="3"/>
+<text x="640" y="357" text-anchor="middle" font-size="25" font-weight="700" fill="#18334e">Review</text>
+<text x="640" y="387" text-anchor="middle" font-size="15" fill="#6c879b">Track every step clearly</text>
+<rect x="569" y="414" width="142" height="5" rx="2.5" fill="#e2edf4"/>
+<circle cx="1044" cy="231" r="74" fill="#e9f6fc"/>
+<path d="M1044 172 1093 191v42c0 30-21 51-49 67-28-16-49-37-49-67v-42z" fill="#169bc9"/>
+<path d="m1020 234 17 17 33-38" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="1113" cy="187" r="9" fill="#ff7430"/><circle cx="986" cy="273" r="5" fill="#78c9e1"/>
+<text x="1044" y="357" text-anchor="middle" font-size="25" font-weight="700" fill="#18334e">Complete</text>
+<text x="1044" y="387" text-anchor="middle" font-size="15" fill="#6c879b">Get a clear confirmation</text>
+<rect x="973" y="414" width="142" height="5" rx="2.5" fill="#e2edf4"/>
+</g>
+</svg>

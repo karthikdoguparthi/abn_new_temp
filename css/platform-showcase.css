@@ -11,3 +11,6 @@
 .platform-card-icon{margin-bottom:21px}
 @media(max-width:1000px){.platform-card{min-height:300px}}
 @media(max-width:640px){.ab-platforms{padding:62px 0}.platform-showcase-heading h2{font-size:34px}.platform-card{min-height:260px}.platform-showcase-heading>p:last-child{margin-top:14px}}
+
+.platform-card-icon img{display:block;width:44px;height:44px;object-fit:contain}
+.platform-card-icon img[src$="aws.svg"]{width:48px;height:36px}
