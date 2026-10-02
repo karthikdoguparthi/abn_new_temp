@@ -14,3 +14,7 @@
 
 .platform-card-icon img{display:block;width:44px;height:44px;object-fit:contain}
 .platform-card-icon img[src$="aws.svg"]{width:48px;height:36px}
+
+/* Centre the eyebrow within the full heading, not a left-aligned 500px paragraph. */
+.ab-platforms .platform-showcase-heading{text-align:center}
+.ab-platforms .platform-showcase-heading>.ab-eyebrow{max-width:none;width:100%;margin:0 auto 12px;text-align:center}
