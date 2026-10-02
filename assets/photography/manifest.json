@@ -54,13 +54,15 @@
     "height": 853
   },
   {
-    "asset": "phase2-research-hero",
-    "sourceId": "phase2-image5b",
-    "source": "assets/phase2-originals/image5b.png",
+    "asset": "research-it-workspace-generated",
+    "sourceId": "generated-research-it-workspace",
+    "source": "assets/photography/research-it-workspace-generated-original.png",
     "location": "research.html: hero",
-    "alt": "Research workspace with scientific instruments and emerging technologies",
-    "width": 1280,
-    "height": 722
+    "alt": "Photorealistic generated IT research workspace with software tests and analytics on an unbranded monitor",
+    "width": 1120,
+    "height": 1400,
+    "license": "Original AI-generated asset; built-in imagegen; no third-party stock photo",
+    "verified": "2026-10-02"
   },
   {
     "asset": "research-practice",

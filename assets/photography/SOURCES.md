@@ -14,7 +14,7 @@ Sources: [Pexels](https://www.pexels.com/license/) and [Unsplash](https://unspla
 | `data-practice` | data.html: practice section | [Source](https://www.pexels.com/photo/photo-of-a-woman-holding-a-paper-with-charts-near-her-laptop-6248957/) |
 | `technology-hero` | technology.html: hero | [Source](https://www.pexels.com/photo/network-servers-on-an-enclosure-6466141/) |
 | `technology-practice` | technology.html: practice section | [Source](https://www.pexels.com/photo/electronics-engineer-fixing-cables-on-server-442150/) |
-| `phase2-research-hero` | research.html: hero | User-provided Phase 2 document, `assets/phase2-originals/image5b.png` |
+| `research-it-workspace-generated` | research.html: hero | Original photorealistic image created with built-in imagegen on 2 October 2026. Unbranded IT workspace; original PNG and prompt retained locally. |
 | `research-practice` | research.html: practice section | [Source](https://www.pexels.com/photo/business-analytics-printout-on-wooden-table-7413936/) |
 | `launchpad-hero` | launchpad.html: hero | [Source](https://www.pexels.com/photo/creative-brainstorming-session-with-sticky-notes-29521529/) |
 | `launchpad-practice` | launchpad.html: practice section | [Source](https://www.pexels.com/photo/creative-office-meeting-with-sticky-notes-36765678/) |
