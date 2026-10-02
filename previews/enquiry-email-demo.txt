@@ -1,0 +1,24 @@
+DEMONSTRATION ONLY — NOT SENT
+To: venkatsiddu90@gmail.com
+Reply-To: visitor@example.com
+Subject: ACTIVE BRAINS — Service enquiry
+
+ACTIVE BRAINS — Service enquiry
+
+Enquiry type: Service enquiry
+
+Name: Demo Visitor
+
+Email: visitor@example.com
+
+Company / organisation: Example company
+
+Phone: Not supplied for this demo
+
+Interest / opportunity: Partnerships
+
+Source page: /services.html
+
+Page title: Our Services | ACTIVE BRAINS
+
+Message: This is a demonstration enquiry about an IT services partnership.

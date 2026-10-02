@@ -4,6 +4,23 @@ document.addEventListener('DOMContentLoaded',()=>{
  }
  const trigger=document.getElementById('fundoo-toggle-btn'),panel=document.getElementById('fundoo-panel'),input=document.getElementById('fundoo-input'),messages=document.getElementById('fundoo-messages');
  if(!trigger||!panel||!input||!messages)return;
+ // Reserve only the space occupied by the visible cookie banner.
+ const cookieBanner=document.getElementById('cookie-banner');
+ function positionGuide(){
+  const bannerHeight=cookieBanner?.getBoundingClientRect().height||0;
+  const bottom=`calc(${Math.ceil(bannerHeight)}px + max(16px, env(safe-area-inset-bottom)))`;
+  trigger.style.bottom=bottom;
+  trigger.style.right='max(16px, env(safe-area-inset-right))';
+  const panelBottom=`calc(${Math.ceil(bannerHeight+trigger.getBoundingClientRect().height+12)}px + max(16px, env(safe-area-inset-bottom)))`;
+  panel.style.bottom=panelBottom;
+  panel.style.right='max(16px, env(safe-area-inset-right))';
+  panel.style.maxHeight=`max(0px, calc(100dvh - ${panelBottom} - 16px))`;
+ }
+ const guideResize=new ResizeObserver(positionGuide);
+ if(cookieBanner)guideResize.observe(cookieBanner);
+ guideResize.observe(trigger);
+ window.addEventListener('resize',positionGuide);
+ positionGuide();
  trigger.setAttribute('role','button');trigger.setAttribute('tabindex','0');trigger.setAttribute('aria-label','Open website guide');trigger.setAttribute('aria-expanded','false');
  panel.setAttribute('role','region');panel.setAttribute('aria-label','Website guide');messages.setAttribute('aria-live','polite');input.setAttribute('aria-label','Topic to find on this website');
  function setOpen(open){panel.classList.toggle('open',open);trigger.classList.toggle('collapsed',!open);trigger.setAttribute('aria-expanded',String(open));if(open){input.focus();}else trigger.focus();}

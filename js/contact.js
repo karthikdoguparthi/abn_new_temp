@@ -37,6 +37,14 @@
         method: 'POST', headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data), signal: AbortSignal.timeout(20000)
       });
+      if (response.status === 501 || response.status === 404) {
+        status.textContent = 'The enquiry sending service is unavailable on this preview. Your details have been kept. Please email solution@activebrains.co.uk directly.';
+        return;
+      }
+      if (response.status === 503) {
+        status.textContent = 'Email delivery is not configured yet. Your details have been kept. Please email solution@activebrains.co.uk directly.';
+        return;
+      }
       const result = await response.json();
       if (!response.ok || !result.ok) throw new Error('Delivery failed');
       form.reset(); lastPayload = undefined;
