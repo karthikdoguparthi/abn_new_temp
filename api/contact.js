@@ -34,7 +34,14 @@ module.exports = async (req, res) => {
   const {SMTP_HOST, SMTP_USER, SMTP_PASS, CONTACT_FROM} = process.env;
   const port = Number(process.env.SMTP_PORT || 587);
   const recipient = process.env.CONTACT_TO || 'solution@activebrains.co.uk';
-  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS || !CONTACT_FROM || ![465,587].includes(port) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient)) return res.status(503).json({ok:false});
+  const configurationIssues = ['SMTP_HOST', 'SMTP_USER', 'SMTP_PASS', 'CONTACT_FROM'].filter(key => !process.env[key]?.trim());
+  if (![465,587].includes(port)) configurationIssues.push('SMTP_PORT');
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient)) configurationIssues.push('CONTACT_TO');
+  if (configurationIssues.length) {
+    // Log names only: credentials and enquiry contents must never enter logs.
+    console.error('Contact email configuration missing or invalid:', configurationIssues.join(', '));
+    return res.status(503).json({ok:false});
+  }
   const rows = [
     ['Enquiry type',TYPES[formType]],['Name',name],['Email',email],['Company / organisation',value('company') || 'Not provided'],
     ['Phone',value('phone') || 'Not provided'],['Interest / opportunity',value('interest') || 'Not specified'],

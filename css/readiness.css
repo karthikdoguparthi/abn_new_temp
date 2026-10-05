@@ -1,3 +1,19 @@
 .mobile-contact-cta{display:none}.cookie-settings{font:inherit;color:inherit;background:none;border:0;text-decoration:underline;cursor:pointer;padding:0}
 .utility-page{min-height:65vh;display:grid;align-content:center;padding:60px 24px;max-width:850px;margin:auto}.utility-page h1{font-size:clamp(36px,7vw,68px);line-height:1.1}.utility-page p{font-size:18px;line-height:1.7}.utility-actions{display:flex;gap:16px;flex-wrap:wrap}
 @media(max-width:767px){body{padding-bottom:88px}.mobile-contact-cta{display:block;position:fixed;bottom:max(16px,env(safe-area-inset-bottom));left:16px;z-index:900;border-radius:999px;box-shadow:0 8px 28px #14203b33}.cookie-banner{z-index:2000!important}}
+
+/* Utility pages must clear the fixed navigation before their first heading. */
+.utility-page{padding-top:140px}
+.utility-page > h1{margin-bottom:24px}
+.utility-page > h1 + p{margin-top:0}
+@media(max-width:760px){.utility-page{padding-top:116px}}
+
+/* Keep the confirmation message and image in one balanced composition. */
+.utility-page.thank-you-page{max-width:1160px;min-height:70vh;padding:156px 32px 80px;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);align-items:center;gap:64px}
+.thank-you-copy .thank-you-eyebrow{margin:0 0 20px;font-size:12px;font-weight:700;letter-spacing:1.8px;color:#d74300}
+.thank-you-copy h1{font-size:clamp(36px,4.2vw,56px);line-height:1.12;letter-spacing:-1.8px;margin:0 0 24px;text-wrap:balance}
+.thank-you-copy h1+p{max-width:510px;margin:0 0 30px;font-size:17px;line-height:1.75;color:#52617b}
+.thank-you-copy .utility-actions{gap:12px}
+.thank-you-page .visual-utility-photo{width:100%;max-width:none;margin:0;border-radius:20px}
+.thank-you-page .visual-utility-photo img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+@media(max-width:760px){.utility-page.thank-you-page{min-height:0;padding:116px 24px 56px;grid-template-columns:1fr;gap:36px}.thank-you-copy h1{font-size:36px;letter-spacing:-1px}.thank-you-page .visual-utility-photo{max-width:480px}.thank-you-copy .utility-actions .btn{flex:1;white-space:nowrap}}
