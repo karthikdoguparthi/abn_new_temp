@@ -16,6 +16,11 @@
   ],
   "framework": null,
   "buildCommand": "",
-  "installCommand": "",
-  "outputDirectory": "."
+  "installCommand": "npm ci",
+  "outputDirectory": ".",
+  "functions": {
+    "api/contact.js": {
+      "maxDuration": 30
+    }
+  }
 }

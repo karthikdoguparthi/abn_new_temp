@@ -1,0 +1,1 @@
+{"name":"active-brains-website","version":"1.0.0","private":true,"scripts":{"test":"node --test tests/*.test.cjs"},"dependencies":{"nodemailer":"10.0.14"}}
