@@ -15,6 +15,22 @@ This repository houses the corporate digital platform and **AB Agent Studio** fo
 
 ---
 
+## 🤖 AB Agent Studio
+
+**AB Agent Studio** is an interactive solution architecture and reasoning workbench embedded within the platform (`/agentstudio.html`). It translates high-level client problem statements into comprehensive, production-grade enterprise AI blueprints in real time.
+
+### Key Capabilities:
+- **Autonomous Multi-Agent Synthesis**: Deploys coordinated multi-agent meshes tailored to specific enterprise domains (Insurance, FinTech, Healthcare, E-Commerce, Supply Chain).
+- **Direct LLM-to-Solution Parsing Engine**: Ingests live reasoning outputs from models like **Google Gemini 1.5 Flash**, **GPT-4o**, and **Claude 3.5 Sonnet**, dynamically populating:
+  - **Executive Summary**: Authoritative problem breakdown and target operational state.
+  - **Solution Scope Table**: Modular agent mapping, system responsibilities, and key features.
+  - **Phased Delivery Approach**: Milestone roadmaps from discovery and architecture to validation and production rollout.
+  - **Cost & Human Intelligence Estimates**: Engineering components, budget breakdowns, and specialist effort allocations.
+- **Client-Ready Exports**: Instant generation and download of formatted Word (`.doc`) and Excel (`.csv`) delivery proposals.
+- **Zero-Storage Security Architecture**: API keys and provider tokens are handled exclusively via encrypted runtime memory sessions, preventing credential leaks or browser storage persistence.
+
+---
+
 ## 📁 Repository Structure
 
 ```
