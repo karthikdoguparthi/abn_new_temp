@@ -38,5 +38,351 @@
     "api/contact.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/service-ai-agents.html",
+      "destination": "/pages/services/service-ai-agents.html"
+    },
+    {
+      "source": "/service-ai-agents",
+      "destination": "/pages/services/service-ai-agents.html"
+    },
+    {
+      "source": "/service-architecture.html",
+      "destination": "/pages/services/service-architecture.html"
+    },
+    {
+      "source": "/service-architecture",
+      "destination": "/pages/services/service-architecture.html"
+    },
+    {
+      "source": "/service-business-apps.html",
+      "destination": "/pages/services/service-business-apps.html"
+    },
+    {
+      "source": "/service-business-apps",
+      "destination": "/pages/services/service-business-apps.html"
+    },
+    {
+      "source": "/service-cloud.html",
+      "destination": "/pages/services/service-cloud.html"
+    },
+    {
+      "source": "/service-cloud",
+      "destination": "/pages/services/service-cloud.html"
+    },
+    {
+      "source": "/service-continuous-support.html",
+      "destination": "/pages/services/service-continuous-support.html"
+    },
+    {
+      "source": "/service-continuous-support",
+      "destination": "/pages/services/service-continuous-support.html"
+    },
+    {
+      "source": "/service-data-services.html",
+      "destination": "/pages/services/service-data-services.html"
+    },
+    {
+      "source": "/service-data-services",
+      "destination": "/pages/services/service-data-services.html"
+    },
+    {
+      "source": "/service-digital-strategy.html",
+      "destination": "/pages/services/service-digital-strategy.html"
+    },
+    {
+      "source": "/service-digital-strategy",
+      "destination": "/pages/services/service-digital-strategy.html"
+    },
+    {
+      "source": "/service-offshore-nearshore.html",
+      "destination": "/pages/services/service-offshore-nearshore.html"
+    },
+    {
+      "source": "/service-offshore-nearshore",
+      "destination": "/pages/services/service-offshore-nearshore.html"
+    },
+    {
+      "source": "/service-si-overview.html",
+      "destination": "/pages/services/service-si-overview.html"
+    },
+    {
+      "source": "/service-si-overview",
+      "destination": "/pages/services/service-si-overview.html"
+    },
+    {
+      "source": "/service-solution-design.html",
+      "destination": "/pages/services/service-solution-design.html"
+    },
+    {
+      "source": "/service-solution-design",
+      "destination": "/pages/services/service-solution-design.html"
+    },
+    {
+      "source": "/service-talent.html",
+      "destination": "/pages/services/service-talent.html"
+    },
+    {
+      "source": "/service-talent",
+      "destination": "/pages/services/service-talent.html"
+    },
+    {
+      "source": "/service-web-portals.html",
+      "destination": "/pages/services/service-web-portals.html"
+    },
+    {
+      "source": "/service-web-portals",
+      "destination": "/pages/services/service-web-portals.html"
+    },
+    {
+      "source": "/services-ai-agents.html",
+      "destination": "/pages/services/services-ai-agents.html"
+    },
+    {
+      "source": "/services-ai-agents",
+      "destination": "/pages/services/services-ai-agents.html"
+    },
+    {
+      "source": "/services-business-apps.html",
+      "destination": "/pages/services/services-business-apps.html"
+    },
+    {
+      "source": "/services-business-apps",
+      "destination": "/pages/services/services-business-apps.html"
+    },
+    {
+      "source": "/services-cloud.html",
+      "destination": "/pages/services/services-cloud.html"
+    },
+    {
+      "source": "/services-cloud",
+      "destination": "/pages/services/services-cloud.html"
+    },
+    {
+      "source": "/services-coe.html",
+      "destination": "/pages/services/services-coe.html"
+    },
+    {
+      "source": "/services-coe",
+      "destination": "/pages/services/services-coe.html"
+    },
+    {
+      "source": "/services-solution-design.html",
+      "destination": "/pages/services/services-solution-design.html"
+    },
+    {
+      "source": "/services-solution-design",
+      "destination": "/pages/services/services-solution-design.html"
+    },
+    {
+      "source": "/services-support.html",
+      "destination": "/pages/services/services-support.html"
+    },
+    {
+      "source": "/services-support",
+      "destination": "/pages/services/services-support.html"
+    },
+    {
+      "source": "/services-talent.html",
+      "destination": "/pages/services/services-talent.html"
+    },
+    {
+      "source": "/services-talent",
+      "destination": "/pages/services/services-talent.html"
+    },
+    {
+      "source": "/services.html",
+      "destination": "/pages/services/services.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/pages/services/services.html"
+    },
+    {
+      "source": "/si.html",
+      "destination": "/pages/services/si.html"
+    },
+    {
+      "source": "/si",
+      "destination": "/pages/services/si.html"
+    },
+    {
+      "source": "/tech-aws-bedrock.html",
+      "destination": "/pages/technology/tech-aws-bedrock.html"
+    },
+    {
+      "source": "/tech-aws-bedrock",
+      "destination": "/pages/technology/tech-aws-bedrock.html"
+    },
+    {
+      "source": "/tech-aws-google.html",
+      "destination": "/pages/technology/tech-aws-google.html"
+    },
+    {
+      "source": "/tech-aws-google",
+      "destination": "/pages/technology/tech-aws-google.html"
+    },
+    {
+      "source": "/tech-copilot.html",
+      "destination": "/pages/technology/tech-copilot.html"
+    },
+    {
+      "source": "/tech-copilot",
+      "destination": "/pages/technology/tech-copilot.html"
+    },
+    {
+      "source": "/tech-d365-crm.html",
+      "destination": "/pages/technology/tech-d365-crm.html"
+    },
+    {
+      "source": "/tech-d365-crm",
+      "destination": "/pages/technology/tech-d365-crm.html"
+    },
+    {
+      "source": "/tech-d365-finance.html",
+      "destination": "/pages/technology/tech-d365-finance.html"
+    },
+    {
+      "source": "/tech-d365-finance",
+      "destination": "/pages/technology/tech-d365-finance.html"
+    },
+    {
+      "source": "/tech-fabric.html",
+      "destination": "/pages/technology/tech-fabric.html"
+    },
+    {
+      "source": "/tech-fabric",
+      "destination": "/pages/technology/tech-fabric.html"
+    },
+    {
+      "source": "/tech-google-vertex.html",
+      "destination": "/pages/technology/tech-google-vertex.html"
+    },
+    {
+      "source": "/tech-google-vertex",
+      "destination": "/pages/technology/tech-google-vertex.html"
+    },
+    {
+      "source": "/tech-iq.html",
+      "destination": "/pages/technology/tech-iq.html"
+    },
+    {
+      "source": "/tech-iq",
+      "destination": "/pages/technology/tech-iq.html"
+    },
+    {
+      "source": "/tech-microsoft.html",
+      "destination": "/pages/technology/tech-microsoft.html"
+    },
+    {
+      "source": "/tech-microsoft",
+      "destination": "/pages/technology/tech-microsoft.html"
+    },
+    {
+      "source": "/tech-mobile-web.html",
+      "destination": "/pages/technology/tech-mobile-web.html"
+    },
+    {
+      "source": "/tech-mobile-web",
+      "destination": "/pages/technology/tech-mobile-web.html"
+    },
+    {
+      "source": "/tech-purview.html",
+      "destination": "/pages/technology/tech-purview.html"
+    },
+    {
+      "source": "/tech-purview",
+      "destination": "/pages/technology/tech-purview.html"
+    },
+    {
+      "source": "/technology.html",
+      "destination": "/pages/technology/technology.html"
+    },
+    {
+      "source": "/technology",
+      "destination": "/pages/technology/technology.html"
+    },
+    {
+      "source": "/apps.html",
+      "destination": "/pages/technology/apps.html"
+    },
+    {
+      "source": "/apps",
+      "destination": "/pages/technology/apps.html"
+    },
+    {
+      "source": "/data.html",
+      "destination": "/pages/technology/data.html"
+    },
+    {
+      "source": "/data",
+      "destination": "/pages/technology/data.html"
+    },
+    {
+      "source": "/privacy-policy.html",
+      "destination": "/pages/legal/privacy-policy.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/pages/legal/privacy-policy.html"
+    },
+    {
+      "source": "/terms-of-service.html",
+      "destination": "/pages/legal/terms-of-service.html"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/pages/legal/terms-of-service.html"
+    },
+    {
+      "source": "/accessibility.html",
+      "destination": "/pages/legal/accessibility.html"
+    },
+    {
+      "source": "/accessibility",
+      "destination": "/pages/legal/accessibility.html"
+    },
+    {
+      "source": "/about.html",
+      "destination": "/pages/company/about.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/pages/company/about.html"
+    },
+    {
+      "source": "/careers.html",
+      "destination": "/pages/company/careers.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/pages/company/careers.html"
+    },
+    {
+      "source": "/research.html",
+      "destination": "/pages/company/research.html"
+    },
+    {
+      "source": "/research",
+      "destination": "/pages/company/research.html"
+    },
+    {
+      "source": "/launchpad.html",
+      "destination": "/pages/company/launchpad.html"
+    },
+    {
+      "source": "/launchpad",
+      "destination": "/pages/company/launchpad.html"
+    },
+    {
+      "source": "/thank-you.html",
+      "destination": "/pages/company/thank-you.html"
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/pages/company/thank-you.html"
+    }
+  ]
 }
