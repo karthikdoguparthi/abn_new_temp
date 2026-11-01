@@ -228,7 +228,7 @@
     const openSettings = () => {
       if (modal) modal.classList.add('open');
       const savedProvider = localStorage.getItem('ab_ai_provider') || 'simulated';
-      const savedKey = localStorage.getItem('ab_ai_key') || '';
+      const savedKey = sessionStorage.getItem('ab_ai_session_key') || '';
       const p = document.getElementById('ext-cfg-provider');
       const k = document.getElementById('ext-cfg-api-key');
       if (p) p.value = savedProvider;
@@ -251,8 +251,8 @@
       saveBtn.addEventListener('click', () => {
         const p = document.getElementById('ext-cfg-provider').value;
         const k = document.getElementById('ext-cfg-api-key').value;
-        localStorage.setItem('ab_ai_provider', p);
-        localStorage.setItem('ab_ai_key', k);
+        sessionStorage.setItem('ab_ai_provider', p);
+        if (k) { sessionStorage.setItem('ab_ai_session_key', k); } else { sessionStorage.removeItem('ab_ai_session_key'); }
         closeSettings();
         alert(`AI Engine configured: ${p.toUpperCase()}`);
       });
@@ -322,7 +322,7 @@
     runBtn.innerHTML = `<span>⏳</span> Generating...`;
 
     const provider = localStorage.getItem('ab_ai_provider') || 'simulated';
-    const apiKey = localStorage.getItem('ab_ai_key');
+    const apiKey = sessionStorage.getItem('ab_ai_session_key');
 
     if (provider !== 'simulated' && apiKey) {
       try {

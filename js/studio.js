@@ -143,8 +143,8 @@
 
     const openModal = () => {
       if (modalBackdrop) modalBackdrop.classList.add('open');
-      const savedProvider = localStorage.getItem('ab_ai_provider') || 'auto';
-      const savedKey = localStorage.getItem('ab_ai_key') || '';
+      const savedProvider = sessionStorage.getItem('ab_ai_provider') || 'auto';
+      const savedKey = sessionStorage.getItem('ab_ai_session_key') || '';
       const providerEl = document.getElementById('cfg-provider');
       const keyEl = document.getElementById('cfg-api-key');
       if (providerEl) providerEl.value = savedProvider;
@@ -167,8 +167,12 @@
       saveBtn.addEventListener('click', () => {
         const provider = document.getElementById('cfg-provider').value;
         const key = document.getElementById('cfg-api-key').value.trim();
-        localStorage.setItem('ab_ai_provider', provider);
-        localStorage.setItem('ab_ai_key', key);
+        sessionStorage.setItem('ab_ai_provider', provider);
+        if (key) {
+          sessionStorage.setItem('ab_ai_session_key', key);
+        } else {
+          sessionStorage.removeItem('ab_ai_session_key');
+        }
         closeModal();
         alert(`AI configuration updated! Provider mode: ${provider.toUpperCase()}`);
       });
@@ -277,8 +281,8 @@
     runBtn.disabled = true;
     runBtn.innerHTML = `<span class="prompt-sparkle">⏳</span> Generating...`;
 
-    const provider = localStorage.getItem('ab_ai_provider') || 'gemini';
-    const apiKey = localStorage.getItem('ab_ai_key');
+    const provider = sessionStorage.getItem('ab_ai_provider') || 'gemini';
+    const apiKey = sessionStorage.getItem('ab_ai_session_key');
 
     // Live AI API Integration (Gemini, Anthropic, or OpenAI)
     if (apiKey && (provider === 'gemini' || apiKey.startsWith('AIza') || provider === 'openai' || provider === 'anthropic')) {
@@ -573,6 +577,19 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
    * Parses live AI reasoning output (HTML) and extracts real tailored agents,
    * executive summary, and modules directly into the structured Solution Plan.
    */
+  /**
+   * Safe HTML text extractor avoiding regex sanitization vulnerabilities.
+   */
+  function stripHtml(input) {
+    if (!input) return '';
+    if (typeof document !== 'undefined' && document.createElement) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = input;
+      return (tmp.textContent || tmp.innerText || '').trim();
+    }
+    return String(input).replace(/<[^>]*>/g, '').trim();
+  }
+
   function parseLiveAiToTailoredSolution(html, promptText, modelName) {
     const combined = (promptText + ' ' + html).toLowerCase();
 
@@ -582,7 +599,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     if (execMatch) {
       const pMatches = execMatch[1].match(/<p>([\s\S]*?)<\/p>/gi);
       if (pMatches && pMatches.length > 0) {
-        const cleanParas = pMatches.map(p => p.replace(/<[^>]+>/g, '').trim()).filter(Boolean);
+        const cleanParas = pMatches.map(p => stripHtml(p)).filter(Boolean);
         execSummary = cleanParas.join(' ');
       }
     }
@@ -590,7 +607,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       // Fallback: first 2 paragraphs
       const allP = html.match(/<p>([\s\S]*?)<\/p>/gi);
       if (allP && allP.length > 0) {
-        execSummary = allP.slice(0, 2).map(p => p.replace(/<[^>]+>/g, '').trim()).join(' ');
+        execSummary = allP.slice(0, 2).map(p => stripHtml(p)).join(' ');
       }
     }
 
@@ -600,7 +617,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     const extractedAgents = [];
     while ((match = agentRegex.exec(html)) !== null) {
       const aName = match[1].trim();
-      const aDesc = match[2].replace(/<[^>]+>/g, '').trim();
+      const aDesc = stripHtml(match[2]);
       if (aName && aDesc) {
         extractedAgents.push({ name: aName, desc: aDesc });
       }
