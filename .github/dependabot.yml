@@ -24,7 +24,7 @@ updates:
       day: "monday"
       time: "05:30"
       timezone: "UTC"
-    open-pull-requests-limit: 5
+    open-pull-requests-limit: 0
     labels:
       - "ci"
       - "security"
