@@ -8,6 +8,12 @@
   'use strict';
 
   let currentSolution = null;
+  // Runtime in-memory security context for sensitive configuration (zero web storage persistence)
+  let runtimeAiConfig = {
+    provider: 'gemini',
+    apiKey: ''
+  };
+
 
   function init() {
     bindPromptEvents();
@@ -143,12 +149,10 @@
 
     const openModal = () => {
       if (modalBackdrop) modalBackdrop.classList.add('open');
-      const savedProvider = sessionStorage.getItem('ab_ai_provider') || 'auto';
-      const savedKey = sessionStorage.getItem('ab_ai_session_key') || '';
       const providerEl = document.getElementById('cfg-provider');
       const keyEl = document.getElementById('cfg-api-key');
-      if (providerEl) providerEl.value = savedProvider;
-      if (keyEl) keyEl.value = savedKey;
+      if (providerEl) providerEl.value = runtimeAiConfig.provider;
+      if (keyEl) keyEl.value = runtimeAiConfig.apiKey;
     };
 
     const closeModal = () => {
@@ -167,14 +171,10 @@
       saveBtn.addEventListener('click', () => {
         const provider = document.getElementById('cfg-provider').value;
         const key = document.getElementById('cfg-api-key').value.trim();
-        sessionStorage.setItem('ab_ai_provider', provider);
-        if (key) {
-          sessionStorage.setItem('ab_ai_session_key', key);
-        } else {
-          sessionStorage.removeItem('ab_ai_session_key');
-        }
+        runtimeAiConfig.provider = provider;
+        runtimeAiConfig.apiKey = key;
         closeModal();
-        alert(`AI configuration updated! Provider mode: ${provider.toUpperCase()}`);
+        alert(`AI configuration updated in active session! Provider mode: ${provider.toUpperCase()}`);
       });
     }
   }
@@ -281,8 +281,8 @@
     runBtn.disabled = true;
     runBtn.innerHTML = `<span class="prompt-sparkle">⏳</span> Generating...`;
 
-    const provider = sessionStorage.getItem('ab_ai_provider') || 'gemini';
-    const apiKey = sessionStorage.getItem('ab_ai_session_key');
+    const provider = runtimeAiConfig.provider || 'gemini';
+    const apiKey = runtimeAiConfig.apiKey;
 
     // Live AI API Integration (Gemini, Anthropic, or OpenAI)
     if (apiKey && (provider === 'gemini' || apiKey.startsWith('AIza') || provider === 'openai' || provider === 'anthropic')) {
@@ -587,7 +587,14 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       tmp.innerHTML = input;
       return (tmp.textContent || tmp.innerText || '').trim();
     }
-    return String(input).replace(/<[^>]*>/g, '').trim();
+    // Multi-pass iterative strip to safely neutralize nested tags
+    let str = String(input);
+    let previous;
+    do {
+      previous = str;
+      str = str.replace(/<[^>]*>/g, '');
+    } while (str !== previous);
+    return str.trim();
   }
 
   function parseLiveAiToTailoredSolution(html, promptText, modelName) {

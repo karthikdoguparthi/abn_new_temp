@@ -227,12 +227,10 @@
 
     const openSettings = () => {
       if (modal) modal.classList.add('open');
-      const savedProvider = localStorage.getItem('ab_ai_provider') || 'simulated';
-      const savedKey = sessionStorage.getItem('ab_ai_session_key') || '';
       const p = document.getElementById('ext-cfg-provider');
       const k = document.getElementById('ext-cfg-api-key');
-      if (p) p.value = savedProvider;
-      if (k) k.value = savedKey;
+      if (p) p.value = extRuntimeAiConfig.provider;
+      if (k) k.value = extRuntimeAiConfig.apiKey;
     };
 
     const closeSettings = () => {
@@ -251,10 +249,10 @@
       saveBtn.addEventListener('click', () => {
         const p = document.getElementById('ext-cfg-provider').value;
         const k = document.getElementById('ext-cfg-api-key').value;
-        sessionStorage.setItem('ab_ai_provider', p);
-        if (k) { sessionStorage.setItem('ab_ai_session_key', k); } else { sessionStorage.removeItem('ab_ai_session_key'); }
+        extRuntimeAiConfig.provider = p;
+        extRuntimeAiConfig.apiKey = k;
         closeSettings();
-        alert(`AI Engine configured: ${p.toUpperCase()}`);
+        alert(`AI Engine configured in session: ${p.toUpperCase()}`);
       });
     }
   }
@@ -321,8 +319,8 @@
     runBtn.disabled = true;
     runBtn.innerHTML = `<span>⏳</span> Generating...`;
 
-    const provider = localStorage.getItem('ab_ai_provider') || 'simulated';
-    const apiKey = sessionStorage.getItem('ab_ai_session_key');
+    const provider = extRuntimeAiConfig.provider || 'simulated';
+    const apiKey = extRuntimeAiConfig.apiKey;
 
     if (provider !== 'simulated' && apiKey) {
       try {
