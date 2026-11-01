@@ -2,6 +2,8 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const handler=require('../api/contact.js');
 const base={name:'Alex Example',email:'alex@example.com',company:'Example Ltd',phone:'+44 20 1234 5678',interest:'Data & analytics',formType:'service',timeframe:'1–3 months',message:'Please help connect our reporting systems.',page:'/data.html',topic:'Data & Analytics',requestId:'12345678-1234-1234-1234-123456789012',website:''};
+let testIpCounter = 1;
+
 async function invoke(body, options={}) {
  let code,output,sent;
  const nm=require('nodemailer'), originalTransport=nm.createTransport;
@@ -12,7 +14,8 @@ async function invoke(body, options={}) {
  if(options.recipient)process.env.CONTACT_TO=options.recipient;
  if(options.unconfigured)delete process.env.SMTP_PASS;
  nm.createTransport=config=>({close(){},async sendMail(body){sent={config,body};if(options.fail)throw Error('SMTP failed');return {accepted:options.reject?[]:[body.to],rejected:options.reject?[body.to]:[]}}});
- const req={method:options.method||'POST',headers:{'content-type':'application/json',host:'example.com',origin:options.origin||'https://example.com'},body};
+ const ip = options.ip || `192.168.1.${testIpCounter++}`;
+ const req={method:options.method||'POST',headers:{'content-type':'application/json',host:'example.com',origin:options.origin||'https://example.com','x-forwarded-for':ip},body};
  const res={setHeader(){},status(n){code=n;return this},json(data){output=data;return this}};
  try{await handler(req,res);return {code,output,sent}}finally{nm.createTransport=originalTransport;for(const k of keys){if(previous[k]===undefined)delete process.env[k];else process.env[k]=previous[k]}}
 
@@ -36,3 +39,14 @@ test('cached older forms remain compatible',async()=>{const old={...base};delete
 test('SMTP encryption and configured recipient',async()=>{for(const port of [465,587]){const r=await invoke(base,{port,recipient:'test@example.com'});assert.equal(r.code,200);assert.equal(r.sent.body.to,'test@example.com');assert.equal(r.sent.config.secure,port===465);assert.equal(r.sent.config.requireTLS,port===587);assert.equal(r.sent.config.disableFileAccess,true)}});
 test('rejected recipients do not report success',async()=>{assert.equal((await invoke(base,{reject:true})).code,502)});
 test('invalid SMTP port does not send',async()=>{const r=await invoke(base,{port:25});assert.equal(r.code,503);assert.equal(r.sent,undefined)});
+
+test('rate limiting blocks excessive requests from the same IP',async()=>{
+  const spamIp = '198.51.100.42';
+  for(let i = 0; i < 5; i++) {
+    const r = await invoke(base, { ip: spamIp });
+    assert.equal(r.code, 200);
+  }
+  const blocked = await invoke(base, { ip: spamIp });
+  assert.equal(blocked.code, 429);
+  assert.equal(blocked.output.ok, false);
+});

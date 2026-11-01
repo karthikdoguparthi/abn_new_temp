@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>AB Agent Studio | ACTIVE BRAINS</title>
+  <meta content="AB Agent Studio - Intelligent Enterprise Solutions. Delivered. Enterprise AI agent architecture, automated delivery roadmaps, cost breakdown, and human effort estimates." name="description"/>
+  
+  <link href="css/main.css?v=20260912-publish" rel="stylesheet"/>
+  <link href="css/studio.css?v=20261027-v3" rel="stylesheet"/>
+  <link href="assets/active-brains-circles.svg?v=20260926c" rel="icon" type="image/svg+xml"/>
+  <meta content="#f35009" name="theme-color"/>
+</head>
+<body class="ab-studio-body">
+
+  <div class="ab-studio-app ab-studio-fullwidth">
+    
+    <!-- TOP BRAND HEADER (No left sidebar) -->
+    <header class="studio-top-navbar" aria-label="Agent Studio Header">
+      <div class="studio-top-brand-group">
+        <a class="studio-brand-badge" href="launchpad.html" title="Return to Launch Pad">
+          <div class="studio-logo-icon">
+            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 32L20 8L30 32" stroke="#f35009" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M14 24H26" stroke="#1aa9e8" stroke-width="4" stroke-linecap="round"/>
+              <circle cx="20" cy="18" r="3" fill="#1aa9e8"/>
+            </svg>
+          </div>
+          <div class="studio-brand-titles">
+            <h1 class="studio-brand-heading">AGENT STUDIO</h1>
+            <span class="studio-brand-sub">Intelligent Solutions. Delivered. &bull; Active Brains Technologies</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="studio-top-nav-actions">
+        <a class="btn-pill" href="launchpad.html" title="Back to Launch Pad">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          Launch Pad
+        </a>
+        <button class="btn-pill" id="btn-theme-toggle" type="button" title="Toggle Light/Dark Theme">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          Theme
+        </button>
+        <button class="btn-pill" id="nav-settings" type="button" title="Configure AI API Keys">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+          API Settings
+        </button>
+        <button class="btn-pill" id="btn-top-export" type="button">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Export ▾
+        </button>
+        <div class="studio-avatar" style="width: 30px; height: 30px; font-size: 0.75rem;">AD</div>
+      </div>
+    </header>
+
+    <!-- MAIN WORKSPACE (Full Width) -->
+    <main class="ab-studio-main ab-studio-main-full" id="studio-main-content">
+      
+      <!-- TOP PROMPT BAR & CONTROLS -->
+      <section class="studio-prompt-card">
+        <div class="studio-top-actions">
+          <div class="prompt-label">
+            Prompt <span class="prompt-sparkle">✦</span>
+          </div>
+          <div class="prompt-status-tag" id="prompt-status-tag" style="font-size: 0.75rem; color: var(--studio-text-muted);">
+            Ready for your custom business statement or uploaded document
+          </div>
+        </div>
+
+        <div class="prompt-input-container">
+          <textarea class="prompt-textarea" id="prompt-input" rows="3" placeholder="Enter your business scenario, challenge, or administrative requirements (or click Attach to upload a business statement)..."></textarea>
+          <div class="prompt-char-count" id="char-count">0 / 4000</div>
+        </div>
+
+        <!-- Hidden File Input for Statement Upload -->
+        <input type="file" id="file-statement-upload" accept=".txt,.pdf,.doc,.docx,.json,.md,.csv" style="display: none;"/>
+
+        <div class="prompt-controls-bar">
+          <div class="prompt-left-tools">
+            <button class="btn-pill" id="btn-attach" type="button" title="Upload business statement or RFP document">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"></path></svg>
+              Attach Statement
+            </button>
+            <button class="btn-pill" id="btn-clear" type="button">
+              ✕ Clear
+            </button>
+            <span id="attached-file-name" style="font-size: 0.75rem; color: #16a34a; font-weight: 600; display: none;"></span>
+          </div>
+
+          <div class="prompt-right-tools">
+            <div class="model-selector" style="border-color: rgba(26, 169, 232, 0.4); background: rgba(26, 169, 232, 0.05);">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#1aa9e8" stroke-width="2.2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              <select id="model-select" aria-label="Select AI Engine Model" style="color: var(--studio-text-main); font-weight: 700;">
+                <option value="gemini-1.5-flash" selected>Google Gemini 1.5 Flash</option>
+                <option value="gemini-1.5-pro">Google Gemini 1.5 Pro</option>
+                <option value="gemini-2.0-flash">Google Gemini 2.0 Flash</option>
+                <option value="gemini-pro">Google Gemini Pro</option>
+              </select>
+            </div>
+            <button class="btn-run-prompt" id="btn-run" type="button">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Run
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TWO COLUMN WORKSPACE -->
+      <section class="studio-output-grid">
+        
+        <!-- LEFT COLUMN: GOOGLE GEMINI RESPONSE -->
+        <article class="studio-response-panel">
+          <header class="panel-header">
+            <div class="panel-title">
+              <span class="model-badge-icon" style="background: rgba(26, 169, 232, 0.15); color: #1aa9e8;">✦</span>
+              <span id="response-header-tag">Google Gemini Response</span>
+            </div>
+            <div class="panel-tools">
+              <button class="btn-pill" id="btn-copy-response" type="button">📋 Copy</button>
+              <button class="btn-pill" id="btn-regenerate" type="button">🔄 Regenerate</button>
+            </div>
+          </header>
+
+          <div class="ai-response-body">
+            <h2 id="ai-response-title">Tailored AI Architecture &amp; Solution</h2>
+            <div id="ai-response-content">
+              <!-- Dynamically populated from custom user prompt or Gemini API -->
+            </div>
+          </div>
+
+          <footer class="ai-response-footer">
+            <span id="response-model-tag">Response generated by Google Gemini</span>
+          </footer>
+        </article>
+
+        <!-- RIGHT COLUMN: AB AGENT STUDIO SOLUTION OUTPUT -->
+        <article class="studio-solution-panel">
+          <header class="panel-header">
+            <div class="solution-header-title">
+              <span style="font-weight: 900; color: #f35009;">AB</span>
+              <span>AB Agent Studio – Solution Output</span>
+            </div>
+            <div class="panel-tools">
+              <button class="btn-pill" id="btn-sol-export" type="button">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Export ▾
+              </button>
+              <button class="btn-export-badge word-badge" id="btn-export-word" type="button" title="Export Word Document" style="font-weight: 800;">W</button>
+              <button class="btn-export-badge excel-badge" id="btn-export-excel" type="button" title="Export Excel Sheet" style="font-weight: 800;">X</button>
+              <button class="btn-export-badge" type="button" title="Expand View" onclick="document.body.classList.toggle('studio-expanded')" style="color: #64748b;">⤢</button>
+            </div>
+          </header>
+
+          <div class="solution-sheet">
+            <h2 class="plan-main-title">Business Solution &amp; Delivery Plan</h2>
+
+            <!-- Meta Box -->
+            <div class="solution-meta-grid">
+              <div class="solution-meta-cell">
+                <span class="meta-label">Solution Name</span>
+                <span class="meta-value" id="meta-sol-name">Tailored Enterprise Solution</span>
+              </div>
+              <div class="solution-meta-cell">
+                <span class="meta-label">Prepared For</span>
+                <span class="meta-value" id="meta-client">Client Enterprise</span>
+              </div>
+              <div class="solution-meta-cell">
+                <span class="meta-label">Date</span>
+                <span class="meta-value" id="meta-date">Oct 27, 2026</span>
+              </div>
+              <div class="solution-meta-cell">
+                <span class="meta-label">Prepared By</span>
+                <span class="meta-value" id="meta-by">AB Agent Studio</span>
+              </div>
+            </div>
+
+            <!-- 1. Executive Summary -->
+            <h3 class="plan-section-title">1. Executive Summary</h3>
+            <p class="plan-lead-p" id="plan-exec-summary">
+              Enter your business scenario above and click Run to synthesize a tailored executive architecture.
+            </p>
+
+            <!-- 2. Solution Scope Table -->
+            <h3 class="plan-section-title">2. Solution Scope</h3>
+            <table class="studio-table" aria-label="Solution Scope Table">
+              <thead>
+                <tr>
+                  <th style="width: 22%;">Module</th>
+                  <th style="width: 28%;">Description</th>
+                  <th style="width: 25%;">AI Agent Involved</th>
+                  <th style="width: 25%;">Key Features</th>
+                </tr>
+              </thead>
+              <tbody id="scope-table-body">
+                <!-- Injected via JS -->
+              </tbody>
+            </table>
+
+            <!-- 3. Delivery Approach Flow -->
+            <h3 class="plan-section-title">3. Delivery Approach</h3>
+            <div class="delivery-approach-flow" id="delivery-phases-container">
+              <!-- Injected via JS -->
+            </div>
+
+            <!-- 4 & 5 Sub Grid: Cost & Human Intelligence -->
+            <div class="solution-sub-grid">
+              <!-- Left: Cost Breakdown -->
+              <div>
+                <h3 class="plan-section-title">4. Cost Breakdown (Estimated)</h3>
+                <table class="studio-table" aria-label="Cost Breakdown Table">
+                  <thead>
+                    <tr>
+                      <th>Cost Component</th>
+                      <th>Description</th>
+                      <th style="text-align: right;">Estimated Cost (USD)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cost-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+                <div class="total-cost-badge">
+                  <span>Total Estimated Cost</span>
+                  <span class="amount" id="total-cost-val">$0</span>
+                </div>
+              </div>
+
+              <!-- Right: Human Intelligence Required -->
+              <div>
+                <h3 class="plan-section-title">5. Human Intelligence Required</h3>
+                <table class="studio-table" aria-label="Human Intelligence Table">
+                  <thead>
+                    <tr>
+                      <th>Role</th>
+                      <th>Responsibility</th>
+                      <th style="text-align: right;">Effort (Hours)</th>
+                    </tr>
+                  </thead>
+                  <tbody id="human-table-body">
+                    <!-- Injected via JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="table-footnote">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>Note: Costs are estimates and may vary based on specific requirements and scope changes.</span>
+            </div>
+
+          </div>
+        </article>
+
+      </section>
+    </main>
+  </div>
+
+  <!-- AI API SETTINGS MODAL -->
+  <div class="studio-modal-backdrop" id="api-config-modal" role="dialog" aria-modal="true" aria-labelledby="modal-api-title">
+    <div class="studio-modal">
+      <div class="studio-modal-header">
+        <h3 id="modal-api-title">Google Gemini API Configuration</h3>
+        <button class="studio-modal-close" id="modal-close" type="button" aria-label="Close dialog">×</button>
+      </div>
+      <p style="font-size: 0.8125rem; color: var(--studio-text-muted); margin-bottom: 16px;">
+        Provide your Google Gemini API Key to run live inference directly from Google AI Studio. You can also use the built-in Active Brains offline engine if no key is entered.
+      </p>
+
+      <div class="config-input-group">
+        <label for="cfg-provider">AI Model Mode</label>
+        <select id="cfg-provider">
+          <option value="gemini" selected>Google Gemini (Live API via Google AI Studio)</option>
+          <option value="auto">Active Brains Built-in Architecture Engine (Offline Simulation)</option>
+        </select>
+      </div>
+
+      <div class="config-input-group">
+        <label for="cfg-api-key">Gemini API Key</label>
+        <input id="cfg-api-key" type="password" placeholder="AIzaSy..." autocomplete="off"/>
+        <small>Get your free key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" style="color: var(--studio-accent-blue);">Google AI Studio</a>. Keys are stored locally in your browser.</small>
+      </div>
+
+      <button class="btn-save-config" id="btn-save-api-key" type="button" style="background: #1aa9e8;">Save Gemini Configuration</button>
+    </div>
+  </div>
+
+  <script src="js/studio.js?v=20261027-v3"></script>
+</body>
+</html>

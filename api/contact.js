@@ -3,10 +3,50 @@ const nodemailer = require('nodemailer');
 const TYPES = {general:'General enquiry', service:'Service enquiry', technology:'Technology enquiry', research:'Research collaboration', launchpad:'Launch Pad enquiry', careers:'Career enquiry'};
 const escapeHtml = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 
+// In-memory sliding window rate limiter for defense-in-depth against DoS and brute-force spam
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5;      // Max 5 submissions per minute per IP
+const ipRequestHistory = new Map();
+
+function isRateLimited(clientIp) {
+  if (!clientIp) return false;
+  const now = Date.now();
+  const timestamps = ipRequestHistory.get(clientIp) || [];
+  
+  // Prune entries older than window
+  const activeTimestamps = timestamps.filter(ts => now - ts < RATE_LIMIT_WINDOW_MS);
+  
+  if (activeTimestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    ipRequestHistory.set(clientIp, activeTimestamps);
+    return true;
+  }
+  
+  activeTimestamps.push(now);
+  ipRequestHistory.set(clientIp, activeTimestamps);
+
+  // Periodic memory cleanup to prevent memory leaks
+  if (ipRequestHistory.size > 2000) {
+    for (const [ip, tsList] of ipRequestHistory.entries()) {
+      if (tsList.length === 0 || now - tsList[tsList.length - 1] > RATE_LIMIT_WINDOW_MS) {
+        ipRequestHistory.delete(ip);
+      }
+    }
+  }
+  return false;
+}
+
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return res.status(405).json({ok:false}); }
   if (!String(req.headers['content-type'] || '').startsWith('application/json')) return res.status(415).json({ok:false});
+
+  // Client IP detection (supporting Vercel / reverse proxy headers)
+  const clientIp = (req.headers['x-forwarded-for'] || req.socket?.remoteAddress || '').split(',')[0].trim();
+  if (isRateLimited(clientIp)) {
+    res.setHeader('Retry-After', '60');
+    return res.status(429).json({ok:false, message:'Too many requests. Please wait a moment before trying again.'});
+  }
+
   const origin = req.headers.origin;
   if (origin) {
     try { if (new URL(origin).host !== req.headers.host) return res.status(403).json({ok:false}); }
