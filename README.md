@@ -1,47 +1,109 @@
-# ACTIVE BRAINS website: publication package
+# ACTIVE BRAINS Technologies
 
-This is a static HTML, CSS and JavaScript website with 43 pages. It does not need an application build. Contact delivery uses the included Vercel function at `/api/contact`.
+> **Enterprise IT Strategy, Systems Integration, and Autonomous AI Solutions.**  
+> Practical thinking combined with technical depth.
 
-## Deploy to the existing Vercel project
+[![CI & Security Quality Gate](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/ci-security.yml/badge.svg)](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/ci-security.yml)
+[![Infrastructure & Secret Leak Guard](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/secret-guard.yml/badge.svg)](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/secret-guard.yml)
+[![SRE Uptime & Security Monitor](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/sre-monitor.yml/badge.svg)](https://github.com/karthikdoguparthi/abn_new_temp/actions/workflows/sre-monitor.yml)
 
-1. Use the contents of this folder as the project root; `index.html` belongs at the root.
-2. Use the **Other** framework preset. No install or build command is needed. The output directory is `.` (the project root).
-3. Deploy through the existing Vercel project to replace its current published version.
+---
 
-The included `vercel.json` records those static-site settings and basic response headers. These settings follow [Vercel's build configuration documentation](https://vercel.com/docs/builds/configure-a-build).
+## 🏛️ Project Overview
 
-## Contact behaviour
+This repository houses the corporate digital platform and **AB Agent Studio** for ACTIVE BRAINS Technologies. Engineered for resilience, speed, and defense-in-depth, the platform combines a lightweight, zero-build frontend with secure serverless endpoints and autonomous AI reasoning capabilities.
 
-Contact buttons across all 46 pages open a responsive two-column form, tailored for general, service, technology, research, Launch Pad or careers enquiries. Career opportunity links preselect the relevant role. The Vercel endpoint sends name, email, company, phone, interest, message, form type and source page, plus any supplied timeframe, idea stage or portfolio URL to **solution@activebrains.co.uk**, with Reply-To set to the visitor’s address. Emails include a labeled HTML table and a plain-text version. Delivery errors retain the form contents; success appears only after the email provider accepts the request. Repeated retries of the same submission use an idempotency key.
+---
 
-### Activate email delivery
+## 📁 Repository Structure
 
-1. Create or use a Resend account and verify your sending domain: https://resend.com/docs/dashboard/domains/introduction
-2. In Vercel project Settings → Environment Variables, add `RESEND_API_KEY` (a sending API key) and `CONTACT_FROM` (for example `ACTIVE BRAINS <enquiries@activebrains.co.uk>`, only after that domain is verified). Set these for the deployment environments you use. Never put credentials in website files.
-3. Redeploy the project. The recipient is fixed on the server as solution@activebrains.co.uk.
-4. Add a Vercel Firewall rate-limit rule for POST `/api/contact` before opening the form to public traffic. The form also has a honeypot and same-origin checks; these are not substitutes for rate limiting.
-5. Submit a test enquiry and confirm arrival in the mailbox and that Reply targets the submitted email address. Provider acceptance does not guarantee inbox delivery.
+```
+abn/
+├── pages/                  # Categorized site pages
+│   ├── services/           # 21 Enterprise consulting & architecture offerings
+│   ├── technology/         # 14 Technology platforms, data & cloud practices
+│   ├── company/            # Corporate background, careers & research
+│   └── legal/              # Privacy policy, terms & accessibility standards
+├── docs/                   # Engineering & operations documentation
+│   ├── EMAIL_SETUP.md      # SMTP & transactional email setup guide
+│   ├── READINESS.md        # Pre-flight deployment checklist
+│   └── SECURITY_CHECKLIST.md # Security audit & compliance matrix
+├── api/                    # Serverless backend functions (rate-limited contact handler)
+├── assets/                 # SVGs, photography, brand identity & icons
+├── css/                    # Modular stylesheets
+├── js/                     # Client runtime, search indexes & Agent Studio engine
+├── tests/                  # Automated Node.js test suites
+├── .github/                # GitHub Actions workflows & security policies
+├── agentstudio.html        # Interactive AB Agent Studio
+├── index.html              # Corporate homepage
+└── vercel.json             # Transparent rewrites & HTTP security headers
+```
 
-A plain Python/static preview server cannot execute `/api/contact`; use Vercel Preview or `vercel dev` to test email delivery. Missing configuration returns an error rather than claiming that an email was sent.
+---
 
-## Content and navigation
+## 🛡️ Security & Reliability Architecture
 
-- Thirty specialist pages have individually written scopes, delivery considerations, illustrative examples and questions.
-- Eight overview pages cover their own subject and link to relevant specialist pages.
-- The homepage, directory and three policy pages complete the 43-page site.
-- Related offerings with previously repeated content now have distinct purposes and names.
-- Search and the HTML/XML sitemaps include all pages.
-- Shared navigation, footer details and the registered address in legal documents intentionally remain consistent.
-- Examples are illustrative, not customer case studies. Unsupported grants, partnerships, outcome statistics and event claims have been removed from marketing pages.
+Aligned with industry frameworks ([ByteByteGo System Design](https://github.com/ByteByteGoHq/system-design-101), [Awesome Scalability](https://github.com/binhnguyennus/awesome-scalability), and [The Book of Secret Knowledge](https://github.com/trimstray/the-book-of-secret-knowledge)):
 
-## Interactive features
+- **CodeQL SAST & Dependency Audits**: Continuous static analysis and weekly automated zero-vulnerability package audits.
+- **Backend Rate Limiting**: Built-in sliding-window IP rate limiter (`5 req/min`) returning `HTTP 429` on `/api/contact` to neutralize DoS and brute-force attempts.
+- **HTTP Security Headers**: Enforces strict `HSTS`, `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, and `Permissions-Policy`.
+- **Zero Web Storage for Secrets**: In-memory credential lifecycles preventing local storage token harvesting.
+- **Deep Git Entropy Scanning**: TruffleHog checks verifying zero private keys or API tokens in git history.
+- **Pipeline Isolation**: Isolated `staging` and `production` environments ensuring code is verified before production deployment.
 
-The homepage workflow is explicitly a demonstration. It does not connect to business systems. Fundoo is a local website navigation helper with topic-based suggestions, not a live AI service. Cookie preferences are stored in the current browser. The shared enquiry form requires the email configuration above.
+---
 
-The introduction video is not embedded on any page. Its source asset is retained for a future update.
+## 🚀 Local Development & Testing
 
-## Validation
+### 1. Prerequisites
+- **Node.js**: `v20.x` or higher
+- **npm**: `v10.x` or higher
 
-All 43 pages were checked at widths of 320, 768 and 1440 pixels, with no page-level horizontal overflow. Local links and fragment targets were checked. Page bodies, page titles and descriptions were checked for duplicates; the only repeated long content paragraph was the legal registered address. Representative search, FAQ, navigation and demonstration interactions were verified.
+### 2. Setup
+```bash
+# Clone the repository
+git clone https://github.com/karthikdoguparthi/abn_new_temp.git
+cd abn_new_temp
 
-This release has not been deployed by Codex. The canonical URLs and sitemap currently target https://abn-new.vercel.app/. Update them if the production hostname changes. Privacy and terms wording from the supplied project is retained apart from the verified contact address; accessibility wording reflects the checks performed rather than claiming certification.
+# Install dependencies
+npm ci
+```
+
+### 3. Run Automated Tests
+```bash
+# Run unit tests and security validation suite
+npm test
+
+# Run dependency vulnerability audit
+npm audit
+```
+
+### 4. Local Preview
+Serve the root directory with any local static HTTP server:
+```bash
+npx serve .
+# Or using Python:
+python3 -m http.server 8080
+```
+
+---
+
+## 🌐 Deployment
+
+The project is hosted and deployed on **Vercel**:
+- **Staging**: Pushes to the `staging` branch deploy to the preview environment for acceptance testing.
+- **Production**: Merges into `main` trigger the production release pipeline to [activebrains.co.uk](https://activebrains.co.uk).
+- **URL Rewrites**: Static routes are transparently mapped through [`vercel.json`](vercel.json), preserving clean URLs across all subdirectories.
+
+---
+
+## 🔒 Security Vulnerability Reporting
+
+If you identify a security vulnerability, please review our [Security Policy](SECURITY.md) and report it privately via GitHub Advisories or by emailing [solution@activebrains.co.uk](mailto:solution@activebrains.co.uk).
+
+---
+
+## 📄 License & Ownership
+
+Copyright © ACTIVE BRAINS Technologies. All rights reserved.
