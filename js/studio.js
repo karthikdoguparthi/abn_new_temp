@@ -8,6 +8,8 @@
   'use strict';
 
   let currentSolution = null;
+  // Solution run history for user comparison
+  let solutionHistory = [];
   // Active selected currency state
   let currentCurrency = 'USD';
   const CURRENCY_MAP = {
@@ -38,6 +40,7 @@
     bindThemeToggle();
     bindExportEvents();
     bindCurrencySelector();
+    bindHistoryDrawer();
 
     const promptInput = document.getElementById('prompt-input');
     const modelSelect = document.getElementById('model-select');
@@ -174,6 +177,144 @@
         }
       });
     }
+  }
+
+  function bindHistoryDrawer() {
+    const toggleBtn = document.getElementById('btn-history-toggle');
+    const drawer = document.getElementById('history-drawer');
+    const closeBtn = document.getElementById('history-drawer-close');
+    const clearBtn = document.getElementById('btn-clear-history');
+
+    if (toggleBtn && drawer) {
+      toggleBtn.addEventListener('click', () => {
+        drawer.classList.toggle('open');
+      });
+    }
+
+    if (closeBtn && drawer) {
+      closeBtn.addEventListener('click', () => {
+        drawer.classList.remove('open');
+      });
+    }
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm("Are you sure you want to clear your solution run history?")) {
+          solutionHistory = [];
+          renderHistoryDrawer();
+        }
+      });
+    }
+  }
+
+  function addSolutionToHistory(sol) {
+    if (!sol) return;
+    const historyItem = {
+      id: 'run_' + Date.now(),
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+      prompt: sol.prompt,
+      modelName: sol.modelName,
+      solutionName: sol.meta.solutionName,
+      domain: sol.domain,
+      targetOrg: sol.meta.preparedFor,
+      totalCost: sol.solutionPlan.totalCost,
+      currency: currentCurrency,
+      formattedTotal: formatCurrencyAmount(
+        typeof sol.solutionPlan.totalCost === 'number'
+          ? sol.solutionPlan.totalCost
+          : Number(String(sol.solutionPlan.totalCost).replace(/[^0-9.]/g, '')) || 0,
+        currentCurrency
+      ),
+      solution: sol
+    };
+
+    // Prepend to history (newest first, max 25 runs)
+    solutionHistory.unshift(historyItem);
+    if (solutionHistory.length > 25) {
+      solutionHistory.pop();
+    }
+
+    renderHistoryDrawer();
+  }
+
+  function renderHistoryDrawer() {
+    const container = document.getElementById('history-items-container');
+    const countBadge = document.getElementById('history-counter-badge');
+    const drawerCount = document.getElementById('history-drawer-count');
+
+    const count = solutionHistory.length;
+    if (drawerCount) drawerCount.textContent = count;
+    if (countBadge) {
+      countBadge.textContent = count;
+      countBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+    }
+
+    if (!container) return;
+
+    if (count === 0) {
+      container.innerHTML = `
+        <div class="history-empty-state">
+          <p>No runs generated yet.</p>
+          <small>Run a scenario above and each generation will automatically be archived here to inspect or restore for comparison.</small>
+        </div>
+      `;
+      return;
+    }
+
+    container.innerHTML = solutionHistory.map((item, idx) => {
+      const isActive = currentSolution && currentSolution.prompt === item.prompt;
+      return `
+        <div class="history-card ${isActive ? 'active-run' : ''}" data-history-idx="${idx}">
+          <div class="history-card-top">
+            <span class="history-card-time">Run #${count - idx} • ${item.timestamp}</span>
+            <span class="history-card-model">${item.modelName}</span>
+          </div>
+          <div class="history-card-title">${item.solutionName}</div>
+          <div class="history-card-prompt">"${item.prompt}"</div>
+          <div class="history-card-meta">
+            <span class="history-card-cost">${item.formattedTotal}</span>
+            <div class="history-card-actions">
+              <button class="history-card-btn btn-load-run" data-run-idx="${idx}" type="button">Compare / View</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // Bind click events on history cards
+    container.querySelectorAll('.btn-load-run').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const runIdx = Number(btn.getAttribute('data-run-idx'));
+        loadHistoryRun(runIdx);
+      });
+    });
+
+    container.querySelectorAll('.history-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const runIdx = Number(card.getAttribute('data-history-idx'));
+        loadHistoryRun(runIdx);
+      });
+    });
+  }
+
+  function loadHistoryRun(idx) {
+    const item = solutionHistory[idx];
+    if (!item || !item.solution) return;
+
+    currentSolution = item.solution;
+    const promptInput = document.getElementById('prompt-input');
+    const charCount = document.getElementById('char-count');
+    if (promptInput) {
+      promptInput.value = item.prompt;
+      if (charCount) charCount.textContent = `${item.prompt.length} / 4000`;
+    }
+
+    renderCurrentSolution();
+    renderHistoryDrawer();
+
+    const drawer = document.getElementById('history-drawer');
+    if (drawer) drawer.classList.remove('open');
   }
 
   function bindThemeToggle() {
@@ -721,59 +862,48 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
     }
 
     // 3. Detect Domain, Solution Name, and Target Organization
-    // Dynamically derive client topic and name from prompt whenever possible
-    let derivedTopic = "";
-    if (promptText && promptText.trim()) {
-      derivedTopic = promptText.trim()
-        .replace(/^design\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
-        .replace(/^build\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
-        .replace(/^create\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
-        .replace(/^develop\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
-        .replace(/^(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
-        .replace(/[.!?:;]+$/, "")
-        .trim();
-      // Capitalize first letters of words
-      derivedTopic = derivedTopic.replace(/\b\w/g, c => c.toUpperCase());
-    }
+    // Dynamically derive client topic and name strictly from promptText to avoid sticking to previous response concepts
+    let derivedTopic = derivePromptTopic(promptText);
+    const pLower = (promptText || '').toLowerCase();
 
-    let solutionName = derivedTopic ? `${derivedTopic} AI Solution` : "Tailored Enterprise AI Solution";
-    let targetOrg = derivedTopic ? `${derivedTopic} Enterprise` : "Client Enterprise";
-    let domainName = derivedTopic || "Enterprise AI Solution";
+    let solutionName = `${derivedTopic} AI Solution`;
+    let targetOrg = `${derivedTopic} Enterprise`;
+    let domainName = derivedTopic;
 
-    // If derived topic is broad or absent, map to specific domain specialties
-    if (combined.includes('capital pooling') || combined.includes('asset management')) {
+    // Only apply domain specialty aliases if user's prompt explicitly mentions it
+    if (pLower.includes('capital pooling') || pLower.includes('asset management')) {
       solutionName = "Capital Pooling & Asset Management AI Solution";
       targetOrg = "Asset Management & Treasury Enterprise";
       domainName = "Capital Pooling & Asset Management";
-    } else if (combined.includes('real estate') || combined.includes('property') || combined.includes('broker') || combined.includes('mls') || combined.includes('realtor') || combined.includes('tenant') || combined.includes('lease')) {
+    } else if (pLower.includes('real estate') || pLower.includes('property') || pLower.includes('broker') || pLower.includes('mls') || pLower.includes('realtor') || pLower.includes('tenant') || pLower.includes('lease')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Real Estate AI Agent Solution";
       targetOrg = "Enterprise Real Estate Brokerage";
       domainName = "Real Estate & Property Management";
-    } else if (combined.includes('insurance') || combined.includes('claims') || combined.includes('policy') || combined.includes('underwriting')) {
+    } else if (pLower.includes('insurance') || pLower.includes('claims') || pLower.includes('policy') || pLower.includes('underwriting')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Insurance AI Agent Solution";
       targetOrg = "Insurance Enterprise Client";
       domainName = "Insurance & Claims Management";
-    } else if (combined.includes('health') || combined.includes('clinic') || combined.includes('hospital') || combined.includes('doctor') || combined.includes('patient') || combined.includes('ehr')) {
+    } else if (pLower.includes('health') || pLower.includes('clinic') || pLower.includes('hospital') || pLower.includes('doctor') || pLower.includes('patient') || pLower.includes('ehr')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Healthcare & Clinical AI Solution";
       targetOrg = "Healthcare Enterprise";
       domainName = "Healthcare & Clinical Systems";
-    } else if (combined.includes('bank') || combined.includes('fintech') || combined.includes('investment') || combined.includes('fca') || combined.includes('fraud') || combined.includes('kyc')) {
+    } else if (pLower.includes('bank') || pLower.includes('fintech') || pLower.includes('investment') || pLower.includes('fca') || pLower.includes('fraud') || pLower.includes('kyc')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "FinTech & Banking AI Solution";
       targetOrg = "Financial Institution Client";
       domainName = "Banking & FinTech";
-    } else if (combined.includes('commerce') || combined.includes('retail') || combined.includes('store') || combined.includes('shop') || combined.includes('order')) {
+    } else if (pLower.includes('commerce') || pLower.includes('retail') || pLower.includes('store') || pLower.includes('shop') || pLower.includes('order')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "E-commerce AI Agent Solution";
       targetOrg = "Client Business";
       domainName = "E-commerce & Retail";
-    } else if (combined.includes('tablet') || combined.includes('factory') || combined.includes('hardware') || combined.includes('manufactur') || combined.includes('assembly')) {
+    } else if (pLower.includes('tablet') || pLower.includes('factory') || pLower.includes('hardware') || pLower.includes('manufactur') || pLower.includes('assembly')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Manufacturing & Plant AI Solution";
       targetOrg = "Manufacturing Enterprise";
       domainName = "Hardware & Plant Automation";
-    } else if (combined.includes('logistic') || combined.includes('freight') || combined.includes('shipping') || combined.includes('warehouse') || combined.includes('fleet')) {
+    } else if (pLower.includes('logistic') || pLower.includes('freight') || pLower.includes('shipping') || pLower.includes('warehouse') || pLower.includes('fleet')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Logistics & Supply Chain AI Solution";
       targetOrg = "Global Logistics Operator";
       domainName = "Logistics & Supply Chain";
-    } else if (combined.includes('legal') || combined.includes('contract') || combined.includes('compliance')) {
+    } else if (pLower.includes('legal') || pLower.includes('contract') || pLower.includes('compliance')) {
       solutionName = derivedTopic ? `${derivedTopic} Solution` : "Legal & Compliance AI Solution";
       targetOrg = "Legal & Professional Services";
       domainName = "Legal & Contract Intelligence";
@@ -782,10 +912,10 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
         const firstMod = extractedAgents[0].name.replace(/\s*Agent\s*$/i, '').trim();
         solutionName = `${firstMod} AI Agent Solution`;
       } else {
-        solutionName = "Intelligent Operations AI Solution";
+        solutionName = `${derivedTopic} AI Solution`;
       }
-      targetOrg = derivedTopic ? `${derivedTopic} Enterprise` : "Enterprise Business Client";
-      domainName = derivedTopic || "Business & Operations Automation";
+      targetOrg = `${derivedTopic} Enterprise`;
+      domainName = derivedTopic;
     }
 
     // 4. Build Scope Table rows from Extracted Agents
@@ -1088,6 +1218,7 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
     };
 
     renderCurrentSolution();
+    addSolutionToHistory(currentSolution);
   }
 
   /**

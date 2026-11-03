@@ -1076,3 +1076,222 @@ body.studio-dark-theme .currency-dropdown option {
   background: #1e293b;
   color: #f1f5f9;
 }
+
+/* History Badge & Drawer Styles */
+.history-count-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--studio-accent-orange);
+  color: #ffffff;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  margin-left: 4px;
+}
+
+.studio-history-drawer {
+  position: fixed;
+  top: 0;
+  right: -420px;
+  width: 400px;
+  max-width: 90vw;
+  height: 100vh;
+  background: var(--studio-card-bg, #ffffff);
+  border-left: 1px solid var(--studio-border, #e2e8f0);
+  box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.studio-history-drawer.open {
+  right: 0;
+}
+
+.history-drawer-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--studio-border, #e2e8f0);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--studio-bg, #f8fafc);
+}
+
+body.studio-dark-theme .history-drawer-header {
+  background: #0f172a;
+}
+
+.history-header-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--studio-text-main);
+}
+
+.history-clear-btn {
+  background: none;
+  border: none;
+  color: var(--studio-text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.history-clear-btn:hover {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.history-drawer-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--studio-text-muted);
+  cursor: pointer;
+}
+
+.history-drawer-close:hover {
+  color: var(--studio-text-main);
+}
+
+.history-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.history-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--studio-text-muted);
+}
+
+.history-empty-state p {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  color: var(--studio-text-main);
+}
+
+.history-empty-state small {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  display: block;
+}
+
+.history-card {
+  background: var(--studio-surface-alt, #f8fafc);
+  border: 1px solid var(--studio-border, #e2e8f0);
+  border-radius: var(--studio-radius-md, 12px);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+body.studio-dark-theme .history-card {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.history-card:hover {
+  border-color: var(--studio-accent-blue);
+  box-shadow: 0 4px 12px rgba(26, 169, 232, 0.12);
+  transform: translateY(-1px);
+}
+
+.history-card.active-run {
+  border-color: var(--studio-accent-orange);
+  background: rgba(243, 80, 9, 0.04);
+}
+
+.history-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.history-card-time {
+  font-size: 0.7rem;
+  color: var(--studio-text-muted);
+  font-family: var(--font-mono, monospace);
+}
+
+.history-card-model {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--studio-accent-blue);
+  background: rgba(26, 169, 232, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.history-card-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--studio-text-main);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.history-card-prompt {
+  font-size: 0.78rem;
+  color: var(--studio-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.history-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  padding-top: 6px;
+  border-top: 1px dashed var(--studio-border, #e2e8f0);
+}
+
+body.studio-dark-theme .history-card-meta {
+  border-top-color: #334155;
+}
+
+.history-card-cost {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.history-card-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.history-card-btn {
+  background: none;
+  border: 1px solid var(--studio-border, #e2e8f0);
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  color: var(--studio-text-main);
+  cursor: pointer;
+}
+
+.history-card-btn:hover {
+  background: var(--studio-accent-blue);
+  border-color: var(--studio-accent-blue);
+  color: #ffffff;
+}

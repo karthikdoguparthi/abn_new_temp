@@ -38,6 +38,10 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
           Launch Pad
         </a>
+        <button class="btn-pill" id="btn-history-toggle" type="button" title="View Generation History & Compare Runs">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          History <span id="history-counter-badge" class="history-count-badge" style="display: none;">0</span>
+        </button>
         <button class="btn-pill" id="btn-theme-toggle" type="button" title="Toggle Light/Dark Theme">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
           Theme
@@ -295,6 +299,26 @@
       <button class="btn-save-config" id="btn-save-api-key" type="button" style="background: #1aa9e8;">Save Gemini Configuration</button>
     </div>
   </div>
+
+  <!-- RUN HISTORY & COMPARISON DRAWER -->
+  <aside class="studio-history-drawer" id="history-drawer" aria-label="Solution Run History">
+    <div class="history-drawer-header">
+      <div class="history-header-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        <span>Run History (<span id="history-drawer-count">0</span>)</span>
+      </div>
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <button class="history-clear-btn" id="btn-clear-history" type="button" title="Clear all saved runs">Clear History</button>
+        <button class="history-drawer-close" id="history-drawer-close" type="button" aria-label="Close History">×</button>
+      </div>
+    </div>
+    <div class="history-drawer-body" id="history-items-container">
+      <div class="history-empty-state">
+        <p>No runs generated yet.</p>
+        <small>Run a scenario above and each generation will automatically be archived here to inspect or restore for comparison.</small>
+      </div>
+    </div>
+  </aside>
 
   <script src="js/studio.js?v=20261027-v3"></script>
 </body>
