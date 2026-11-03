@@ -213,16 +213,21 @@
             </table>
 
             <!-- 3. Delivery Approach Flow -->
-            <h3 class="plan-section-title">3. Delivery Approach</h3>
+            <h3 class="plan-section-title">3. Implementation Roadmap</h3>
             <div class="delivery-approach-flow" id="delivery-phases-container">
               <!-- Injected via JS -->
             </div>
+            <!-- Detailed Phase Deliverables Table -->
+            <div id="phase-details-container" style="margin-bottom: 22px;"></div>
 
-            <!-- 4 & 5 Sub Grid: Cost & Human Intelligence -->
+            <!-- 4. Technical Architecture, Security & Governance Details -->
+            <div id="tech-architecture-summary-container" style="margin-bottom: 22px;"></div>
+
+            <!-- 5 & 6 Sub Grid: Cost & Human Intelligence -->
             <div class="solution-sub-grid">
               <!-- Left: Cost Breakdown -->
               <div>
-                <h3 class="plan-section-title">4. Cost Breakdown (Estimated)</h3>
+                <h3 class="plan-section-title">5. Cost Breakdown (Estimated)</h3>
                 <table class="studio-table" aria-label="Cost Breakdown Table">
                   <thead>
                     <tr>
@@ -236,14 +241,14 @@
                   </tbody>
                 </table>
                 <div class="total-cost-badge">
-                  <span>Total Estimated Cost</span>
+                  <span class="total-label">Total Estimated Cost:</span>
                   <span class="amount" id="total-cost-val">$0</span>
                 </div>
               </div>
 
               <!-- Right: Human Intelligence Required -->
               <div>
-                <h3 class="plan-section-title">5. Human Intelligence Required</h3>
+                <h3 class="plan-section-title">6. Human Intelligence Required</h3>
                 <table class="studio-table" aria-label="Human Intelligence Table">
                   <thead>
                     <tr>
@@ -256,6 +261,22 @@
                     <!-- Injected via JS -->
                   </tbody>
                 </table>
+              </div>
+            </div>
+
+            <!-- 7. Assumptions & Business Outcomes Grid -->
+            <div class="solution-sub-grid" style="margin-top: 18px;">
+              <div>
+                <h3 class="plan-section-title">7. Assumptions &amp; Dependencies</h3>
+                <ul id="plan-assumptions-list" style="font-size: 0.8125rem; line-height: 1.6; color: var(--studio-text-main); padding-left: 18px;">
+                  <!-- Injected via JS -->
+                </ul>
+              </div>
+              <div>
+                <h3 class="plan-section-title">8. Expected Business Outcomes</h3>
+                <ul id="plan-outcomes-list" style="font-size: 0.8125rem; line-height: 1.6; color: var(--studio-text-main); padding-left: 18px;">
+                  <!-- Injected via JS -->
+                </ul>
               </div>
             </div>
 

@@ -691,8 +691,11 @@ body.studio-dark-theme .solution-meta-grid {
 }
 
 .solution-meta-cell {
-  padding: 10px 14px;
+  padding: 12px 16px;
   border-right: 1px solid #bbf7d0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 body.studio-dark-theme .solution-meta-cell {
@@ -708,14 +711,15 @@ body.studio-dark-theme .solution-meta-cell {
   font-weight: 700;
   color: #16a34a;
   display: block;
-  margin-bottom: 4px;
-  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .meta-value {
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--studio-text-main);
+  line-height: 1.35;
 }
 
 .plan-section-title {
@@ -879,14 +883,14 @@ body.studio-dark-theme .flow-step-box.green {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px;
+  padding: 12px 16px;
   background: #f8fafc;
   border: 1px solid #e2e8f0;
   border-radius: var(--studio-radius-sm);
   font-weight: 700;
   font-size: 0.95rem;
   color: var(--studio-text-main);
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 body.studio-dark-theme .total-cost-badge {
@@ -894,10 +898,15 @@ body.studio-dark-theme .total-cost-badge {
   border-color: var(--studio-border);
 }
 
+.total-cost-badge span.total-label {
+  margin-right: 12px;
+}
+
 .total-cost-badge span.amount {
   color: #15803d;
   font-size: 1.15rem;
   font-weight: 800;
+  margin-left: auto;
 }
 
 .table-footnote {

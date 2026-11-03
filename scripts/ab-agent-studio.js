@@ -132,36 +132,49 @@ class ABAgentStudioEngine {
    */
   async solveWithLiveGemini(prompt, currency) {
     const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${this.model}:generateContent?key=${this.apiKey}`;
-    const systemInstruction = "You are the Senior Enterprise AI Solution Architect at Active Brains Technologies. Produce a clean, authoritative executive document formatted exclusively in structured HTML (h3, p, ul, ol, li). Do NOT output raw markdown fences or chain-of-thought.";
+    const systemInstruction = "You are the Senior Enterprise Solution Architect at Active Brains Technologies. Produce a clean, comprehensive, production-grade business architecture proposal formatted in structured HTML (h3, p, ul, ol, li). Never output raw markdown code fences, chain-of-thought, or scratchpads. Ensure all mandatory sections (Executive Overview, Solution Architecture, Autonomous Agent Mesh, Security & Governance, Implementation Roadmap, Cost Breakdown, Human Resources, Assumptions, and Outcomes) are included with granular technical detail.";
 
     const promptPayload = `Client Business Requirement: "${prompt}".
 
-Deliver a comprehensive, 100% custom enterprise solution tailored directly to this requirement in clean HTML:
+Synthesize an exhaustive, client-ready enterprise solution in clean HTML following this exact architecture:
 
-<h3>1. Executive Overview & Solution Architecture</h3>
-<p>[2 authoritative paragraphs detailing target architecture, domain impact, and operational ROI specifically for this client requirement.]</p>
+<h3>1. Executive Overview</h3>
+<p>[Detailed statement of client problem, operational bottlenecks, business objectives, and strategic benefits.]</p>
+<p>[Target transformation metrics and verifiable outcomes tailored directly to this domain.]</p>
 
-<h3>2. Autonomous Multi-Agent Mesh</h3>
-<p>The solution deploys coordinated autonomous agents within an Active Brains enterprise mesh:</p>
+<h3>2. Solution Architecture</h3>
+<p>[Comprehensive end-to-end architecture detailing event-driven data flow, multi-agent orchestration mesh, zero-trust perimeter, and microservices boundary.]</p>
 <ul>
-  <li><strong>[Domain-Specific Agent Name 1]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
-  <li><strong>[Domain-Specific Agent Name 2]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
-  <li><strong>[Domain-Specific Agent Name 3]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
+  <li><strong>Multi-Agent Orchestration Mesh:</strong> [Autonomous coordinator managing intent, dynamic task decomposition, and inter-agent communication protocols]</li>
+  <li><strong>RAG & Semantic Retrieval:</strong> [Vector database topology, real-time embeddings, hybrid BM25/vector search, and context filtering]</li>
+  <li><strong>VPC & Cloud Topology:</strong> [Zero-trust containerized microservices running on isolated multi-zone Kubernetes/OpenShift with HSM key management]</li>
 </ul>
 
-<h3>3. Enterprise Integration, Security & Governance</h3>
-<p>[Cloud topology, microservices, specialized APIs/connectors, and regulatory standards (GDPR, SOC 2, HIPAA, ISO).] </p>
+<h3>3. Autonomous Multi-Agent Mesh</h3>
+<ul>
+  <li><strong>[Domain-Specific Agent 1]:</strong> [Role, autonomous decision tooling, and integration hooks]</li>
+  <li><strong>[Domain-Specific Agent 2]:</strong> [Role, autonomous decision tooling, and integration hooks]</li>
+  <li><strong>[Domain-Specific Agent 3]:</strong> [Role, autonomous decision tooling, and integration hooks]</li>
+</ul>
 
-<h3>4. Phased Delivery Approach</h3>
+<h3>4. Technical Integrations, Security & Governance</h3>
+<p>[Deep integration with client APIs, SWIFT/FIX/FHIR/ERP protocols, automated audit telemetry, and regulatory standards (GDPR, SOC 2 Type II, ISO 27001).] </p>
+<ul>
+  <li><strong>Data Encryption & Privacy:</strong> [AES-256 at rest, TLS 1.3 in transit, and client-managed HSM envelope keys]</li>
+  <li><strong>Human-in-the-Loop Safeguards:</strong> [Configurable approval gates for high-value or edge-case transactions]</li>
+  <li><strong>Audit Trails:</strong> [Cryptographically immutable transaction logs and explainable decision trees]</li>
+</ul>
+
+<h3>5. Phased Implementation Roadmap</h3>
 <ol>
-  <li><strong>Phase 1 (1-2 Weeks) - [Client-Tailored Phase 1 Title]:</strong> [Specific discovery/audit deliverables tailored to this client]</li>
-  <li><strong>Phase 2 (2-3 Weeks) - [Client-Tailored Phase 2 Title]:</strong> [Architecture & design specific to client systems]</li>
-  <li><strong>Phase 3 (6-8 Weeks) - [Client-Tailored Phase 3 Title]:</strong> [Core agent engineering & backend integration]</li>
-  <li><strong>Phase 4 (2-3 Weeks) - [Client-Tailored Phase 4 Title]:</strong> [Pilot shadowing, testing & user acceptance]</li>
-  <li><strong>Phase 5 (Ongoing) - [Client-Tailored Phase 5 Title]:</strong> [Rollout, SLA management & continuous optimization]</li>
+  <li><strong>Phase 1 (1-2 Weeks) - Discovery & Systems Audit:</strong> Complete technical baseline, security audit, and API schema mapping. Deliverable: Architecture Blueprint.</li>
+  <li><strong>Phase 2 (2-3 Weeks) - Architecture & Mesh Topology Design:</strong> Containerized VPC setup, vector RAG indexing, and agent prompt guardrails. Deliverable: Prototype Sandbox.</li>
+  <li><strong>Phase 3 (6-8 Weeks) - Core Agent Engineering & Integration:</strong> Autonomous agent mesh implementation and core transactional ERP connectors. Deliverable: Staging Integration.</li>
+  <li><strong>Phase 4 (2-3 Weeks) - Pilot Shadowing, Pen-testing & UAT:</strong> Model hallucination testing, security penetration tests, and operational shadowing. Deliverable: Production Sign-off.</li>
+  <li><strong>Phase 5 (Ongoing) - Enterprise Rollout & Continuous Optimization:</strong> Enterprise SLA monitoring, 24/7 telemetry, and periodic model fine-tuning. Deliverable: Live Operations.</li>
 </ol>
 
-<h3>5. Tailored Cost Breakdown</h3>
+<h3>6. Tailored Cost Breakdown</h3>
 <p>Estimated investment for full enterprise delivery (single estimated USD per line):</p>
 <ul>
   <li><strong>[Custom Component 1] ($26,000):</strong> [Client-specific description referencing their agents]</li>
@@ -172,15 +185,29 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
   <li><strong>[Custom Component 6] ($5,000):</strong> [Project management & handover governance]</li>
 </ul>
 
-<h3>6. Human Intelligence Allocation</h3>
+<h3>7. Human Intelligence Allocation</h3>
 <ul>
   <li><strong>Project Manager:</strong> [Specific responsibilities for this client domain] (80 hours)</li>
-  <li><strong>[Domain Specialist Solutions Architect]:</strong> [Domain-specific architecture and acceptance mapping] (65-80 hours)</li>
-  <li><strong>AI/ML Engineer:</strong> [Model fine-tuning, RAG pipelines, and agent guardrails] (120-140 hours)</li>
-  <li><strong>Backend Integration Engineer:</strong> [Client database connectors and event pipelines] (140-160 hours)</li>
-  <li><strong>Frontend UX Engineer:</strong> [Custom operator workbench & customer touchpoints] (70-90 hours)</li>
-  <li><strong>QA & Compliance Specialist:</strong> [Domain regulatory audits, pen-testing & QA] (70-85 hours)</li>
+  <li><strong>[Domain Specialist Solutions Architect]:</strong> [Domain-specific architecture and acceptance mapping] (75 hours)</li>
+  <li><strong>AI/ML Engineer:</strong> [Model fine-tuning, RAG pipelines, and agent guardrails] (130 hours)</li>
+  <li><strong>Backend Integration Engineer:</strong> [Client database connectors and event pipelines] (155 hours)</li>
+  <li><strong>Frontend UX Engineer:</strong> [Custom operator workbench & customer touchpoints] (85 hours)</li>
+  <li><strong>QA & Compliance Specialist:</strong> [Domain regulatory audits, pen-testing & QA] (80 hours)</li>
   <li><strong>Support & DevOps Engineer:</strong> [Cloud deployment, monitoring & telemetry] (40 hours)</li>
+</ul>
+
+<h3>8. Assumptions & Dependencies</h3>
+<ul>
+  <li>Client will provide secure API credentials and sandbox environments for testing.</li>
+  <li>Third-party core system APIs support webhook notifications or streaming event triggers.</li>
+  <li>Subject matter experts will participate in bi-weekly design review and UAT shadowing sessions.</li>
+</ul>
+
+<h3>9. Expected Business Outcomes</h3>
+<ul>
+  <li>Target 65%+ reduction in manual operational and customer service overhead.</li>
+  <li>Sub-second query resolution and autonomous processing for standard business requests.</li>
+  <li>Complete verifiable audit compliance and zero data leakage across autonomous agents.</li>
 </ul>`;
 
     const res = await fetch(endpoint, {
