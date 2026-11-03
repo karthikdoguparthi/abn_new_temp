@@ -68,7 +68,7 @@ function deriveTopic(promptText) {
   let clean = promptText.trim()
     .replace(/^(?:please\s+)?(?:design|build|create|develop|generate|architect)\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform|agent\s+mesh)?\s*(?:for|to)?\s*/i, '')
     .replace(/^(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, '')
-    .replace(/\s*(?:agent\s+mesh|solution|platform|system)\s*$/i, '')
+    .replace(/\s*(?:agent\s+mesh|solution|platform|system|mesh)\s*$/i, '')
     .replace(/[.!?:;]+$/, '')
     .trim();
 

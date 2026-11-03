@@ -1091,135 +1091,170 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
   }
 
   /**
-   * Semantic Analysis of custom user input (handles tablets, manufacturing, administrative quotes, etc.)
+   * Semantic Analysis of custom user input (fully dynamic and customer-tailored)
    */
+  function derivePromptTopic(promptText) {
+    if (!promptText || !promptText.trim()) return "Enterprise AI";
+    let clean = promptText.trim()
+      .replace(/^(?:please\s+)?(?:design|build|create|develop|generate|architect)\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform|agent\s+mesh)?\s*(?:for|to)?\s*/i, "")
+      .replace(/^(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+      .replace(/\s*(?:agent\s+mesh|solution|platform|system|mesh)\s*$/i, "")
+      .replace(/[.!?:;]+$/, "")
+      .trim();
+    return clean.replace(/\b\w/g, c => c.toUpperCase()) || "Tailored Enterprise AI";
+  }
+
   function analyzeBusinessPrompt(text) {
     const t = text.toLowerCase();
+    const topic = derivePromptTopic(text);
+    const words = topic.split(/\s+/).filter(Boolean);
+    const primaryToken = words.slice(0, 2).join(" ");
+    const secondaryToken = words.length > 2 ? words.slice(-2).join(" ") : words[0];
 
-    let domainName = "Enterprise Business Process";
-    let targetOrg = "Enterprise Client";
+    let domainName = `${topic} Solution`;
+    let targetOrg = `${topic} Enterprise`;
     let agents = [];
     let modules = [];
-    let baseMultiplier = 1.0;
+    let baseMultiplier = 1.15;
 
-    // Check Insurance & Claims
-    if (t.includes('insurance') || t.includes('claim') || t.includes('policy') || t.includes('underwrit')) {
-      domainName = "Insurance AI Agent";
-      targetOrg = "Insurance Enterprise Client";
-      baseMultiplier = 1.15;
+    // Domain-specialized templates if explicit match, otherwise 100% dynamic token synthesis
+    if (t.includes('capital pooling') || t.includes('asset management') || t.includes('treasury') || t.includes('fund')) {
+      domainName = "Capital Pooling & Asset Management";
+      targetOrg = "Asset Management & Treasury Enterprise";
+      baseMultiplier = 1.35;
       agents = [
-        { name: "Policy Navigator Agent", role: "24/7 conversational coverage verification, endorsements, and policy status checks" },
-        { name: "Claims Intake & Triage Agent", role: "Automated FNOL processing, photo document validation, and straight-through routing" },
-        { name: "Underwriting Assistant Agent", role: "Real-time risk scoring, applicant history cross-checks, and preliminary rating" }
+        { name: "Liquidity Optimization Agent", role: "Real-time cash sweep execution, intercompany pooling, and yield optimization algorithms." },
+        { name: "Asset Allocation & Portfolio Agent", role: "Autonomous risk-weighted rebalancing, valuation simulations, and yield modeling." },
+        { name: "Compliance & Regulatory Sentinel", role: "Continuous KYC/AML screening, capital adequacy audits, and Basel III reporting." }
       ];
       modules = [
+        { name: "Liquidity Optimization", desc: "Automated sweeps, pooling, and multi-currency liquidity balancing", features: "Real-time Fix/SWIFT sync, multi-currency ledger hooks" },
+        { name: "Portfolio Asset Management", desc: "Real-time fund valuation, rebalancing triggers, and yield analytics", features: "Custodial databases, PMS feeds, risk matrices" },
+        { name: "Regulatory Compliance", desc: "Autonomous sanctions checking, KYC/AML screening, and audit logs", features: "Sanctions databases, immutable compliance ledgers" }
+      ];
+    } else if (t.includes('real estate') || t.includes('property') || t.includes('tenant') || t.includes('mls') || t.includes('broker')) {
+      domainName = "Real Estate & Property Management";
+      targetOrg = "Enterprise Real Estate Brokerage";
+      baseMultiplier = 1.15;
+      agents = [
+        { name: "Listing & MLS Query Agent", role: "Natural language search across MLS/IDX boards with multi-criteria filtering." },
+        { name: "Viewing & Escrow Coordinator", role: "Autonomous tour scheduling, lockbox credential dispatch, and buyer follow-ups." },
+        { name: "Transaction & Lease Agent", role: "Automated lease drafting, disclosure checklist validation, and e-signatures." }
+      ];
+      modules = [
+        { name: "Property Discovery", desc: "Semantic listing lookup and automated buyer matching", features: "RESO Web API, vector embeddings of listings" },
+        { name: "Tour Coordination", desc: "Automated scheduling, calendar sync, and identity verification", features: "Calendly/Google Calendar APIs, SMS gateways" },
+        { name: "Digital Closing", desc: "Automated document generation and compliance audit trails", features: "DocuSign/HelloSign APIs, document parsing" }
+      ];
+    } else if (t.includes('insurance') || t.includes('claim') || t.includes('policy') || t.includes('underwrit')) {
+      domainName = "Insurance AI Agent";
+      targetOrg = "Insurance Enterprise Client";
+      baseMultiplier = 1.2;
+      agents = [
+        { name: "FNOL Intake & Triage Agent", role: "Omnichannel claims ingestion, photo damage classification, and fraud pre-scoring." },
+        { name: "Policy Verification Agent", role: "Instantaneous coverage entitlement checks, deductible validation, and limits review." },
+        { name: "Underwriting & Adjudication Agent", role: "Real-time risk scoring, applicant history cross-checks, and repair rating." }
+      ];
+      modules = [
+        { name: "FNOL Intake & Telemetry", desc: "Automated FNOL intake, fraud telemetry, and damage assessment", features: "FNOL Intake, Photo Evidence Validation, Severity Routing" },
         { name: "Policy Administration", desc: "Automated policy renewals, endorsements, and customer inquiries", features: "Real-time Policy Query, Endorsements, Automated Validation" },
-        { name: "Claims Management", desc: "Automated FNOL intake, fraud telemetry, and damage assessment", features: "FNOL Intake, Photo Evidence Validation, Severity Routing" },
         { name: "Underwriting Support", desc: "Risk parameter validation, registry cross-checks, and rating", features: "Actuarial Data Ingestion, Fraud Check, Automated Risk Scoring" }
       ];
-    } else // Check specific Tablet / Hardware Manufacturing
-    if (t.includes('tablet') || (t.includes('factory') && (t.includes('manufactur') || t.includes('administrative') || t.includes('quote')))) {
+    } else if (t.includes('tablet') || (t.includes('factory') && (t.includes('manufactur') || t.includes('administrative') || t.includes('quote')))) {
       domainName = "Tablet Manufacturing & Plant Administration";
       targetOrg = "Tablet Manufacturing Factory";
       baseMultiplier = 1.25;
       agents = [
-        { name: "Administrative Process & ERP Agent", role: "Automated quotation generation, invoice reconciliation, and procurement sign-offs" },
-        { name: "Bill of Materials (BOM) & Inventory Agent", role: "Real-time tablet components tracking (SoC, displays, batteries, chassis) and supplier orders" },
-        { name: "Plant Floor Compliance & QA Agent", role: "ISO 9001 compliance audit trails, shift handovers, and administrative labor tracking" }
+        { name: "Administrative Process & ERP Agent", role: "Automated quotation generation, invoice reconciliation, and procurement sign-offs." },
+        { name: "Bill of Materials (BOM) & Inventory Agent", role: "Real-time tablet components tracking (SoC, displays, batteries, chassis) and supplier orders." },
+        { name: "Plant Floor Compliance & QA Agent", role: "ISO 9001 compliance audit trails, shift handovers, and administrative labor tracking." }
       ];
       modules = [
-        { name: "Administrative Quotation & Billing", desc: "Automated RFQ processing, vendor quoting, and finance administration" },
-        { name: "BOM & Component Supply Chain", desc: "Tablet hardware component telemetry, lead time tracking, and auto-replenish" },
-        { name: "Regulatory & Quality Governance", desc: "Digital administrative records, device serialization, and warranty dispatch" }
+        { name: "Administrative Quotation & Billing", desc: "Automated RFQ processing, vendor quoting, and finance administration", features: "Automated RFQ Parsing, Cost Modeler, ERP Connectors" },
+        { name: "BOM & Component Supply Chain", desc: "Tablet hardware component telemetry, lead time tracking, and auto-replenish", features: "Component Serial Tracking, Supplier Catalog Sync" },
+        { name: "Regulatory & Quality Governance", desc: "Digital administrative records, device serialization, and warranty dispatch", features: "ISO 9001 Audit Logs, Quality Telemetry" }
       ];
     } else if (t.includes('health') || t.includes('clinic') || t.includes('hospital') || t.includes('doctor') || t.includes('patient')) {
       domainName = "Healthcare & Clinical Systems";
       targetOrg = "Healthcare Enterprise";
       baseMultiplier = 1.25;
       agents = [
-        { name: "Patient Triage Agent", role: "Symptom intake, urgency categorization, and clinical routing" },
-        { name: "Clinical Scheduling Agent", role: "Doctor rota balancing, patient appointment booking, and reminders" },
-        { name: "EHR Integration Agent", role: "FHIR/HL7 sync, secure record indexing, and HIPAA/NHS compliance" }
+        { name: "Patient Triage Agent", role: "Symptom intake, urgency categorization, and clinical routing." },
+        { name: "Clinical Scheduling Agent", role: "Doctor rota balancing, patient appointment booking, and reminders." },
+        { name: "EHR Integration Agent", role: "FHIR/HL7 sync, secure record indexing, and HIPAA/NHS compliance." }
       ];
       modules = [
-        { name: "Patient Intake & Triage", desc: "Automated clinical triage and risk classification" },
-        { name: "Practitioner Scheduling", desc: "Intelligent scheduling matching patient acuity with specialists" },
-        { name: "Health Record Interop", desc: "Secure encrypted sync with existing EHR/EMR databases" }
+        { name: "Patient Intake & Triage", desc: "Automated clinical triage and risk classification", features: "Symptom Checker, Triage Protocol, Urgent Routing" },
+        { name: "Practitioner Scheduling", desc: "Intelligent scheduling matching patient acuity with specialists", features: "Calendar Balancing, Smart Reminders, Rota Sync" },
+        { name: "Health Record Interop", desc: "Secure encrypted sync with existing EHR/EMR databases", features: "FHIR/HL7 Encrypted Transport, Zero-Trust Storage" }
       ];
     } else if (t.includes('bank') || t.includes('financ') || t.includes('loan') || t.includes('credit') || t.includes('fca') || t.includes('kyc') || t.includes('aml')) {
       domainName = "Banking & FinTech";
       targetOrg = "Financial Institution";
       baseMultiplier = 1.4;
       agents = [
-        { name: "Underwriting & Credit Agent", role: "Real-time financial statement ingestion and credit score assessment" },
-        { name: "Fraud & AML Telemetry Agent", role: "Continuous graph transaction anomaly detection" },
-        { name: "Regulatory Compliance Sentinel", role: "Automated FCA/GDPR audit trail generation and policy checks" }
+        { name: "Underwriting & Credit Agent", role: "Real-time financial statement ingestion and credit score assessment." },
+        { name: "Fraud & AML Telemetry Agent", role: "Continuous graph transaction anomaly detection." },
+        { name: "Regulatory Compliance Sentinel", role: "Automated FCA/GDPR audit trail generation and policy checks." }
       ];
       modules = [
-        { name: "Credit Decisioning", desc: "Autonomous document verification and underwriting approval" },
-        { name: "Fraud Telemetry", desc: "Sub-second transaction risk evaluation" },
-        { name: "Regulatory Governance", desc: "Explainable compliance logs and audit verification" }
+        { name: "Credit Decisioning", desc: "Autonomous document verification and underwriting approval", features: "Real-time Ingestion, Credit Scoring, Risk Trees" },
+        { name: "Fraud Telemetry", desc: "Sub-second transaction risk evaluation", features: "Graph Anomaly Detection, Blacklist Checks" },
+        { name: "Regulatory Governance", desc: "Explainable compliance logs and audit verification", features: "FCA/GDPR Audit Trails, Zero-Knowledge Verification" }
       ];
     } else if (t.includes('logistic') || t.includes('freight') || t.includes('shipping') || t.includes('warehouse') || t.includes('delivery') || t.includes('fleet')) {
       domainName = "Logistics & Supply Chain";
       targetOrg = "Supply Chain Operations";
       baseMultiplier = 1.15;
       agents = [
-        { name: "Route Optimization Agent", role: "Dynamic GPS and traffic-aware dispatch route calculation" },
-        { name: "Warehouse Stock Agent", role: "Real-time RFID/barcode tracking and automated restocking" },
-        { name: "Carrier Dispatch Agent", role: "Automated consignment booking and carrier rate negotiation" }
+        { name: "Route Optimization Agent", role: "Dynamic GPS and traffic-aware dispatch route calculation." },
+        { name: "Warehouse Stock Agent", role: "Real-time RFID/barcode tracking and automated restocking." },
+        { name: "Carrier Dispatch Agent", role: "Automated consignment booking and carrier rate negotiation." }
       ];
       modules = [
-        { name: "Dynamic Fleet Routing", desc: "Real-time fuel and traffic route optimization" },
-        { name: "Warehouse Automation", desc: "Inventory telemetry, bin assignment, and dispatch staging" },
-        { name: "Carrier Engagement", desc: "Automated carrier dispatch hooks and exception reporting" }
-      ];
-    } else if (t.includes('commerce') || t.includes('retail') || t.includes('store') || t.includes('shop') || t.includes('order')) {
-      domainName = "E-commerce AI Agent";
-      targetOrg = "Client Business";
-      baseMultiplier = 1.0;
-      agents = [
-        { name: "Customer Support Agent", role: "24/7 Support, FAQs, Order Tracking, Returns & Refunds" },
-        { name: "Order Management Agent", role: "Automated order processing, tracking, notifications, exception handling" },
-        { name: "Inventory Management Agent", role: "Real-time tracking, forecasting, low stock alerts" }
-      ];
-      modules = [
-        { name: "Customer Support", desc: "AI-driven customer support and engagement", features: "24/7 Support, FAQs, Order Tracking, Returns & Refunds" },
-        { name: "Order Management", desc: "Automated order processing and tracking", features: "Order Processing, Tracking, Notifications, Exception Handling" },
-        { name: "Inventory Management", desc: "Real-time inventory tracking and management", features: "Real-time Tracking, Forecasting, Low Stock Alerts" }
-      ];
-    } else if (t.includes('legal') || t.includes('contract') || t.includes('law') || t.includes('compliance')) {
-      domainName = "Legal & Contract Intelligence";
-      targetOrg = "Legal & Professional Services";
-      baseMultiplier = 1.3;
-      agents = [
-        { name: "Contract Review Agent", role: "Clause discrepancy detection, risk scoring, and amendment suggestions" },
-        { name: "Precedent Research Agent", role: "Semantic case law indexing and regulatory benchmark synthesis" },
-        { name: "Client Intake Agent", role: "Secure onboarding, conflict-of-interest screening, and NDA routing" }
-      ];
-      modules = [
-        { name: "Contract Analysis", desc: "Automated extraction and redlining of key commercial terms" },
-        { name: "Legal Discovery", desc: "Enterprise semantic search across institutional documents" },
-        { name: "Engagement Onboarding", desc: "Compliant client intake and matter classification" }
+        { name: "Dynamic Fleet Routing", desc: "Real-time fuel and traffic route optimization", features: "GPS Telemetry, Multi-stop TSP Routing" },
+        { name: "Warehouse Automation", desc: "Inventory telemetry, bin assignment, and dispatch staging", features: "RFID Tracking, Reorder Automation" },
+        { name: "Carrier Engagement", desc: "Automated carrier dispatch hooks and exception reporting", features: "Rate Engine, Consignment API Sync" }
       ];
     } else {
-      // General Business & Administrative Automation
-      domainName = "Business & Operations Automation";
-      targetOrg = "Enterprise Business Operations";
-      baseMultiplier = 1.1;
+      // 100% Dynamic Topic Synthesis for ANY custom user prompt
+      domainName = `${topic} Solution`;
+      targetOrg = `${topic} Enterprise`;
+      baseMultiplier = 1.15;
       agents = [
-        { name: "Process Automation Agent", role: "Automated workflow ingestion, validation, and multi-department routing" },
-        { name: "Administrative Audit Agent", role: "Cost calculation, quoting, and reconciliation of operational records" },
-        { name: "Enterprise Coordination Agent", role: "Real-time reporting, stakeholder alerts, and human sign-off escalation" }
+        {
+          name: `${primaryToken} Orchestration Agent`,
+          role: `Autonomous intake, semantic intent verification, and cognitive event routing for ${topic.toLowerCase()}.`
+        },
+        {
+          name: `${secondaryToken} Execution & Integration Agent`,
+          role: `Straight-through execution, transactional consistency checks, and core systems synchronization.`
+        },
+        {
+          name: `${words[0]} Intelligence & Compliance Sentinel`,
+          role: `Continuous policy enforcement, zero-trust cryptographic audit trails, and SLA anomaly alerts.`
+        }
       ];
       modules = [
-        { name: "Administrative Workflows", desc: "End-to-end task delegation and digital approvals" },
-        { name: "Financial & Quotation Engine", desc: "Operational quoting, cost estimation, and invoice tracking" },
-        { name: "Executive Oversight", desc: "Real-time process telemetry, audit logs, and status dashboards" }
+        {
+          name: `${primaryToken} Workflow Engine`,
+          desc: `Automated intake, routing, and real-time event pipeline for ${topic.toLowerCase()}`,
+          features: "Real-time Event Hooks, Intent Classification, Dead-letter Queues"
+        },
+        {
+          name: `${secondaryToken} Integration Suite`,
+          desc: `Direct bidirectional connectors and secure enterprise API sync`,
+          features: "REST/GraphQL Webhooks, Microservices Mesh, Atomic Ledger Sync"
+        },
+        {
+          name: "Security & Regulatory Governance",
+          desc: `Compliance telemetry, automated audit logs, and exception routing`,
+          features: "SOC 2 / GDPR Telemetry, Role-Based Access, Immutable Logs"
+        }
       ];
     }
 
-    return { domainName, targetOrg, agents, modules, baseMultiplier };
+    return { domainName, targetOrg, topic, agents, modules, baseMultiplier };
   }
 
   function buildModelPerspectiveResponse(analysis, modelName, promptText) {
@@ -1263,21 +1298,22 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
   }
 
   function buildActiveBrainsSolutionPlan(analysis, promptText) {
-    const costMult = analysis.baseMultiplier;
-    const isEcom = analysis.domainName.includes("E-commerce");
-    
-    const agentDevCost = isEcom ? 25000 : Math.round(26000 * costMult);
-    const integrationCost = isEcom ? 15000 : Math.round(16000 * costMult);
-    const cloudCost = isEcom ? 9000 : Math.round(9000 * costMult);
-    const uxCost = isEcom ? 6000 : Math.round(6500 * costMult);
-    const qaCost = isEcom ? 5000 : Math.round(6000 * costMult);
-    const pmCost = isEcom ? 5000 : Math.round(5500 * costMult);
+    const costMult = analysis.baseMultiplier || 1.15;
+    const topic = analysis.topic || derivePromptTopic(promptText);
+    const words = topic.split(/\s+/).filter(Boolean);
+    const primaryToken = words.slice(0, 2).join(" ");
+    const secondaryToken = words.length > 2 ? words.slice(-2).join(" ") : words[0];
+
+    const agentDevCost = Math.round(27000 * costMult);
+    const integrationCost = Math.round(16000 * costMult);
+    const cloudCost = Math.round(9500 * costMult);
+    const uxCost = Math.round(6500 * costMult);
+    const qaCost = Math.round(5500 * costMult);
+    const pmCost = Math.round(5000 * costMult);
     const totalEst = agentDevCost + integrationCost + cloudCost + uxCost + qaCost + pmCost;
 
-    const formattedTotal = `$${totalEst.toLocaleString()}`;
-
     const scope = analysis.modules.map((m, idx) => {
-      const assignedAgent = analysis.agents[idx] ? analysis.agents[idx].name : "Supervisory Agent";
+      const assignedAgent = analysis.agents[idx] ? analysis.agents[idx].name : `${primaryToken} Autonomous Agent`;
       return {
         module: m.name,
         desc: m.desc,
@@ -1286,57 +1322,34 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
       };
     });
 
-    const phases = isEcom ? [
-      { num: "Phase 1", title: "Discovery & Planning", duration: "1-2 Weeks", icon: "📋", green: false },
-      { num: "Phase 2", title: "Design & Architecture", duration: "2-3 Weeks", icon: "📐", green: true },
-      { num: "Phase 3", title: "Development & Integration", duration: "6-8 Weeks", icon: "</>", green: false },
-      { num: "Phase 4", title: "Testing & Deployment", duration: "2-3 Weeks", icon: "✓", green: true },
-      { num: "Phase 5", title: "Support & Optimization", duration: "Ongoing", icon: "🎧", green: false }
-    ] : [
-      { num: "Phase 1", title: "Discovery & Administrative Workflow Audit", duration: "1-2 Weeks", icon: "📋", green: false },
-      { num: "Phase 2", title: "Architecture & Agent Wireframing", duration: "2-3 Weeks", icon: "📐", green: true },
-      { num: "Phase 3", title: "ERP Integration & Agent Orchestration", duration: "6-8 Weeks", icon: "</>", green: false },
-      { num: "Phase 4", title: "Pilot Shadowing & Validation", duration: "2-3 Weeks", icon: "✓", green: true },
-      { num: "Phase 5", title: "Factory Rollout & Ongoing Support", duration: "Ongoing", icon: "🎧", green: false }
+    const phases = [
+      { num: "Phase 1", title: `${primaryToken} Discovery & Systems Audit`, duration: "1-2 Weeks", icon: "📋", green: false },
+      { num: "Phase 2", title: `${topic} Topology & Architecture Design`, duration: "2-3 Weeks", icon: "📐", green: true },
+      { num: "Phase 3", title: `${secondaryToken} Agent Mesh & Core Integration`, duration: "6-8 Weeks", icon: "</>", green: false },
+      { num: "Phase 4", title: "Pilot Shadowing, Penetration Testing & UAT", duration: "2-3 Weeks", icon: "✓", green: true },
+      { num: "Phase 5", title: `${primaryToken} Rollout & Continuous Optimization`, duration: "Ongoing", icon: "🎧", green: false }
     ];
 
-    const costItems = isEcom ? [
-      { comp: "AI Agent Development", desc: "Development of 3 AI Agents", baseCost: 25000 },
-      { comp: "System Integration", desc: "Integration with existing systems", baseCost: 15000 },
-      { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", baseCost: 9000 },
-      { comp: "UI/UX Design", desc: "User interface and experience design", baseCost: 6000 },
-      { comp: "Testing & QA", desc: "Quality assurance and testing", baseCost: 5000 },
-      { comp: "Project Management", desc: "Project management and reporting", baseCost: 5000 }
-    ] : [
-      { comp: "Autonomous Agent Development", desc: `Design & engineering of ${analysis.agents.length} dedicated agents`, baseCost: agentDevCost },
-      { comp: "System & ERP Integration", desc: "Automated quotation pipeline, database sync, and API connectors", baseCost: integrationCost },
-      { comp: "Cloud / On-prem Infrastructure", desc: "Private VPC compute, database indexing, and caching (3 months)", baseCost: cloudCost },
-      { comp: "Administrative UI & Controls", desc: "Operator control portal, quote review queue, and status boards", baseCost: uxCost },
-      { comp: "Testing, QA & Security", desc: "Process validation, penetration testing, and compliance certification", baseCost: qaCost },
-      { comp: "Project Management & Handover", desc: "Technical delivery steering, documentation, and staff onboarding", baseCost: pmCost }
+    const costItems = [
+      { comp: `${primaryToken} Agent Mesh Core`, desc: `Engineering, prompt fine-tuning, and guardrails for ${analysis.agents.length} dedicated agents`, baseCost: agentDevCost },
+      { comp: `${secondaryToken} Integration Suite`, desc: `Secure enterprise connectors, transactional webhooks, and core sync`, baseCost: integrationCost },
+      { comp: "Cloud Infrastructure & Private VPC", desc: "Zero-trust containerized environment, HSM encryption & monitoring", baseCost: cloudCost },
+      { comp: "Operator Workbench & Portal UX", desc: "Human-in-the-loop oversight console and administrative dashboard", baseCost: uxCost },
+      { comp: "Security, QA & Regulatory Auditing", desc: "Penetration testing, compliance verification (SOC 2, GDPR, ISO)", baseCost: qaCost },
+      { comp: "Project Management & Enablement", desc: "Agile delivery governance, documentation, and operational handover", baseCost: pmCost }
     ];
 
-    const humanIntelligence = isEcom ? [
-      { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
-      { role: "Business Analyst", resp: "Requirement gathering, analysis and documentation", effort: "60" },
-      { role: "AI/ML Engineer", resp: "AI model development and optimization", effort: "120" },
-      { role: "Backend Developer", resp: "System development and integration", effort: "160" },
-      { role: "Frontend Developer", resp: "UI development and integration", effort: "80" },
-      { role: "QA Engineer", resp: "Testing and quality assurance", effort: "80" },
-      { role: "Support Engineer", resp: "Deployment and post-launch support", effort: "40" }
-    ] : [
-      { role: "Enterprise Solution Architect", resp: "Oversees topology, agent guardrails, and enterprise integration", effort: `${Math.round(80 * costMult)}` },
-      { role: "Senior AI / Agentic Engineer", resp: "Agent workflow orchestration, model prompt tuning, and logic trees", effort: `${Math.round(140 * costMult)}` },
-      { role: "Backend Systems Developer", resp: "ERP connectors, quotation engine APIs, and secure database pipelines", effort: `${Math.round(160 * costMult)}` },
-      { role: "Process Business Analyst", resp: "Administrative discovery, workflow mapping, and acceptance criteria", effort: `${Math.round(75 * costMult)}` },
-      { role: "Frontend / UX Developer", resp: "Operator dashboard, quotation review forms, and management reports", effort: `${Math.round(85 * costMult)}` },
-      { role: "QA & Verification Specialist", resp: "Automated regression testing and edge-case validation", effort: `${Math.round(80 * costMult)}` },
-      { role: "Delivery & Support Lead", resp: "Factory deployment coordination, staff training, and ongoing support", effort: `${Math.round(40 * costMult)}` }
+    const humanIntelligence = [
+      { role: "Project Manager", resp: "Sprint management, risk mitigation, and enterprise milestone reporting", effort: "80" },
+      { role: `${primaryToken} Solutions Architect`, resp: "Topology governance, system boundaries, and enterprise integration", effort: `${Math.round(75 * costMult)}` },
+      { role: "AI/ML Engineer", resp: "Model prompt engineering, agent orchestration, and guardrail validation", effort: `${Math.round(130 * costMult)}` },
+      { role: "Backend Developer", resp: "System connectors, database pipelines, and webhook APIs", effort: `${Math.round(155 * costMult)}` },
+      { role: "Frontend UX Developer", resp: "Operator dashboard, approval workbench, and user interfaces", effort: `${Math.round(85 * costMult)}` },
+      { role: "QA & Compliance Engineer", resp: "Penetration testing, regulatory audits, and quality assurance", effort: `${Math.round(80 * costMult)}` },
+      { role: "Support & DevOps Lead", resp: "Cloud provisioning, CI/CD pipelines, and telemetry monitoring", effort: "40" }
     ];
 
-    const executiveSummary = isEcom
-      ? "This solution leverages AI agents to automate and optimize key business functions including customer support, order management, and inventory management. The proposed solution is scalable, secure, and designed to improve efficiency and customer satisfaction."
-      : `Tailored for ${analysis.targetOrg}, this solution deploys ${analysis.agents.length} intelligent agents to automate ${analysis.modules.map(m => m.name.toLowerCase()).join(', ')}. Engineered on Active Brains enterprise principles, the system drastically cuts administrative overhead, accelerates quote generation, and provides verifiable auditability across all enterprise workflows.`;
+    const executiveSummary = `Tailored specifically for ${analysis.targetOrg}, this enterprise solution establishes an Active Brains autonomous multi-agent mesh for ${topic.toLowerCase()}. Engineered for resilient enterprise operations, the platform combines real-time system integration, explainable decision guardrails, and cryptographic auditability to deliver measurable operational acceleration while strictly maintaining regulatory compliance.`;
 
     return {
       title: "Business Solution & Delivery Plan",

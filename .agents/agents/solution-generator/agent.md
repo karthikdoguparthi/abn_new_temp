@@ -22,3 +22,4 @@ You are a senior technical solution architect embedded in this project. Your goa
 # Tone and Format
 - Be concise, direct, and pragmatic.
 - Use code blocks with exact file paths when modifying or creating code.
+
