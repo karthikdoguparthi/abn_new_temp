@@ -447,13 +447,14 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
 </ol>
 
 <h3>5. Tailored Cost Breakdown</h3>
+<p>Estimated investment for full enterprise delivery (output a single realistic USD estimate per line item, e.g. $26,000):</p>
 <ul>
-  <li><strong>[Custom Component 1] ($22,000-$32,000):</strong> [Client-specific description referencing their agents]</li>
-  <li><strong>[Custom Component 2] ($12,000-$18,000):</strong> [Integration with client-specific enterprise tools/APIs]</li>
-  <li><strong>[Custom Component 3] ($7,000-$11,000):</strong> [Dedicated cloud infrastructure/VPC]</li>
-  <li><strong>[Custom Component 4] ($5,000-$7,500):</strong> [Custom operator portal & UX interfaces]</li>
-  <li><strong>[Custom Component 5] ($4,000-$6,000):</strong> [Security, QA & regulatory compliance verification]</li>
-  <li><strong>[Custom Component 6] ($4,000-$6,000):</strong> [Project management & handover governance]</li>
+  <li><strong>[Custom Component 1] ($26,000):</strong> [Client-specific description referencing their agents]</li>
+  <li><strong>[Custom Component 2] ($15,000):</strong> [Integration with client-specific enterprise tools/APIs]</li>
+  <li><strong>[Custom Component 3] ($9,000):</strong> [Dedicated cloud infrastructure/VPC]</li>
+  <li><strong>[Custom Component 4] ($6,500):</strong> [Custom operator portal & UX interfaces]</li>
+  <li><strong>[Custom Component 5] ($5,000):</strong> [Security, QA & regulatory compliance verification]</li>
+  <li><strong>[Custom Component 6] ($5,000):</strong> [Project management & handover governance]</li>
 </ul>
 
 <h3>6. Human Intelligence Allocation</h3>
@@ -719,41 +720,61 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
       }
     }
 
-    // 3. Detect Domain and Target Organization
-    let solutionName = "Tailored Enterprise AI Solution";
-    let targetOrg = "Client Enterprise";
-    let domainName = "Enterprise AI Solution";
+    // 3. Detect Domain, Solution Name, and Target Organization
+    // Dynamically derive client topic and name from prompt whenever possible
+    let derivedTopic = "";
+    if (promptText && promptText.trim()) {
+      derivedTopic = promptText.trim()
+        .replace(/^design\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+        .replace(/^build\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+        .replace(/^create\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+        .replace(/^develop\s+(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+        .replace(/^(?:an?\s+)?(?:ai\s+|customer\s+service\s+|enterprise\s+)?(?:solution|system|platform)\s+for\s+/i, "")
+        .replace(/[.!?:;]+$/, "")
+        .trim();
+      // Capitalize first letters of words
+      derivedTopic = derivedTopic.replace(/\b\w/g, c => c.toUpperCase());
+    }
 
-    if (combined.includes('real estate') || combined.includes('property') || combined.includes('broker') || combined.includes('mls') || combined.includes('realtor') || combined.includes('tenant') || combined.includes('lease')) {
-      solutionName = "Real Estate AI Agent Solution";
+    let solutionName = derivedTopic ? `${derivedTopic} AI Solution` : "Tailored Enterprise AI Solution";
+    let targetOrg = derivedTopic ? `${derivedTopic} Enterprise` : "Client Enterprise";
+    let domainName = derivedTopic || "Enterprise AI Solution";
+
+    // If derived topic is broad or absent, map to specific domain specialties
+    if (combined.includes('capital pooling') || combined.includes('asset management')) {
+      solutionName = "Capital Pooling & Asset Management AI Solution";
+      targetOrg = "Asset Management & Treasury Enterprise";
+      domainName = "Capital Pooling & Asset Management";
+    } else if (combined.includes('real estate') || combined.includes('property') || combined.includes('broker') || combined.includes('mls') || combined.includes('realtor') || combined.includes('tenant') || combined.includes('lease')) {
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Real Estate AI Agent Solution";
       targetOrg = "Enterprise Real Estate Brokerage";
       domainName = "Real Estate & Property Management";
     } else if (combined.includes('insurance') || combined.includes('claims') || combined.includes('policy') || combined.includes('underwriting')) {
-      solutionName = "Insurance AI Agent Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Insurance AI Agent Solution";
       targetOrg = "Insurance Enterprise Client";
       domainName = "Insurance & Claims Management";
     } else if (combined.includes('health') || combined.includes('clinic') || combined.includes('hospital') || combined.includes('doctor') || combined.includes('patient') || combined.includes('ehr')) {
-      solutionName = "Healthcare & Clinical AI Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Healthcare & Clinical AI Solution";
       targetOrg = "Healthcare Enterprise";
       domainName = "Healthcare & Clinical Systems";
     } else if (combined.includes('bank') || combined.includes('fintech') || combined.includes('investment') || combined.includes('fca') || combined.includes('fraud') || combined.includes('kyc')) {
-      solutionName = "FinTech & Banking AI Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "FinTech & Banking AI Solution";
       targetOrg = "Financial Institution Client";
       domainName = "Banking & FinTech";
     } else if (combined.includes('commerce') || combined.includes('retail') || combined.includes('store') || combined.includes('shop') || combined.includes('order')) {
-      solutionName = "E-commerce AI Agent Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "E-commerce AI Agent Solution";
       targetOrg = "Client Business";
       domainName = "E-commerce & Retail";
     } else if (combined.includes('tablet') || combined.includes('factory') || combined.includes('hardware') || combined.includes('manufactur') || combined.includes('assembly')) {
-      solutionName = "Manufacturing & Plant AI Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Manufacturing & Plant AI Solution";
       targetOrg = "Manufacturing Enterprise";
       domainName = "Hardware & Plant Automation";
     } else if (combined.includes('logistic') || combined.includes('freight') || combined.includes('shipping') || combined.includes('warehouse') || combined.includes('fleet')) {
-      solutionName = "Logistics & Supply Chain AI Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Logistics & Supply Chain AI Solution";
       targetOrg = "Global Logistics Operator";
       domainName = "Logistics & Supply Chain";
     } else if (combined.includes('legal') || combined.includes('contract') || combined.includes('compliance')) {
-      solutionName = "Legal & Compliance AI Solution";
+      solutionName = derivedTopic ? `${derivedTopic} Solution` : "Legal & Compliance AI Solution";
       targetOrg = "Legal & Professional Services";
       domainName = "Legal & Contract Intelligence";
     } else {
@@ -763,8 +784,8 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
       } else {
         solutionName = "Intelligent Operations AI Solution";
       }
-      targetOrg = "Enterprise Business Client";
-      domainName = "Business & Operations Automation";
+      targetOrg = derivedTopic ? `${derivedTopic} Enterprise` : "Enterprise Business Client";
+      domainName = derivedTopic || "Business & Operations Automation";
     }
 
     // 4. Build Scope Table rows from Extracted Agents
@@ -870,7 +891,24 @@ Deliver a comprehensive, 100% custom enterprise solution tailored directly to th
       const comp = stripHtml(cMatch[1]);
       const costStr = cMatch[2].trim();
       const desc = stripHtml(cMatch[3]);
-      const numVal = Number(costStr.replace(/[^0-9.]/g, '')) || 0;
+
+      // Parse cost safely: if range like "$22,000–$32,000" or "$22,000-$32,000", average the low and high
+      const numbers = costStr.match(/\$?\s*([0-9]{1,3}(?:,[0-9]{3})*(?:\.[0-9]+)?|\d+(?:\.\d+)?)/g);
+      let numVal = 0;
+      if (numbers && numbers.length > 0) {
+        const cleanNums = numbers.map(n => Number(n.replace(/[^0-9.]/g, ''))).filter(n => !isNaN(n) && n > 0);
+        if (cleanNums.length >= 2) {
+          numVal = Math.round((cleanNums[0] + cleanNums[1]) / 2);
+        } else if (cleanNums.length === 1) {
+          numVal = cleanNums[0];
+        }
+      }
+
+      // Sanity clamp: single IT solution component should be between $1,000 and $150,000
+      if (numVal > 150000) {
+        numVal = 32000;
+      }
+
       if (comp && numVal > 0) {
         extractedCosts.push({
           comp: comp,
