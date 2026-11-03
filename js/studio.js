@@ -421,21 +421,51 @@
 
           const promptPayload = `Client Business Requirement: "${prompt}".
 
-Deliver a comprehensive client-ready enterprise solution in clean HTML without markdown code blocks, backticks, or scratchpad notes. Explicitly invent and specify 3 distinct autonomous AI agents tailored specifically to this requirement:
+Deliver a comprehensive, 100% custom enterprise solution tailored directly to this requirement in clean HTML (no markdown, no backticks):
 
 <h3>1. Executive Overview & Solution Architecture</h3>
-<p>[Provide 2 clear, authoritative paragraphs describing the target architecture, business impact, and operational transformation for this requirement.]</p>
+<p>[2 authoritative paragraphs detailing target architecture, domain impact, and operational ROI specifically for this client requirement.]</p>
 
 <h3>2. Autonomous Multi-Agent Mesh</h3>
 <p>The solution deploys coordinated autonomous agents within an Active Brains enterprise mesh:</p>
 <ul>
-  <li><strong>[Tailored Agent Name 1]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous capabilities and decision tools. Sentence 3: Enterprise integration hooks.]</li>
-  <li><strong>[Tailored Agent Name 2]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous capabilities and decision tools. Sentence 3: Enterprise integration hooks.]</li>
-  <li><strong>[Tailored Agent Name 3]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous capabilities and decision tools. Sentence 3: Enterprise integration hooks.]</li>
+  <li><strong>[Domain-Specific Agent Name 1]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
+  <li><strong>[Domain-Specific Agent Name 2]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
+  <li><strong>[Domain-Specific Agent Name 3]:</strong> [Sentence 1: Exact role & purpose. Sentence 2: Key autonomous decision tools. Sentence 3: Enterprise integration hooks.]</li>
 </ul>
 
 <h3>3. Enterprise Integration, Security & Governance</h3>
-<p>[Detail the enterprise cloud infrastructure, APIs/webhooks, data privacy/residency, and industry compliance standards.]</p>`;
+<p>[Cloud topology, microservices, specialized APIs/connectors, and regulatory standards (GDPR, SOC 2, HIPAA, ISO).] </p>
+
+<h3>4. Phased Delivery Approach</h3>
+<ol>
+  <li><strong>Phase 1 (1-2 Weeks) - [Client-Tailored Phase 1 Title]:</strong> [Specific discovery/audit deliverables tailored to this client]</li>
+  <li><strong>Phase 2 (2-3 Weeks) - [Client-Tailored Phase 2 Title]:</strong> [Architecture & design specific to client systems]</li>
+  <li><strong>Phase 3 (6-8 Weeks) - [Client-Tailored Phase 3 Title]:</strong> [Core agent engineering & backend integration]</li>
+  <li><strong>Phase 4 (2-3 Weeks) - [Client-Tailored Phase 4 Title]:</strong> [Pilot shadowing, testing & user acceptance]</li>
+  <li><strong>Phase 5 (Ongoing) - [Client-Tailored Phase 5 Title]:</strong> [Rollout, SLA management & continuous optimization]</li>
+</ol>
+
+<h3>5. Tailored Cost Breakdown</h3>
+<ul>
+  <li><strong>[Custom Component 1] ($22,000-$32,000):</strong> [Client-specific description referencing their agents]</li>
+  <li><strong>[Custom Component 2] ($12,000-$18,000):</strong> [Integration with client-specific enterprise tools/APIs]</li>
+  <li><strong>[Custom Component 3] ($7,000-$11,000):</strong> [Dedicated cloud infrastructure/VPC]</li>
+  <li><strong>[Custom Component 4] ($5,000-$7,500):</strong> [Custom operator portal & UX interfaces]</li>
+  <li><strong>[Custom Component 5] ($4,000-$6,000):</strong> [Security, QA & regulatory compliance verification]</li>
+  <li><strong>[Custom Component 6] ($4,000-$6,000):</strong> [Project management & handover governance]</li>
+</ul>
+
+<h3>6. Human Intelligence Allocation</h3>
+<ul>
+  <li><strong>Project Manager:</strong> [Specific responsibilities for this client domain] (80 hours)</li>
+  <li><strong>[Domain Specialist e.g. Real Estate/FinTech/Healthcare Solutions Architect]:</strong> [Domain-specific architecture and acceptance mapping] (65-80 hours)</li>
+  <li><strong>AI/ML Engineer:</strong> [Model fine-tuning, RAG pipelines, and agent guardrails] (120-140 hours)</li>
+  <li><strong>Backend Integration Engineer:</strong> [Client database connectors and event pipelines] (140-160 hours)</li>
+  <li><strong>Frontend UX Engineer:</strong> [Custom operator workbench & customer touchpoints] (70-90 hours)</li>
+  <li><strong>QA & Compliance Specialist:</strong> [Domain regulatory audits, pen-testing & QA] (70-85 hours)</li>
+  <li><strong>Support & DevOps Engineer:</strong> [Cloud deployment, monitoring & telemetry] (40 hours)</li>
+</ul>`;
 
           const res = await fetch(endpoint, {
             method: 'POST',
@@ -632,12 +662,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
    */
   function stripHtml(input) {
     if (!input) return '';
-    if (typeof document !== 'undefined' && document.createElement) {
-      const tmp = document.createElement('div');
-      tmp.innerHTML = input;
-      return (tmp.textContent || tmp.innerText || '').trim();
-    }
-    // Multi-pass iterative strip to safely neutralize nested tags
+    // Convergent multi-pass loop safely strips HTML tags in all browser and headless runtimes
     let str = String(input);
     let previous;
     do {
@@ -652,7 +677,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
 
     // 1. Executive Summary: extract text under section 1
     let execSummary = '';
-    const execMatch = html.match(/<h3>1\.\s*Executive Overview[^<]*<\/h3>([\s\S]*?)<h3>/i);
+    const execMatch = html.match(/<h3>1\.\s*Executive Overview[^<]*<\/h3>([\s\S]*?)(?:<h3>|$)/i);
     if (execMatch) {
       const pMatches = execMatch[1].match(/<p>([\s\S]*?)<\/p>/gi);
       if (pMatches && pMatches.length > 0) {
@@ -661,22 +686,36 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       }
     }
     if (!execSummary) {
-      // Fallback: first 2 paragraphs
       const allP = html.match(/<p>([\s\S]*?)<\/p>/gi);
       if (allP && allP.length > 0) {
         execSummary = allP.slice(0, 2).map(p => stripHtml(p)).join(' ');
       }
     }
 
-    // 2. Extract Agents from <li><strong>Agent Name:</strong> Description</li>
+    // 2. Extract Agents specifically from Section 2
+    let extractedAgents = [];
+    const sec2Match = html.match(/<h3>2\.\s*Autonomous Multi-Agent Mesh[^<]*<\/h3>([\s\S]*?)(?:<h3>|$)/i);
+    const agentScopeHtml = sec2Match ? sec2Match[1] : html;
+    
     const agentRegex = /<li>\s*<strong>([^<:]+):?<\/strong>\s*:?\s*([^<]+)<\/li>/gi;
     let match;
-    const extractedAgents = [];
-    while ((match = agentRegex.exec(html)) !== null) {
+    while ((match = agentRegex.exec(agentScopeHtml)) !== null) {
       const aName = match[1].trim();
       const aDesc = stripHtml(match[2]);
-      if (aName && aDesc) {
+      if (aName && aDesc && !aName.startsWith('Phase') && !aName.includes('$') && !aName.includes('Project Manager')) {
         extractedAgents.push({ name: aName, desc: aDesc });
+      }
+    }
+
+    if (extractedAgents.length === 0) {
+      const genericRegex = /<li>\s*<strong>([^<:]*Agent[^<:]*):?<\/strong>\s*:?\s*([^<]+)<\/li>/gi;
+      let gMatch;
+      while ((gMatch = genericRegex.exec(html)) !== null) {
+        const aName = gMatch[1].trim();
+        const aDesc = stripHtml(gMatch[2]);
+        if (aName && aDesc) {
+          extractedAgents.push({ name: aName, desc: aDesc });
+        }
       }
     }
 
@@ -685,15 +724,19 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     let targetOrg = "Client Enterprise";
     let domainName = "Enterprise AI Solution";
 
-    if (combined.includes('insurance') || combined.includes('claims') || combined.includes('policy') || combined.includes('underwriting')) {
+    if (combined.includes('real estate') || combined.includes('property') || combined.includes('broker') || combined.includes('mls') || combined.includes('realtor') || combined.includes('tenant') || combined.includes('lease')) {
+      solutionName = "Real Estate AI Agent Solution";
+      targetOrg = "Enterprise Real Estate Brokerage";
+      domainName = "Real Estate & Property Management";
+    } else if (combined.includes('insurance') || combined.includes('claims') || combined.includes('policy') || combined.includes('underwriting')) {
       solutionName = "Insurance AI Agent Solution";
       targetOrg = "Insurance Enterprise Client";
       domainName = "Insurance & Claims Management";
-    } else if (combined.includes('health') || combined.includes('clinic') || combined.includes('hospital') || combined.includes('doctor') || combined.includes('patient')) {
+    } else if (combined.includes('health') || combined.includes('clinic') || combined.includes('hospital') || combined.includes('doctor') || combined.includes('patient') || combined.includes('ehr')) {
       solutionName = "Healthcare & Clinical AI Solution";
       targetOrg = "Healthcare Enterprise";
       domainName = "Healthcare & Clinical Systems";
-    } else if (combined.includes('bank') || combined.includes('financ') || combined.includes('loan') || combined.includes('credit') || combined.includes('fca') || combined.includes('fraud')) {
+    } else if (combined.includes('bank') || combined.includes('fintech') || combined.includes('investment') || combined.includes('fca') || combined.includes('fraud') || combined.includes('kyc')) {
       solutionName = "FinTech & Banking AI Solution";
       targetOrg = "Financial Institution Client";
       domainName = "Banking & FinTech";
@@ -701,7 +744,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       solutionName = "E-commerce AI Agent Solution";
       targetOrg = "Client Business";
       domainName = "E-commerce & Retail";
-    } else if (combined.includes('tablet') || combined.includes('factory') || combined.includes('hardware') || combined.includes('manufactur')) {
+    } else if (combined.includes('tablet') || combined.includes('factory') || combined.includes('hardware') || combined.includes('manufactur') || combined.includes('assembly')) {
       solutionName = "Manufacturing & Plant AI Solution";
       targetOrg = "Manufacturing Enterprise";
       domainName = "Hardware & Plant Automation";
@@ -729,7 +772,6 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     if (extractedAgents.length > 0) {
       scope = extractedAgents.map(ag => {
         const modName = ag.name.replace(/\s*Agent\s*$/i, '').trim() || ag.name;
-        // Split sentences
         const parts = ag.desc.split(/[.;]/).map(s => s.trim()).filter(Boolean);
         const shortDesc = parts[0] || ag.desc;
         const features = parts.length > 1 ? parts.slice(1, 4).join(', ') : 'Automated processing, real-time API sync, exception routing, audit logging';
@@ -742,96 +784,153 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       });
     }
 
-    // 5. Build Delivery Phases tailored to domain
+    // 5. Build Delivery Phases (Priority 1: Extract from Section 4; Priority 2: Domain-synthesized)
     let phases = [];
-    if (domainName.includes('Insurance')) {
-      phases = [
-        { num: "Phase 1", title: "Discovery & Policy Audit", duration: "1-2 Weeks", icon: "📋", green: false },
-        { num: "Phase 2", title: "Guidewire & LLM Architecture", duration: "2-3 Weeks", icon: "📐", green: true },
-        { num: "Phase 3", title: "Agent Mesh & FNOL Integration", duration: "6-8 Weeks", icon: "</>", green: false },
-        { num: "Phase 4", title: "Security & Adjuster Pilot", duration: "2-3 Weeks", icon: "✓", green: true },
-        { num: "Phase 5", title: "Enterprise Rollout & Optimization", duration: "Ongoing", icon: "🎧", green: false }
-      ];
-    } else if (domainName.includes('Banking') || domainName.includes('FinTech')) {
-      phases = [
-        { num: "Phase 1", title: "Security & Regulatory Audit", duration: "1-2 Weeks", icon: "📋", green: false },
-        { num: "Phase 2", title: "VPC & Architecture Design", duration: "2-3 Weeks", icon: "📐", green: true },
-        { num: "Phase 3", title: "Core Banking & Agent Ingestion", duration: "6-8 Weeks", icon: "</>", green: false },
-        { num: "Phase 4", title: "Underwriting Shadowing & QA", duration: "2-3 Weeks", icon: "✓", green: true },
-        { num: "Phase 5", title: "Production Rollout & Auditing", duration: "Ongoing", icon: "🎧", green: false }
-      ];
-    } else if (domainName.includes('Healthcare')) {
-      phases = [
-        { num: "Phase 1", title: "Clinical Intake & HIPAA Audit", duration: "1-2 Weeks", icon: "📋", green: false },
-        { num: "Phase 2", title: "EHR/FHIR Architecture Design", duration: "2-3 Weeks", icon: "📐", green: true },
-        { num: "Phase 3", title: "Triage & Scheduling Agent Mesh", duration: "6-8 Weeks", icon: "</>", green: false },
-        { num: "Phase 4", title: "Clinical Shadowing & Validation", duration: "2-3 Weeks", icon: "✓", green: true },
-        { num: "Phase 5", title: "Hospital Rollout & Monitoring", duration: "Ongoing", icon: "🎧", green: false }
-      ];
-    } else if (domainName.includes('E-commerce')) {
-      phases = [
-        { num: "Phase 1", title: "Discovery & Planning", duration: "1-2 Weeks", icon: "📋", green: false },
-        { num: "Phase 2", title: "Design & Architecture", duration: "2-3 Weeks", icon: "📐", green: true },
-        { num: "Phase 3", title: "Development & Integration", duration: "6-8 Weeks", icon: "</>", green: false },
-        { num: "Phase 4", title: "Testing & Deployment", duration: "2-3 Weeks", icon: "✓", green: true },
-        { num: "Phase 5", title: "Support & Optimization", duration: "Ongoing", icon: "🎧", green: false }
-      ];
-    } else {
-      phases = [
-        { num: "Phase 1", title: "Discovery & Workflow Audit", duration: "1-2 Weeks", icon: "📋", green: false },
-        { num: "Phase 2", title: "Architecture & Wireframing", duration: "2-3 Weeks", icon: "📐", green: true },
-        { num: "Phase 3", title: "ERP Integration & Agent Mesh", duration: "6-8 Weeks", icon: "</>", green: false },
-        { num: "Phase 4", title: "Testing & Pilot Deployment", duration: "2-3 Weeks", icon: "✓", green: true },
-        { num: "Phase 5", title: "Rollout & Ongoing Support", duration: "Ongoing", icon: "🎧", green: false }
-      ];
+    const sec4Match = html.match(/<h3>4\.\s*Phased Delivery Approach[^<]*<\/h3>([\s\S]*?)(?:<h3>|$)/i);
+    const phaseHtml = sec4Match ? sec4Match[1] : html;
+    
+    const phaseRegex = /<li>\s*<strong>Phase\s*(\d+)\s*\(([^)]+)\)\s*[-:]?\s*([^:<]+):?<\/strong>\s*:?\s*([^<]+)<\/li>/gi;
+    let pMatch;
+    const icons = ['📋', '📐', '</>', '✓', '🎧'];
+    let pIdx = 0;
+    while ((pMatch = phaseRegex.exec(phaseHtml)) !== null) {
+      phases.push({
+        num: `Phase ${pMatch[1]}`,
+        duration: pMatch[2].trim(),
+        title: stripHtml(pMatch[3]),
+        desc: stripHtml(pMatch[4]),
+        icon: icons[pIdx % icons.length],
+        green: (pIdx === 1 || pIdx === 3)
+      });
+      pIdx++;
     }
 
-    // 6. Cost breakdown and Headcount
-    const agentCount = extractedAgents.length || 3;
-    const isEcom = domainName.includes('E-commerce');
+    // Fallback if not extracted from LLM
+    if (phases.length === 0) {
+      if (domainName.includes('Real Estate')) {
+        phases = [
+          { num: "Phase 1", title: "Brokerage Workflow & MLS Audit", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "Real Estate Architecture & Vector Pipeline", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "Agent Mesh & DocuSign Connector", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Agent Pilot & Broker Shadowing", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Enterprise Brokerage Rollout", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      } else if (domainName.includes('Insurance')) {
+        phases = [
+          { num: "Phase 1", title: "Discovery & Policy Audit", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "Guidewire & LLM Architecture", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "Agent Mesh & FNOL Integration", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Security & Adjuster Pilot", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Enterprise Rollout & Optimization", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      } else if (domainName.includes('Banking') || domainName.includes('FinTech')) {
+        phases = [
+          { num: "Phase 1", title: "Security & Regulatory Audit", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "VPC & Architecture Design", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "Core Banking & Agent Ingestion", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Underwriting Shadowing & QA", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Production Rollout & Auditing", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      } else if (domainName.includes('Healthcare')) {
+        phases = [
+          { num: "Phase 1", title: "Clinical Intake & HIPAA Audit", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "EHR/FHIR Architecture Design", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "Triage & Scheduling Agent Mesh", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Clinical Shadowing & Validation", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Hospital Rollout & Monitoring", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      } else if (domainName.includes('E-commerce')) {
+        phases = [
+          { num: "Phase 1", title: "Discovery & Planning", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "Design & Architecture", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "Development & Integration", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Testing & Deployment", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Support & Optimization", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      } else {
+        phases = [
+          { num: "Phase 1", title: "Discovery & Workflow Audit", duration: "1-2 Weeks", icon: "📋", green: false },
+          { num: "Phase 2", title: "Architecture & Wireframing", duration: "2-3 Weeks", icon: "📐", green: true },
+          { num: "Phase 3", title: "ERP Integration & Agent Mesh", duration: "6-8 Weeks", icon: "</>", green: false },
+          { num: "Phase 4", title: "Testing & Pilot Deployment", duration: "2-3 Weeks", icon: "✓", green: true },
+          { num: "Phase 5", title: "Rollout & Ongoing Support", duration: "Ongoing", icon: "🎧", green: false }
+        ];
+      }
+    }
+
+    // 6. Cost breakdown and Headcount (Priority 1: Extract from Section 5 & 6; Priority 2: Domain-synthesized)
+    const sec5Match = html.match(/<h3>5\.\s*Tailored Cost Breakdown[^<]*<\/h3>([\s\S]*?)(?:<h3>|$)/i);
+    const costHtml = sec5Match ? sec5Match[1] : html;
     
+    const costRegex = /<li>\s*<strong>([^<($]+)\s*\(([^)]+)\)\s*:?<\/strong>\s*:?\s*([^<]+)<\/li>/gi;
+    let cMatch;
+    const extractedCosts = [];
+    let extractedTotalCost = 0;
+    while ((cMatch = costRegex.exec(costHtml)) !== null) {
+      const comp = stripHtml(cMatch[1]);
+      const costStr = cMatch[2].trim();
+      const desc = stripHtml(cMatch[3]);
+      const numVal = Number(costStr.replace(/[^0-9.]/g, '')) || 0;
+      if (comp && numVal > 0) {
+        extractedCosts.push({
+          comp: comp,
+          desc: desc,
+          baseCost: numVal
+        });
+        extractedTotalCost += numVal;
+      }
+    }
+
+    // Extract Human Intelligence from Section 6
+    const sec6Match = html.match(/<h3>6\.\s*Human Intelligence Allocation[^<]*<\/h3>([\s\S]*?)(?:<h3>|$)/i);
+    const humanHtml = sec6Match ? sec6Match[1] : html;
+
+    const humanRegex = /<li>\s*<strong>([^<:]+):?<\/strong>\s*:?\s*([^<]+)<\/li>/gi;
+    let hMatch;
+    const extractedHumans = [];
+    while ((hMatch = humanRegex.exec(humanHtml)) !== null) {
+      const role = stripHtml(hMatch[1]);
+      const fullText = stripHtml(hMatch[2]);
+      const hoursMatch = fullText.match(/\(?(\d+)\s*hours?\.?\)?/i);
+      if (hoursMatch) {
+        const effortHours = hoursMatch[1];
+        const cleanResp = fullText.replace(/\(?\d+\s*hours?\.?\)?/i, '').trim().replace(/[.,]$/, '');
+        extractedHumans.push({
+          role: role,
+          resp: cleanResp || fullText,
+          effort: effortHours
+        });
+      }
+    }
+
+    const agentCount = extractedAgents.length || 3;
     let costItems = [];
-    let totalCost = "$65,000";
+    let totalCost = 67500;
     let humanIntelligence = [];
 
-    if (isEcom) {
+    if (extractedCosts.length >= 3) {
+      costItems = extractedCosts;
+      totalCost = extractedTotalCost;
+    } else if (domainName.includes('Real Estate')) {
       costItems = [
-        { comp: "AI Agent Development", desc: `Development of ${agentCount} AI Agents`, baseCost: 25000 },
-        { comp: "System Integration", desc: "Integration with existing systems", baseCost: 15000 },
-        { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", baseCost: 9000 },
-        { comp: "UI/UX Design", desc: "User interface and experience design", baseCost: 6000 },
-        { comp: "Testing & QA", desc: "Quality assurance and testing", baseCost: 5000 },
-        { comp: "Project Management", desc: "Project management and reporting", baseCost: 5000 }
+        { comp: "Real Estate Agent Mesh", desc: `Development of ${agentCount} real estate & MLS agents`, baseCost: 29500 },
+        { comp: "MLS, IDX & DocuSign Integration", desc: "Bidirectional MLS board feeds, transaction coordinator sync", baseCost: 17400 },
+        { comp: "Cloud & Image Hosting Infrastructure", desc: "Private cloud setup with listing embeddings (3 months)", baseCost: 9200 },
+        { comp: "Brokerage & Buyer Portal UI", desc: "Operator workbench, client viewing scheduler, and mobile web UI", baseCost: 6800 },
+        { comp: "Fair Housing & Regulatory QA", desc: "Automated bias auditing, penetration testing, and compliance", baseCost: 5500 },
+        { comp: "Project Management & Training", desc: "Broker onboarding, technical coordination, and SLA governance", baseCost: 5000 }
       ];
-      totalCost = 65000;
-      humanIntelligence = [
-        { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
-        { role: "Business Analyst", resp: "Requirement gathering, analysis and documentation", effort: "60" },
-        { role: "AI/ML Engineer", resp: "AI model development and optimization", effort: "120" },
-        { role: "Backend Developer", resp: "System development and integration", effort: "160" },
-        { role: "Frontend Developer", resp: "UI development and integration", effort: "80" },
-        { role: "QA Engineer", resp: "Testing and quality assurance", effort: "80" },
-        { role: "Support Engineer", resp: "Deployment and post-launch support", effort: "40" }
-      ];
+      totalCost = 73400;
     } else if (domainName.includes('Insurance')) {
       costItems = [
-        { comp: "AI Agent Development", desc: `Development of ${agentCount} Insurance AI Agents`, baseCost: 28000 },
+        { comp: "Insurance AI Agent Mesh", desc: `Development of ${agentCount} Insurance AI Agents`, baseCost: 28000 },
         { comp: "Core Systems Integration", desc: "Integration with Guidewire / Duck Creek / policy databases", baseCost: 16000 },
-        { comp: "Cloud & Infrastructure", desc: "Private HIPAA/SOC-2 compliant VPC (3 months)", baseCost: 9500 },
+        { comp: "Cloud & Security Infrastructure", desc: "Private HIPAA/SOC-2 compliant VPC (3 months)", baseCost: 9500 },
         { comp: "UI/UX & Adjuster Portal", desc: "Claims review dashboard, audit view, and operator interface", baseCost: 6500 },
         { comp: "Testing & Regulatory QA", desc: "Model hallucination safeguards and penetration testing", baseCost: 5000 },
         { comp: "Project Management", desc: "Project governance, technical coordination and reporting", baseCost: 5000 }
       ];
       totalCost = 70000;
-      humanIntelligence = [
-        { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
-        { role: "Insurance Solutions Analyst", resp: "Policy workflow mapping and acceptance testing", effort: "65" },
-        { role: "AI/ML Engineer", resp: "Agent fine-tuning, RAG indexing and prompt safety", effort: "130" },
-        { role: "Backend Integration Engineer", resp: "Policy database APIs and webhook pipelines", effort: "150" },
-        { role: "Frontend Developer", resp: "Operator workbench and customer service UI", effort: "80" },
-        { role: "QA & Compliance Engineer", resp: "SOC-2/NAIC compliance testing and quality assurance", effort: "80" },
-        { role: "Support Engineer", resp: "Deployment and post-launch support", effort: "40" }
-      ];
     } else {
       costItems = [
         { comp: "AI Agent Development", desc: `Development of ${agentCount} dedicated AI Agents`, baseCost: 26000 },
@@ -842,6 +941,31 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
         { comp: "Project Management", desc: "Project management, agile sprints, and handover", baseCost: 5000 }
       ];
       totalCost = 67500;
+    }
+
+    if (extractedHumans.length >= 3) {
+      humanIntelligence = extractedHumans;
+    } else if (domainName.includes('Real Estate')) {
+      humanIntelligence = [
+        { role: "Project Manager", resp: "Real estate sprint governance and brokerage executive reporting", effort: "80" },
+        { role: "PropTech Solutions Architect", resp: "MLS integration mapping and transaction workflow topology", effort: "75" },
+        { role: "AI/ML Engineer", resp: "Listing embedding search, fine-tuning, and prompt safety guardrails", effort: "135" },
+        { role: "Backend Integration Engineer", resp: "Lockbox APIs, DocuSign webhooks, and CRM data pipelines", effort: "155" },
+        { role: "Frontend UX Developer", resp: "Broker dashboard and client-facing viewing scheduler", effort: "80" },
+        { role: "QA & Compliance Specialist", resp: "Fair Housing compliance auditing and security QA", effort: "80" },
+        { role: "Support & DevOps Lead", resp: "Cloud deployment and real-time listing feed monitoring", effort: "40" }
+      ];
+    } else if (domainName.includes('Insurance')) {
+      humanIntelligence = [
+        { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
+        { role: "Insurance Solutions Analyst", resp: "Policy workflow mapping and acceptance testing", effort: "65" },
+        { role: "AI/ML Engineer", resp: "Agent fine-tuning, RAG indexing and prompt safety", effort: "130" },
+        { role: "Backend Integration Engineer", resp: "Policy database APIs and webhook pipelines", effort: "150" },
+        { role: "Frontend Developer", resp: "Operator workbench and customer service UI", effort: "80" },
+        { role: "QA & Compliance Engineer", resp: "SOC-2/NAIC compliance testing and quality assurance", effort: "80" },
+        { role: "Support Engineer", resp: "Deployment and post-launch support", effort: "40" }
+      ];
+    } else {
       humanIntelligence = [
         { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
         { role: "Enterprise Solution Architect", resp: "Oversees topology, agent guardrails, and enterprise integration", effort: "75" },
@@ -868,6 +992,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       }
     };
   }
+
 
   function generateDynamicSolution(promptText, modelName, rawLiveAiOutput = null) {
     let responseAi = {};
