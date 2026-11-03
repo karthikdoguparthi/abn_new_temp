@@ -142,6 +142,17 @@
               <span>AB Agent Studio – Solution Output</span>
             </div>
             <div class="panel-tools">
+              <div class="currency-selector-wrap" title="Select Currency for Solution Cost">
+                <label for="currency-select" class="currency-label">Currency:</label>
+                <select id="currency-select" class="currency-dropdown" aria-label="Currency Selector">
+                  <option value="USD" selected>USD ($)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="INR">INR (₹)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="AUD">AUD (A$)</option>
+                  <option value="AED">AED (AED)</option>
+                </select>
+              </div>
               <button class="btn-pill" id="btn-sol-export" type="button">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
                 Export ▾
@@ -167,7 +178,7 @@
               </div>
               <div class="solution-meta-cell">
                 <span class="meta-label">Date</span>
-                <span class="meta-value" id="meta-date">Oct 27, 2026</span>
+                <span class="meta-value" id="meta-date">—</span>
               </div>
               <div class="solution-meta-cell">
                 <span class="meta-label">Prepared By</span>
@@ -213,7 +224,7 @@
                     <tr>
                       <th>Cost Component</th>
                       <th>Description</th>
-                      <th style="text-align: right;">Estimated Cost (USD)</th>
+                      <th style="text-align: right;" id="cost-col-header">Estimated Cost (USD)</th>
                     </tr>
                   </thead>
                   <tbody id="cost-table-body">

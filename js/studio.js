@@ -8,6 +8,23 @@
   'use strict';
 
   let currentSolution = null;
+  // Active selected currency state
+  let currentCurrency = 'USD';
+  const CURRENCY_MAP = {
+    USD: { code: 'USD', symbol: '$', rate: 1.0, name: 'US Dollar' },
+    GBP: { code: 'GBP', symbol: '£', rate: 0.78, name: 'British Pound' },
+    INR: { code: 'INR', symbol: '₹', rate: 84.0, name: 'Indian Rupee' },
+    EUR: { code: 'EUR', symbol: '€', rate: 0.92, name: 'Euro' },
+    AUD: { code: 'AUD', symbol: 'A$', rate: 1.52, name: 'Australian Dollar' },
+    AED: { code: 'AED', symbol: 'AED ', rate: 3.67, name: 'UAE Dirham' }
+  };
+
+  function formatCurrencyAmount(baseUsdAmount, currCode = currentCurrency) {
+    const curr = CURRENCY_MAP[currCode] || CURRENCY_MAP.USD;
+    const converted = Math.round(baseUsdAmount * curr.rate);
+    return `${curr.symbol}${converted.toLocaleString()}`;
+  }
+
   // Runtime in-memory security context for sensitive configuration (zero web storage persistence)
   let runtimeAiConfig = {
     provider: 'gemini',
@@ -20,6 +37,7 @@
     bindModelModalEvents();
     bindThemeToggle();
     bindExportEvents();
+    bindCurrencySelector();
 
     const promptInput = document.getElementById('prompt-input');
     const modelSelect = document.getElementById('model-select');
@@ -34,6 +52,7 @@
   }
 
   function renderEmptyState() {
+    currentSolution = null;
     const aiTitle = document.getElementById('ai-response-title');
     const aiContent = document.getElementById('ai-response-content');
     const planExecSummary = document.getElementById('plan-exec-summary');
@@ -41,6 +60,16 @@
     const costTbody = document.getElementById('cost-table-body');
     const humanTbody = document.getElementById('human-table-body');
     const totalCostEl = document.getElementById('total-cost-val');
+
+    const metaSolName = document.getElementById('meta-sol-name');
+    const metaClient = document.getElementById('meta-client');
+    const metaDate = document.getElementById('meta-date');
+    const metaBy = document.getElementById('meta-by');
+
+    if (metaSolName) metaSolName.textContent = "Tailored Enterprise Solution";
+    if (metaClient) metaClient.textContent = "Client Enterprise";
+    if (metaDate) metaDate.textContent = "—";
+    if (metaBy) metaBy.textContent = "AB Agent Studio";
 
     if (aiTitle) aiTitle.textContent = "AI Solution Reasoning";
     if (aiContent) {
@@ -90,6 +119,7 @@
         promptInput.value = '';
         if (charCount) charCount.textContent = '0 / 4000';
         if (attachedFileName) attachedFileName.style.display = 'none';
+        currentSolution = null;
         renderEmptyState();
         promptInput.focus();
       });
@@ -128,6 +158,20 @@
     if (runBtn) {
       runBtn.addEventListener('click', () => {
         handleRunPrompt();
+      });
+    }
+  }
+
+
+  function bindCurrencySelector() {
+    const currSelect = document.getElementById('currency-select');
+    if (currSelect) {
+      currSelect.value = currentCurrency;
+      currSelect.addEventListener('change', (e) => {
+        currentCurrency = e.target.value;
+        if (currentSolution) {
+          renderCurrentSolution();
+        }
       });
     }
   }
@@ -210,11 +254,17 @@
       sol.solutionPlan.scope.forEach(sc => {
         content += `- Module: ${sc.module}\n  Agent: ${sc.agent}\n  Desc: ${sc.desc}\n  Features: ${sc.features}\n\n`;
       });
+      const totalNum = typeof sol.solutionPlan.totalCost === 'number'
+        ? sol.solutionPlan.totalCost
+        : Number(String(sol.solutionPlan.totalCost).replace(/[^0-9.]/g, '')) || 0;
+      const formattedTotalStr = formatCurrencyAmount(totalNum, currentCurrency);
+
       content += `----------------------------------------------------------\n`;
-      content += `ESTIMATED COST BREAKDOWN (Total: ${sol.solutionPlan.totalCost})\n`;
+      content += `ESTIMATED COST BREAKDOWN (${currentCurrency}) (Total: ${formattedTotalStr})\n`;
       content += `----------------------------------------------------------\n`;
       sol.solutionPlan.costItems.forEach(c => {
-        content += `* ${c.comp} (${c.cost}): ${c.desc}\n`;
+        const costNum = c.baseCost || (typeof c.cost === 'string' ? Number(c.cost.replace(/[^0-9.]/g, '')) : c.cost) || 0;
+        content += `* ${c.comp} (${formatCurrencyAmount(costNum, currentCurrency)}): ${c.desc}\n`;
       });
 
       const blob = new Blob([content], { type: format === 'excel' ? 'text/csv;charset=utf-8' : 'text/plain;charset=utf-8' });
@@ -746,14 +796,14 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
 
     if (isEcom) {
       costItems = [
-        { comp: "AI Agent Development", desc: `Development of ${agentCount} AI Agents`, cost: "$25,000" },
-        { comp: "System Integration", desc: "Integration with existing systems", cost: "$15,000" },
-        { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", cost: "$9,000" },
-        { comp: "UI/UX Design", desc: "User interface and experience design", cost: "$6,000" },
-        { comp: "Testing & QA", desc: "Quality assurance and testing", cost: "$5,000" },
-        { comp: "Project Management", desc: "Project management and reporting", cost: "$5,000" }
+        { comp: "AI Agent Development", desc: `Development of ${agentCount} AI Agents`, baseCost: 25000 },
+        { comp: "System Integration", desc: "Integration with existing systems", baseCost: 15000 },
+        { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", baseCost: 9000 },
+        { comp: "UI/UX Design", desc: "User interface and experience design", baseCost: 6000 },
+        { comp: "Testing & QA", desc: "Quality assurance and testing", baseCost: 5000 },
+        { comp: "Project Management", desc: "Project management and reporting", baseCost: 5000 }
       ];
-      totalCost = "$65,000";
+      totalCost = 65000;
       humanIntelligence = [
         { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
         { role: "Business Analyst", resp: "Requirement gathering, analysis and documentation", effort: "60" },
@@ -765,14 +815,14 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       ];
     } else if (domainName.includes('Insurance')) {
       costItems = [
-        { comp: "AI Agent Development", desc: `Development of ${agentCount} Insurance AI Agents`, cost: "$28,000" },
-        { comp: "Core Systems Integration", desc: "Integration with Guidewire / Duck Creek / policy databases", cost: "$16,000" },
-        { comp: "Cloud & Infrastructure", desc: "Private HIPAA/SOC-2 compliant VPC (3 months)", cost: "$9,500" },
-        { comp: "UI/UX & Adjuster Portal", desc: "Claims review dashboard, audit view, and operator interface", cost: "$6,500" },
-        { comp: "Testing & Regulatory QA", desc: "Model hallucination safeguards and penetration testing", cost: "$5,000" },
-        { comp: "Project Management", desc: "Project governance, technical coordination and reporting", cost: "$5,000" }
+        { comp: "AI Agent Development", desc: `Development of ${agentCount} Insurance AI Agents`, baseCost: 28000 },
+        { comp: "Core Systems Integration", desc: "Integration with Guidewire / Duck Creek / policy databases", baseCost: 16000 },
+        { comp: "Cloud & Infrastructure", desc: "Private HIPAA/SOC-2 compliant VPC (3 months)", baseCost: 9500 },
+        { comp: "UI/UX & Adjuster Portal", desc: "Claims review dashboard, audit view, and operator interface", baseCost: 6500 },
+        { comp: "Testing & Regulatory QA", desc: "Model hallucination safeguards and penetration testing", baseCost: 5000 },
+        { comp: "Project Management", desc: "Project governance, technical coordination and reporting", baseCost: 5000 }
       ];
-      totalCost = "$70,000";
+      totalCost = 70000;
       humanIntelligence = [
         { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
         { role: "Insurance Solutions Analyst", resp: "Policy workflow mapping and acceptance testing", effort: "65" },
@@ -784,14 +834,14 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       ];
     } else {
       costItems = [
-        { comp: "AI Agent Development", desc: `Development of ${agentCount} dedicated AI Agents`, cost: "$26,000" },
-        { comp: "System Integration", desc: "Integration with existing enterprise systems & APIs", cost: "$16,000" },
-        { comp: "Cloud & Infrastructure", desc: "Private cloud setup and ongoing compute (3 months)", cost: "$9,000" },
-        { comp: "UI/UX Design", desc: "User interface, operator console, and experience design", cost: "$6,500" },
-        { comp: "Testing & QA", desc: "Security validation, regression, and quality assurance", cost: "$5,000" },
-        { comp: "Project Management", desc: "Project management, agile sprints, and handover", cost: "$5,000" }
+        { comp: "AI Agent Development", desc: `Development of ${agentCount} dedicated AI Agents`, baseCost: 26000 },
+        { comp: "System Integration", desc: "Integration with existing enterprise systems & APIs", baseCost: 16000 },
+        { comp: "Cloud & Infrastructure", desc: "Private cloud setup and ongoing compute (3 months)", baseCost: 9000 },
+        { comp: "UI/UX Design", desc: "User interface, operator console, and experience design", baseCost: 6500 },
+        { comp: "Testing & QA", desc: "Security validation, regression, and quality assurance", baseCost: 5000 },
+        { comp: "Project Management", desc: "Project management, agile sprints, and handover", baseCost: 5000 }
       ];
-      totalCost = "$67,500";
+      totalCost = 67500;
       humanIntelligence = [
         { role: "Project Manager", resp: "Project planning, coordination and reporting", effort: "80" },
         { role: "Enterprise Solution Architect", resp: "Oversees topology, agent guardrails, and enterprise integration", effort: "75" },
@@ -1088,19 +1138,19 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     ];
 
     const costItems = isEcom ? [
-      { comp: "AI Agent Development", desc: "Development of 3 AI Agents", cost: "$25,000" },
-      { comp: "System Integration", desc: "Integration with existing systems", cost: "$15,000" },
-      { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", cost: "$9,000" },
-      { comp: "UI/UX Design", desc: "User interface and experience design", cost: "$6,000" },
-      { comp: "Testing & QA", desc: "Quality assurance and testing", cost: "$5,000" },
-      { comp: "Project Management", desc: "Project management and reporting", cost: "$5,000" }
+      { comp: "AI Agent Development", desc: "Development of 3 AI Agents", baseCost: 25000 },
+      { comp: "System Integration", desc: "Integration with existing systems", baseCost: 15000 },
+      { comp: "Cloud & Infrastructure", desc: "Cloud setup and ongoing costs (3 months)", baseCost: 9000 },
+      { comp: "UI/UX Design", desc: "User interface and experience design", baseCost: 6000 },
+      { comp: "Testing & QA", desc: "Quality assurance and testing", baseCost: 5000 },
+      { comp: "Project Management", desc: "Project management and reporting", baseCost: 5000 }
     ] : [
-      { comp: "Autonomous Agent Development", desc: `Design & engineering of ${analysis.agents.length} dedicated agents`, cost: `$${agentDevCost.toLocaleString()}` },
-      { comp: "System & ERP Integration", desc: "Automated quotation pipeline, database sync, and API connectors", cost: `$${integrationCost.toLocaleString()}` },
-      { comp: "Cloud / On-prem Infrastructure", desc: "Private VPC compute, database indexing, and caching (3 months)", cost: `$${cloudCost.toLocaleString()}` },
-      { comp: "Administrative UI & Controls", desc: "Operator control portal, quote review queue, and status boards", cost: `$${uxCost.toLocaleString()}` },
-      { comp: "Testing, QA & Security", desc: "Process validation, penetration testing, and compliance certification", cost: `$${qaCost.toLocaleString()}` },
-      { comp: "Project Management & Handover", desc: "Technical delivery steering, documentation, and staff onboarding", cost: `$${pmCost.toLocaleString()}` }
+      { comp: "Autonomous Agent Development", desc: `Design & engineering of ${analysis.agents.length} dedicated agents`, baseCost: agentDevCost },
+      { comp: "System & ERP Integration", desc: "Automated quotation pipeline, database sync, and API connectors", baseCost: integrationCost },
+      { comp: "Cloud / On-prem Infrastructure", desc: "Private VPC compute, database indexing, and caching (3 months)", baseCost: cloudCost },
+      { comp: "Administrative UI & Controls", desc: "Operator control portal, quote review queue, and status boards", baseCost: uxCost },
+      { comp: "Testing, QA & Security", desc: "Process validation, penetration testing, and compliance certification", baseCost: qaCost },
+      { comp: "Project Management & Handover", desc: "Technical delivery steering, documentation, and staff onboarding", baseCost: pmCost }
     ];
 
     const humanIntelligence = isEcom ? [
@@ -1131,7 +1181,7 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
       scope: scope,
       phases: phases,
       costItems: costItems,
-      totalCost: formattedTotal,
+      totalCost: totalEst,
       humanIntelligence: humanIntelligence
     };
   }
@@ -1206,16 +1256,33 @@ Deliver a comprehensive client-ready enterprise solution in clean HTML without m
     // Cost Table
     const costTbody = document.getElementById('cost-table-body');
     const totalCostEl = document.getElementById('total-cost-val');
+    const costColHeader = document.getElementById('cost-col-header');
+    const currMeta = CURRENCY_MAP[currentCurrency] || CURRENCY_MAP.USD;
+
+    if (costColHeader) {
+      costColHeader.textContent = `Estimated Cost (${currMeta.code})`;
+    }
+
     if (costTbody) {
-      costTbody.innerHTML = sol.solutionPlan.costItems.map(c => `
+      costTbody.innerHTML = sol.solutionPlan.costItems.map(c => {
+        const costNum = c.baseCost || (typeof c.cost === 'string' ? Number(c.cost.replace(/[^0-9.]/g, '')) : c.cost) || 0;
+        const formattedCost = formatCurrencyAmount(costNum, currentCurrency);
+        return `
         <tr>
           <td><strong style="color: var(--studio-text-main);">${c.comp}</strong></td>
           <td>${c.desc}</td>
-          <td style="font-weight: 600; color: var(--studio-text-main); text-align: right;">${c.cost}</td>
+          <td style="font-weight: 600; color: var(--studio-text-main); text-align: right;">${formattedCost}</td>
         </tr>
-      `).join('');
+      `;
+      }).join('');
     }
-    if (totalCostEl) totalCostEl.textContent = sol.solutionPlan.totalCost;
+
+    if (totalCostEl) {
+      const totalNum = typeof sol.solutionPlan.totalCost === 'number'
+        ? sol.solutionPlan.totalCost
+        : Number(String(sol.solutionPlan.totalCost).replace(/[^0-9.]/g, '')) || 0;
+      totalCostEl.textContent = formatCurrencyAmount(totalNum, currentCurrency);
+    }
 
     // Human Intelligence Table
     const humanTbody = document.getElementById('human-table-body');

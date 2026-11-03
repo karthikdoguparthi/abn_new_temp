@@ -1026,3 +1026,53 @@ body.studio-dark-theme .total-cost-badge {
   font-weight: 600;
   cursor: pointer;
 }
+
+/* Currency Selector Styles in Solution Output Panel Header */
+.currency-selector-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--studio-surface-alt, #f8fafc);
+  border: 1px solid var(--studio-border, #e2e8f0);
+  border-radius: 20px;
+  padding: 2px 8px 2px 10px;
+  margin-right: 4px;
+}
+
+body.studio-dark-theme .currency-selector-wrap {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.currency-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--studio-text-muted, #64748b);
+}
+
+.currency-dropdown {
+  background: transparent;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--studio-text-main, #0f172a);
+  cursor: pointer;
+  outline: none;
+  padding: 3px 2px;
+}
+
+body.studio-dark-theme .currency-dropdown {
+  color: #f1f5f9;
+}
+
+.currency-dropdown option {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+body.studio-dark-theme .currency-dropdown option {
+  background: #1e293b;
+  color: #f1f5f9;
+}
