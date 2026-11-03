@@ -48,6 +48,8 @@ abn/
 ├── assets/                 # SVGs, photography, brand identity & icons
 ├── css/                    # Modular stylesheets
 ├── js/                     # Client runtime, search indexes & Agent Studio engine
+├── scripts/                # AB Agent Studio autonomous agent CLI & programmatic engine
+│   └── ab-agent-studio.js  # Permanent agentic LLM & autonomous mesh solution synthesizer
 ├── tests/                  # Automated Node.js test suites
 ├── .github/                # GitHub Actions workflows & security policies
 ├── agentstudio.html        # Interactive AB Agent Studio
@@ -88,14 +90,27 @@ npm ci
 
 ### 3. Run Automated Tests
 ```bash
-# Run unit tests and security validation suite
+# Run unit tests and security validation suite (16 tests)
 npm test
 
 # Run dependency vulnerability audit
 npm audit
 ```
 
-### 4. Local Preview
+### 4. Run AB Agent Studio CLI
+You can execute the autonomous agent directly from your terminal or in interactive mode:
+```bash
+# Run a single business solution generation
+npm run agent-studio "Design an enterprise logistics delivery fleet route optimization agent mesh"
+
+# Or with currency options:
+node scripts/ab-agent-studio.js "Healthcare patient intake and triage agent mesh" --currency=GBP
+
+# Or interactive REPL mode:
+npm run agent-studio:interactive
+```
+
+### 5. Local Preview
 Serve the root directory with any local static HTTP server:
 ```bash
 npx serve .
