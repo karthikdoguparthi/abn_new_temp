@@ -27,6 +27,15 @@
     return `${curr.symbol}${converted.toLocaleString()}`;
   }
 
+  function escapeHtml(value) {
+    return String(value)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
   // Runtime in-memory security context for sensitive configuration (zero web storage persistence)
   let runtimeAiConfig = {
     provider: 'gemini',
@@ -266,13 +275,13 @@
       return `
         <div class="history-card ${isActive ? 'active-run' : ''}" data-history-idx="${idx}">
           <div class="history-card-top">
-            <span class="history-card-time">Run #${count - idx} • ${item.timestamp}</span>
-            <span class="history-card-model">${item.modelName}</span>
+            <span class="history-card-time">Run #${count - idx} • ${escapeHtml(item.timestamp)}</span>
+            <span class="history-card-model">${escapeHtml(item.modelName)}</span>
           </div>
-          <div class="history-card-title">${item.solutionName}</div>
-          <div class="history-card-prompt">"${item.prompt}"</div>
+          <div class="history-card-title">${escapeHtml(item.solutionName)}</div>
+          <div class="history-card-prompt">"${escapeHtml(item.prompt)}"</div>
           <div class="history-card-meta">
-            <span class="history-card-cost">${item.formattedTotal}</span>
+            <span class="history-card-cost">${escapeHtml(item.formattedTotal)}</span>
             <div class="history-card-actions">
               <button class="history-card-btn btn-load-run" data-run-idx="${idx}" type="button">Compare / View</button>
             </div>
