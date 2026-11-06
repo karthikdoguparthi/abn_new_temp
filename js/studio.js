@@ -538,8 +538,9 @@
   }
 
   function getFriendlyModelName(modelVal) {
-    if (!modelVal) return 'Google Gemini';
+    if (!modelVal) return 'Active Brains SLM Agent';
     const val = modelVal.toLowerCase();
+    if (val.includes('slm') || val.includes('llama')) return 'Active Brains SLM Agent (Llama 3.2 3B)';
     if (val.includes('1.5-flash') || val.includes('flash-latest')) return 'Google Gemini 1.5 Flash';
     if (val.includes('1.5-pro') || val.includes('pro-latest')) return 'Google Gemini 1.5 Pro';
     if (val.includes('2.0-flash')) return 'Google Gemini 2.0 Flash';
@@ -553,7 +554,7 @@
     const promptInput = document.getElementById('prompt-input');
     const runBtn = document.getElementById('btn-run');
     const modelSelect = document.getElementById('model-select');
-    const rawSelectedModel = modelSelect ? modelSelect.value : 'gemini-1.5-flash';
+    const rawSelectedModel = modelSelect ? modelSelect.value : 'ab-slm-agent';
     const friendlyModel = getFriendlyModelName(rawSelectedModel);
 
     const userPrompt = promptInput.value.trim();
@@ -566,11 +567,45 @@
     runBtn.disabled = true;
     runBtn.innerHTML = `<span class="prompt-sparkle">⏳</span> Generating...`;
 
-    const provider = runtimeAiConfig.provider || 'gemini';
+    const provider = runtimeAiConfig.provider || 'slm';
     const apiKey = runtimeAiConfig.apiKey;
 
-    // Live AI API Integration (Gemini, Anthropic, or OpenAI)
-    if (apiKey && (provider === 'gemini' || apiKey.startsWith('AIza') || provider === 'openai' || provider === 'anthropic')) {
+    // 1. Try Vercel Serverless Endpoint /api/studio
+    try {
+      const serverRes = await fetch('/api/studio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prompt: userPrompt,
+          model: rawSelectedModel,
+          currency: currentCurrency,
+          apiKey: apiKey || undefined
+        })
+      });
+
+      if (serverRes.ok) {
+        const json = await serverRes.json();
+        if (json.ok) {
+          if (json.rawOutput) {
+            generateDynamicSolution(userPrompt, friendlyModel, json.rawOutput);
+          } else if (json.solution) {
+            currentSolution = json.solution;
+            archiveSolutionToHistory(currentSolution);
+            renderCurrentSolution();
+          } else {
+            generateDynamicSolution(userPrompt, friendlyModel);
+          }
+          runBtn.disabled = false;
+          runBtn.innerHTML = `▷ Run`;
+          return;
+        }
+      }
+    } catch (apiErr) {
+      console.warn("/api/studio not reachable, using direct client engine:", apiErr);
+    }
+
+    // 2. Direct client-side live Gemini/Groq execution if API key is provided
+    if (apiKey && (provider === 'gemini' || apiKey.startsWith('AIza') || provider === 'groq' || apiKey.startsWith('gsk_'))) {
       try {
         const liveAiResult = await callLiveAiModel(provider, apiKey, rawSelectedModel, userPrompt);
         const htmlContent = typeof liveAiResult === 'object' ? liveAiResult.html : liveAiResult;
@@ -580,19 +615,17 @@
         runBtn.innerHTML = `▷ Run`;
         return;
       } catch (err) {
-        console.warn("Live Gemini API call error:", err);
-        alert(`Gemini API Error: ${err.message}`);
-        runBtn.disabled = false;
-        runBtn.innerHTML = `▷ Run`;
-        return;
+        console.warn("Client Live API call error:", err);
       }
     }
 
-    // Dynamic generation
+    // 3. Fallback: Autonomous Client-side Active Brains Grounded Engine
     setTimeout(() => {
       runBtn.disabled = false;
       runBtn.innerHTML = `▷ Run`;
       generateDynamicSolution(userPrompt, friendlyModel);
+    }, 450);
+  }
     }, 600);
   }
 

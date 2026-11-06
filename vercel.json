@@ -37,6 +37,9 @@
   "functions": {
     "api/contact.js": {
       "maxDuration": 30
+    },
+    "api/studio.js": {
+      "maxDuration": 30
     }
   },
   "rewrites": [
