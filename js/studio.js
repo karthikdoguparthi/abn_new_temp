@@ -376,47 +376,141 @@
         return;
       }
       const sol = currentSolution;
-      let content = `==========================================================\n`;
-      content += `ACTIVE BRAINS AGENT STUDIO - SOLUTION & ARCHITECTURE REPORT\n`;
-      content += `==========================================================\n\n`;
-      content += `Solution: ${sol.meta.solutionName}\n`;
-      content += `Domain: ${sol.domain}\n`;
-      content += `Model: ${sol.modelName}\n`;
-      content += `Client: ${sol.meta.preparedFor}\n`;
-      content += `Date: ${sol.meta.date}\n`;
-      content += `Prepared By: ${sol.meta.preparedBy}\n\n`;
-      content += `----------------------------------------------------------\n`;
-      content += `EXECUTIVE SUMMARY\n`;
-      content += `----------------------------------------------------------\n`;
-      content += `${sol.solutionPlan.executiveSummary}\n\n`;
-      content += `----------------------------------------------------------\n`;
-      content += `SOLUTION SCOPE\n`;
-      content += `----------------------------------------------------------\n`;
-      sol.solutionPlan.scope.forEach(sc => {
-        content += `- Module: ${sc.module}\n  Agent: ${sc.agent}\n  Desc: ${sc.desc}\n  Features: ${sc.features}\n\n`;
-      });
       const totalNum = typeof sol.solutionPlan.totalCost === 'number'
         ? sol.solutionPlan.totalCost
         : Number(String(sol.solutionPlan.totalCost).replace(/[^0-9.]/g, '')) || 0;
       const formattedTotalStr = formatCurrencyAmount(totalNum, currentCurrency);
 
-      content += `----------------------------------------------------------\n`;
-      content += `ESTIMATED COST BREAKDOWN (${currentCurrency}) (Total: ${formattedTotalStr})\n`;
-      content += `----------------------------------------------------------\n`;
-      sol.solutionPlan.costItems.forEach(c => {
-        const costNum = c.baseCost || (typeof c.cost === 'string' ? Number(c.cost.replace(/[^0-9.]/g, '')) : c.cost) || 0;
-        content += `* ${c.comp} (${formatCurrencyAmount(costNum, currentCurrency)}): ${c.desc}\n`;
-      });
+      if (format === 'excel') {
+        // True CSV format compatible with Microsoft Excel
+        const escapeCsv = (str) => `"${String(str || '').replace(/"/g, '""')}"`;
+        let csv = `Active Brains Technologies - Agent Studio Solution Report\n`;
+        csv += `Solution Name,${escapeCsv(sol.meta.solutionName)}\n`;
+        csv += `Client / Prepared For,${escapeCsv(sol.meta.preparedFor)}\n`;
+        csv += `Date,${escapeCsv(sol.meta.date)}\n`;
+        csv += `Prepared By,${escapeCsv(sol.meta.preparedBy)}\n`;
+        csv += `Currency,${escapeCsv(currentCurrency)}\n`;
+        csv += `Total Estimated Cost,${escapeCsv(formattedTotalStr)}\n\n`;
 
-      const blob = new Blob([content], { type: format === 'excel' ? 'text/csv;charset=utf-8' : 'text/plain;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = `${sol.meta.solutionName.replace(/\s+/g, '_')}_ActiveBrains.${format === 'excel' ? 'csv' : 'txt'}`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
+        csv += `EXECUTIVE SUMMARY\n`;
+        csv += `${escapeCsv(sol.solutionPlan.executiveSummary)}\n\n`;
+
+        csv += `SOLUTION SCOPE & MODULES\n`;
+        csv += `Module,AI Agent Involved,Description,Key Features\n`;
+        (sol.solutionPlan.scope || []).forEach(sc => {
+          csv += `${escapeCsv(sc.module)},${escapeCsv(sc.agent)},${escapeCsv(sc.desc)},${escapeCsv(sc.features)}\n`;
+        });
+        csv += `\n`;
+
+        csv += `ESTIMATED COST BREAKDOWN\n`;
+        csv += `Cost Component,Description,Estimated Cost (${currentCurrency})\n`;
+        (sol.solutionPlan.costItems || []).forEach(c => {
+          const costNum = c.baseCost || (typeof c.cost === 'string' ? Number(c.cost.replace(/[^0-9.]/g, '')) : c.cost) || 0;
+          csv += `${escapeCsv(c.comp)},${escapeCsv(c.desc)},${escapeCsv(formatCurrencyAmount(costNum, currentCurrency))}\n`;
+        });
+        csv += `Total,,${escapeCsv(formattedTotalStr)}\n\n`;
+
+        if (sol.solutionPlan.humanResources && sol.solutionPlan.humanResources.length) {
+          csv += `HUMAN INTELLIGENCE REQUIRED\n`;
+          csv += `Role,Responsibility,Effort (Hours)\n`;
+          sol.solutionPlan.humanResources.forEach(hr => {
+            csv += `${escapeCsv(hr.role)},${escapeCsv(hr.desc)},${escapeCsv(hr.hours)}\n`;
+          });
+          csv += `\n`;
+        }
+
+        if (sol.solutionPlan.phases && sol.solutionPlan.phases.length) {
+          csv += `IMPLEMENTATION ROADMAP & DELIVERABLES\n`;
+          csv += `Phase,Duration,Key Activities,Deliverables\n`;
+          sol.solutionPlan.phases.forEach(p => {
+            csv += `${escapeCsv(p.name)},${escapeCsv(p.dur)},${escapeCsv(p.desc)},${escapeCsv(p.deliverables)}\n`;
+          });
+        }
+
+        const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${sol.meta.solutionName.replace(/\s+/g, '_')}_ActiveBrains.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+      }
+
+      if (format === 'doc') {
+        // Formatted Word document (HTML format compatible with Microsoft Word .doc)
+        let htmlDoc = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">`;
+        htmlDoc += `<head><meta charset="utf-8"><title>${sol.meta.solutionName}</title>`;
+        htmlDoc += `<style>
+          body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; color: #1e293b; line-height: 1.6; }
+          h1 { color: #f35009; font-size: 20pt; border-bottom: 2px solid #f35009; padding-bottom: 6px; }
+          h2 { color: #0f172a; font-size: 14pt; margin-top: 20px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; }
+          table { width: 100%; border-collapse: collapse; margin-top: 10px; margin-bottom: 15px; }
+          th { background: #f1f5f9; color: #0f172a; border: 1px solid #cbd5e1; padding: 8px; text-align: left; }
+          td { border: 1px solid #cbd5e1; padding: 8px; vertical-align: top; }
+          .meta-box { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; margin-bottom: 20px; }
+          .badge { font-weight: bold; color: #f35009; }
+        </style></head><body>`;
+
+        htmlDoc += `<h1>Active Brains Technologies - Agent Studio Solution Report</h1>`;
+        htmlDoc += `<div class="meta-box">`;
+        htmlDoc += `<p><strong>Solution Name:</strong> ${sol.meta.solutionName}<br>`;
+        htmlDoc += `<strong>Prepared For:</strong> ${sol.meta.preparedFor}<br>`;
+        htmlDoc += `<strong>Date:</strong> ${sol.meta.date}<br>`;
+        htmlDoc += `<strong>Prepared By:</strong> ${sol.meta.preparedBy}<br>`;
+        htmlDoc += `<strong>Total Project Cost:</strong> <span class="badge">${formattedTotalStr}</span></p>`;
+        htmlDoc += `</div>`;
+
+        htmlDoc += `<h2>1. Executive Summary</h2>`;
+        htmlDoc += `<p>${sol.solutionPlan.executiveSummary}</p>`;
+
+        htmlDoc += `<h2>2. Solution Scope & Modules</h2>`;
+        htmlDoc += `<table><thead><tr><th>Module</th><th>AI Agent Involved</th><th>Description</th><th>Key Features</th></tr></thead><tbody>`;
+        (sol.solutionPlan.scope || []).forEach(sc => {
+          htmlDoc += `<tr><td><strong>${sc.module}</strong></td><td>${sc.agent}</td><td>${sc.desc}</td><td>${sc.features}</td></tr>`;
+        });
+        htmlDoc += `</tbody></table>`;
+
+        htmlDoc += `<h2>3. Implementation Roadmap</h2>`;
+        htmlDoc += `<table><thead><tr><th>Phase</th><th>Duration</th><th>Activities</th><th>Deliverables</th></tr></thead><tbody>`;
+        (sol.solutionPlan.phases || []).forEach(p => {
+          htmlDoc += `<tr><td><strong>${p.name}</strong></td><td>${p.dur}</td><td>${p.desc}</td><td>${p.deliverables}</td></tr>`;
+        });
+        htmlDoc += `</tbody></table>`;
+
+        htmlDoc += `<h2>4. Estimated Cost Breakdown (${currentCurrency})</h2>`;
+        htmlDoc += `<table><thead><tr><th>Cost Component</th><th>Description</th><th>Estimated Cost</th></tr></thead><tbody>`;
+        (sol.solutionPlan.costItems || []).forEach(c => {
+          const costNum = c.baseCost || (typeof c.cost === 'string' ? Number(c.cost.replace(/[^0-9.]/g, '')) : c.cost) || 0;
+          htmlDoc += `<tr><td><strong>${c.comp}</strong></td><td>${c.desc}</td><td>${formatCurrencyAmount(costNum, currentCurrency)}</td></tr>`;
+        });
+        htmlDoc += `<tr><td colspan="2"><strong>Total Estimated Project Cost</strong></td><td><strong>${formattedTotalStr}</strong></td></tr>`;
+        htmlDoc += `</tbody></table>`;
+
+        if (sol.solutionPlan.humanResources && sol.solutionPlan.humanResources.length) {
+          htmlDoc += `<h2>5. Human Intelligence Required</h2>`;
+          htmlDoc += `<table><thead><tr><th>Role</th><th>Responsibility</th><th>Effort (Hours)</th></tr></thead><tbody>`;
+          sol.solutionPlan.humanResources.forEach(hr => {
+            htmlDoc += `<tr><td><strong>${hr.role}</strong></td><td>${hr.desc}</td><td>${hr.hours}</td></tr>`;
+          });
+          htmlDoc += `</tbody></table>`;
+        }
+
+        htmlDoc += `</body></html>`;
+
+        const blob = new Blob(['\ufeff', htmlDoc], { type: 'application/msword' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${sol.meta.solutionName.replace(/\s+/g, '_')}_ActiveBrains.doc`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        return;
+      }
     };
 
     if (btnDocx) btnDocx.addEventListener('click', () => downloadSolution('doc'));
