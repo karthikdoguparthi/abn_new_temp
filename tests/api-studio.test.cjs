@@ -68,3 +68,4 @@ test('api/studio synthesizes grounded Active Brains enterprise solution', async 
     assert.ok(data.solution.solutionPlan.totalCost > 0);
   }
 });
+

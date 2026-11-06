@@ -626,8 +626,6 @@
       generateDynamicSolution(userPrompt, friendlyModel);
     }, 450);
   }
-    }, 600);
-  }
 
   async function callLiveAiModel(provider, key, model, prompt) {
     // 1. Google Gemini Live API
