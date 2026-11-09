@@ -39,7 +39,15 @@ body.studio-dark-theme {
   --studio-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
-* {
+/* Root & Base Box Sizing */
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -50,22 +58,29 @@ body.ab-studio-body {
   background-color: var(--studio-bg);
   color: var(--studio-text-main);
   min-height: 100vh;
+  width: 100%;
+  max-width: 100vw;
   display: flex;
   overflow-x: hidden;
+  position: relative;
   transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 /* ----------------- Studio Layout ----------------- */
 .ab-studio-app {
   display: flex;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
+  min-width: 0;
 }
 
 .ab-studio-app.ab-studio-fullwidth {
   flex-direction: column;
   width: 100%;
+  max-width: 100%;
   min-height: 100vh;
+  min-width: 0;
 }
 
 /* ----------------- Top Header Bar ----------------- */
@@ -1111,13 +1126,14 @@ body.studio-dark-theme .currency-dropdown option {
   border-left: 1px solid var(--studio-border, #e2e8f0);
   box-shadow: -8px 0 25px rgba(0, 0, 0, 0.15);
   z-index: 1000;
-  display: flex;
+  display: none;
   flex-direction: column;
   transition: right 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .studio-history-drawer.open {
   right: 0;
+  display: flex;
 }
 
 .history-drawer-header {
@@ -1310,49 +1326,113 @@ body.studio-dark-theme .history-card-meta {
    ========================================================================== */
 @media (max-width: 768px) {
   /* Prevent horizontal cut-off & padding blowouts */
+  html,
   body.ab-studio-body {
+    width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
   }
 
+  .ab-studio-app,
   .ab-studio-app.ab-studio-fullwidth {
     width: 100%;
+    max-width: 100%;
     min-width: 0;
+    overflow-x: hidden;
   }
 
   /* Top Navbar */
   .studio-top-navbar {
     padding: 10px 14px;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    row-gap: 8px;
+    column-gap: 8px;
+    overflow-x: hidden;
   }
 
   .studio-top-brand-group {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+  }
+
+  .studio-brand-badge {
+    min-width: 0;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .studio-logo-icon {
+    flex-shrink: 0;
+  }
+
+  .studio-brand-titles {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .studio-brand-heading {
+    font-size: 1.05rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .studio-brand-sub {
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 280px;
   }
 
   .studio-top-nav-actions {
     width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    display: flex;
+    align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 6px;
   }
 
   .studio-top-navbar .btn-pill {
-    padding: 6px 10px;
-    font-size: 0.75rem;
+    padding: 5px 9px;
+    font-size: 0.72rem;
+    gap: 5px;
+    white-space: nowrap;
   }
 
   /* Main container */
   .ab-studio-main.ab-studio-main-full {
     padding: 14px 12px 36px;
+    width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 
   /* Prompt Card */
   .studio-prompt-card {
     padding: 14px 12px;
     margin-bottom: 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .prompt-header-row {
@@ -1362,34 +1442,51 @@ body.studio-dark-theme .history-card-meta {
     margin-bottom: 8px;
   }
 
+  .prompt-input-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
   .prompt-textarea {
     font-size: 0.875rem;
     padding: 10px 12px;
     min-height: 90px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .prompt-controls-bar {
     flex-direction: column;
     align-items: stretch;
     gap: 10px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .prompt-left-tools {
     width: 100%;
+    max-width: 100%;
     flex-wrap: wrap;
     justify-content: flex-start;
+    gap: 6px;
   }
 
   .prompt-right-tools {
     width: 100%;
+    max-width: 100%;
     flex-direction: column;
     gap: 8px;
   }
 
   .model-selector {
     width: 100%;
+    max-width: 100%;
     justify-content: space-between;
     padding: 8px 10px;
+    box-sizing: border-box;
   }
 
   .model-selector select {
@@ -1401,20 +1498,32 @@ body.studio-dark-theme .history-card-meta {
 
   .btn-run-prompt {
     width: 100%;
+    max-width: 100%;
     justify-content: center;
     padding: 10px 16px;
+    box-sizing: border-box;
   }
 
-  /* Split columns stack cleanly */
+  /* Split columns stack cleanly via flex */
   .studio-output-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
   }
 
   .studio-response-panel,
   .studio-solution-panel {
     padding: 14px 12px;
     border-radius: var(--studio-radius-sm);
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
   }
 
   .panel-header {
@@ -1423,6 +1532,8 @@ body.studio-dark-theme .history-card-meta {
     gap: 10px;
     margin-bottom: 14px;
     padding-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .panel-tools {
@@ -1436,10 +1547,21 @@ body.studio-dark-theme .history-card-meta {
     font-size: 0.75rem;
   }
 
-  /* Solution Meta Grid (was 4 fixed columns, wrap to 2x2 or 1 column on mobile) */
+  .solution-sheet {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+  }
+
+  /* Solution Meta Grid */
   .solution-meta-grid {
     grid-template-columns: 1fr 1fr;
     border-radius: 6px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .solution-meta-cell {
@@ -1456,13 +1578,25 @@ body.studio-dark-theme .history-card-meta {
     border-bottom: none;
   }
 
+  /* Word wrapping to prevent any unbreakable token blowout */
+  .plan-lead-p,
+  .ai-response-body p,
+  .ai-response-body li,
+  .plan-main-title,
+  .plan-section-title {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
   /* Tables horizontal scroll wrapper */
   .studio-table {
     display: block;
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     font-size: 0.75rem;
+    box-sizing: border-box;
   }
 
   .studio-table th,
@@ -1470,22 +1604,31 @@ body.studio-dark-theme .history-card-meta {
     padding: 8px 8px;
     font-size: 0.75rem;
     white-space: normal;
-    min-width: 110px;
+    min-width: 100px;
   }
 
   /* Sub grids & flow boxes */
   .solution-sub-grid {
     grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
   .delivery-approach-flow {
     gap: 6px;
     padding-bottom: 8px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
   }
 
   .flow-step-box {
-    min-width: 115px;
+    min-width: 110px;
     padding: 8px 10px;
+    box-sizing: border-box;
   }
 
   .flow-step-box span {
@@ -1501,11 +1644,19 @@ body.studio-dark-theme .history-card-meta {
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* History Drawer full width on mobile */
   .studio-history-drawer {
     width: 100%;
-    max-width: 100%;
+    max-width: 100vw;
+    right: -100vw;
+  }
+
+  .studio-history-drawer.open {
+    right: 0;
   }
 }
