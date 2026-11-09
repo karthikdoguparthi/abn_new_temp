@@ -1469,9 +1469,15 @@ body.studio-dark-theme .history-card-meta {
   .prompt-left-tools {
     width: 100%;
     max-width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    box-sizing: border-box;
+  }
+
+  .prompt-left-tools #btn-clear {
+    margin-left: auto;
   }
 
   .prompt-right-tools {
@@ -1527,20 +1533,50 @@ body.studio-dark-theme .history-card-meta {
   }
 
   .panel-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
     margin-bottom: 14px;
     padding-bottom: 10px;
     width: 100%;
     box-sizing: border-box;
   }
 
-  .panel-tools {
+  .studio-response-panel .panel-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
+    gap: 8px;
+  }
+
+  .studio-response-panel .panel-tools {
+    width: auto;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+
+  .studio-solution-panel .panel-header {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .studio-solution-panel .panel-tools {
+    width: auto;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     gap: 6px;
+    flex-wrap: wrap;
   }
 
   .currency-selector-wrap {
@@ -1588,23 +1624,26 @@ body.studio-dark-theme .history-card-meta {
     word-break: break-word;
   }
 
-  /* Tables horizontal scroll wrapper */
+  /* Tables full-width aligned edge-to-edge */
   .studio-table {
-    display: block;
+    display: table;
     width: 100%;
     max-width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    table-layout: fixed;
+    border-collapse: collapse;
     font-size: 0.75rem;
     box-sizing: border-box;
+    margin-bottom: 20px;
   }
 
   .studio-table th,
   .studio-table td {
     padding: 8px 8px;
-    font-size: 0.75rem;
+    font-size: 0.74rem;
     white-space: normal;
-    min-width: 100px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+    min-width: 0;
   }
 
   /* Sub grids & flow boxes */
