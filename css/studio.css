@@ -1304,3 +1304,208 @@ body.studio-dark-theme .history-card-meta {
   border-color: var(--studio-accent-blue);
   color: #ffffff;
 }
+
+/* ==========================================================================
+   Comprehensive Mobile & Tablet Responsive Optimizations (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Prevent horizontal cut-off & padding blowouts */
+  body.ab-studio-body {
+    overflow-x: hidden;
+  }
+
+  .ab-studio-app.ab-studio-fullwidth {
+    width: 100%;
+    min-width: 0;
+  }
+
+  /* Top Navbar */
+  .studio-top-navbar {
+    padding: 10px 14px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .studio-top-brand-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .studio-top-nav-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .studio-top-navbar .btn-pill {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+  }
+
+  /* Main container */
+  .ab-studio-main.ab-studio-main-full {
+    padding: 14px 12px 36px;
+    max-width: 100%;
+  }
+
+  /* Prompt Card */
+  .studio-prompt-card {
+    padding: 14px 12px;
+    margin-bottom: 16px;
+  }
+
+  .prompt-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .prompt-textarea {
+    font-size: 0.875rem;
+    padding: 10px 12px;
+    min-height: 90px;
+  }
+
+  .prompt-controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .prompt-left-tools {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .prompt-right-tools {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .model-selector {
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px 10px;
+  }
+
+  .model-selector select {
+    width: 100%;
+    max-width: calc(100% - 24px);
+    font-size: 0.8125rem;
+    text-overflow: ellipsis;
+  }
+
+  .btn-run-prompt {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 16px;
+  }
+
+  /* Split columns stack cleanly */
+  .studio-output-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .studio-response-panel,
+  .studio-solution-panel {
+    padding: 14px 12px;
+    border-radius: var(--studio-radius-sm);
+  }
+
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+  }
+
+  .panel-tools {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .currency-selector-wrap {
+    font-size: 0.75rem;
+  }
+
+  /* Solution Meta Grid (was 4 fixed columns, wrap to 2x2 or 1 column on mobile) */
+  .solution-meta-grid {
+    grid-template-columns: 1fr 1fr;
+    border-radius: 6px;
+  }
+
+  .solution-meta-cell {
+    padding: 8px 10px;
+    border-bottom: 1px solid #bbf7d0;
+  }
+
+  .solution-meta-cell:nth-child(2) {
+    border-right: none;
+  }
+
+  .solution-meta-cell:nth-child(3),
+  .solution-meta-cell:nth-child(4) {
+    border-bottom: none;
+  }
+
+  /* Tables horizontal scroll wrapper */
+  .studio-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.75rem;
+  }
+
+  .studio-table th,
+  .studio-table td {
+    padding: 8px 8px;
+    font-size: 0.75rem;
+    white-space: normal;
+    min-width: 110px;
+  }
+
+  /* Sub grids & flow boxes */
+  .solution-sub-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .delivery-approach-flow {
+    gap: 6px;
+    padding-bottom: 8px;
+  }
+
+  .flow-step-box {
+    min-width: 115px;
+    padding: 8px 10px;
+  }
+
+  .flow-step-box span {
+    font-size: 0.75rem;
+  }
+
+  .flow-step-box h4 {
+    font-size: 0.8rem;
+  }
+
+  /* Total Cost badge */
+  .total-cost-badge {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* History Drawer full width on mobile */
+  .studio-history-drawer {
+    width: 100%;
+    max-width: 100%;
+  }
+}

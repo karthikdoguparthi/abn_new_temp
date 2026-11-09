@@ -14,4 +14,4 @@
 }
 .header .nav-link[aria-current="page"]{color:var(--color-brand-blue);font-weight:700}
 .ip-summary p{color:#c9eaf8;font-size:16px;line-height:1.75}
-.fundoo-widget-btn{transition:width .35s ease,padding .35s ease,transform .25s ease}.fundoo-widget-btn.collapsed{width:58px!important;min-width:58px;padding:6px!important;border-radius:999px}.fundoo-widget-btn.collapsed>span{display:none}.fundoo-widget-btn.collapsed .fundoo-avatar{margin:0 auto}.fundoo-widget-btn:focus-visible{outline:3px solid #1aa9e8;outline-offset:4px}
+.fundoo-widget-btn, .fundoo-chat-panel, .mobile-contact-cta { display: none !important; }
