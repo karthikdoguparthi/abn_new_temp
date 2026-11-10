@@ -933,19 +933,29 @@ body.studio-dark-theme .total-cost-badge {
   margin-top: 14px;
 }
 
-/* Header Export Badges (W, X, Expand) */
+/* Header Export Badges (Word & Excel) */
+.export-buttons-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .btn-export-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  gap: 5px;
   border-radius: 6px;
   border: 1px solid var(--studio-border);
   background: #ffffff;
   cursor: pointer;
   transition: all 0.15s ease;
-  font-size: 0.85rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1;
 }
 .btn-export-badge:hover {
   transform: translateY(-1px);
@@ -1562,26 +1572,59 @@ body.studio-dark-theme .history-card-meta {
 
   .studio-solution-panel .panel-header {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
     width: 100%;
-    gap: 8px;
+    gap: 10px;
+    box-sizing: border-box;
+  }
+
+  .studio-solution-panel .solution-header-title {
+    width: 100%;
   }
 
   .studio-solution-panel .panel-tools {
-    width: auto;
-    margin-left: auto;
+    width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
-    gap: 6px;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    margin-left: 0;
   }
 
-  .currency-selector-wrap {
+  .studio-solution-panel .currency-selector-wrap {
+    margin-right: auto;
+    flex-shrink: 0;
+    padding: 3px 8px 3px 10px;
     font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .studio-solution-panel .currency-dropdown {
+    font-size: 0.75rem;
+  }
+
+  .studio-solution-panel .export-buttons-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+
+  .studio-solution-panel .btn-export-badge {
+    height: 30px;
+    width: auto;
+    padding: 0 10px;
+    font-weight: 700;
+    font-size: 0.78rem;
+    gap: 5px;
   }
 
   .solution-sheet {
