@@ -97,4 +97,23 @@ document.addEventListener('DOMContentLoaded', () => {
   for(const [id,value] of [['accept-cookies','accepted'],['decline-cookies','essential_only']]){
     document.getElementById(id)?.addEventListener('click',()=>{try{localStorage.setItem('ab_cookie_consent_v2',value);}catch{}if(banner)banner.style.display='none';});
   }
+
+  // Fix in-page anchor links when document head contains <base href="/">
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor || anchor.hasAttribute('data-contact-open')) return;
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#' || href === '#!') return;
+    const targetId = href.slice(1);
+    const target = document.getElementById(targetId) || document.querySelector(`[name="${CSS.escape(targetId)}"]`);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (history.pushState) {
+        history.pushState(null, '', href);
+      } else {
+        location.hash = href;
+      }
+    }
+  });
 });
