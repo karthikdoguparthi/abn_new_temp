@@ -1,12 +1,12 @@
 const main = document.getElementById('main-content');
 if (main) {
   const milestones = [
-    ['2002', 'The company begins', 'Active Brains was established to help organisations make technology choices that are practical, understandable and grounded in the realities of the business.'],
-    ['Early years', 'Building a delivery foundation', 'Our work expanded across software, web, data and IT services, creating a broad foundation for reliable technology delivery.'],
-    ['Expansion', 'Connecting strategy and implementation', 'We grew our capability across business applications, architecture, integration and consulting so that technology could be considered in its full operational context.'],
-    ['Global delivery', 'Experience across markets', 'We have worked with organisations and partners across the UK, Europe and wider markets, adapting our approach to different teams, sectors and ways of working.'],
+    ['Present', 'Ready for what comes next', 'We continue to invest in people, partnerships and evolving technology while keeping every solution accountable to a useful business outcome.'],
     ['Today', 'Business, data, cloud and AI', 'Today we bring business understanding, solution design and engineering together to modernise platforms, improve decisions and automate meaningful work.'],
-    ['Present', 'Ready for what comes next', 'We continue to invest in people, partnerships and evolving technology while keeping every solution accountable to a useful business outcome.']
+    ['Global delivery', 'Experience across markets', 'We have worked with organisations and partners across the UK, Europe and wider markets, adapting our approach to different teams, sectors and ways of working.'],
+    ['Expansion', 'Connecting strategy and implementation', 'We grew our capability across business applications, architecture, integration and consulting so that technology could be considered in its full operational context.'],
+    ['Early years', 'Building a delivery foundation', 'Our work expanded across software, web, data and IT services, creating a broad foundation for reliable technology delivery.'],
+    ['2002', 'The company begins', 'Active Brains was established to help organisations make technology choices that are practical, understandable and grounded in the realities of the business.']
   ];
 
   const values = [

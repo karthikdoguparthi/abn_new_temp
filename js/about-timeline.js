@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!timeline) return;
 
   const milestones = [
-    ['2002', 'A practical technology foundation', 'Active Brains began with a clear focus: helping organisations make technology decisions that support day-to-day business needs.'],
-    ['2006', 'Broadening delivery capability', 'Our work grew across software, web solutions, data and IT services, giving clients a broader base of practical technology support.'],
-    ['2011', 'Connecting business and technology', 'We strengthened our consulting and architecture capability to help clients align systems, processes and people more effectively.'],
-    ['2016', 'Enterprise platforms and integration', 'Our delivery expanded across business applications, cloud platforms and integration, with a continued focus on reliable implementation.'],
+    ['2026', 'Present and progressing', 'Today, Active Brains brings business understanding, architecture and engineering together to create practical solutions that can evolve with the organisation.'],
     ['2021', 'Data, cloud and intelligent automation', 'We developed further capability in enterprise data, AI-assisted workflows and automation to help organisations modernise with confidence.'],
-    ['2026', 'Present and progressing', 'Today, Active Brains brings business understanding, architecture and engineering together to create practical solutions that can evolve with the organisation.']
+    ['2016', 'Enterprise platforms and integration', 'Our delivery expanded across business applications, cloud platforms and integration, with a continued focus on reliable implementation.'],
+    ['2011', 'Connecting business and technology', 'We strengthened our consulting and architecture capability to help clients align systems, processes and people more effectively.'],
+    ['2006', 'Broadening delivery capability', 'Our work grew across software, web solutions, data and IT services, giving clients a broader base of practical technology support.'],
+    ['2002', 'A practical technology foundation', 'Active Brains began with a clear focus: helping organisations make technology decisions that support day-to-day business needs.']
   ];
 
   timeline.innerHTML = milestones.map(([year, title, copy]) => `
