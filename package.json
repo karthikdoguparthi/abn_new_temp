@@ -8,6 +8,6 @@
     "agent-studio:interactive": "node scripts/ab-agent-studio.js --interactive"
   },
   "dependencies": {
-    "nodemailer": "^10.3.1"
+    "nodemailer": "^10.6.0"
   }
 }
