@@ -113,3 +113,14 @@
 /* Align image-led section titles with their photographs. */
 .about-section-heading:has(> .visual-heading-media){align-items:start}
 .about-section-heading:has(> .visual-heading-media)>h2{margin-top:0;margin-bottom:0}
+
+/* Homepage hero headline: always two lines ("Technology that" / orange "moves your business forward."),
+   sized so the longer second line fits the hero column at every width. */
+.visual-home-hero .ab-intro h1 em{display:block}
+.visual-home-hero .ab-intro h1{font-size:clamp(2.6rem,3.6vw,3.35rem)}
+@media(min-width:761px) and (max-width:1100px){
+ .visual-home-hero .ab-intro h1{font-size:3.9vw}
+}
+@media(max-width:760px){
+ .visual-home-hero .ab-intro h1{font-size:calc(7.5vw - 2px);line-height:1.1}
+}
