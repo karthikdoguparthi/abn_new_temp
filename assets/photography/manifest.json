@@ -9,13 +9,17 @@
     "height": 1920
   },
   {
-    "asset": "phase2-apps-practice",
-    "sourceId": "phase2-image55",
-    "source": "assets/phase2-originals/image55.png",
+    "asset": "apps-design-sketching",
+    "sourceId": "3471423",
+    "source": "https://www.pexels.com/photo/person-writing-on-white-paper-3471423/",
+    "photographer": "Fabian Wiktor",
     "location": "apps.html: practice section",
-    "alt": "Designing and building a digital application",
+    "alt": "Designer sketching application screens on paper",
     "width": 1280,
-    "height": 721
+    "height": 721,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-apps-practice"
   },
   {
     "asset": "data-hero",
@@ -54,33 +58,43 @@
     "height": 853
   },
   {
-    "asset": "research-it-workspace-generated",
-    "sourceId": "generated-research-it-workspace",
-    "source": "assets/photography/research-it-workspace-generated-original.png",
+    "asset": "research-engineering-lab",
+    "sourceId": "3862632",
+    "source": "https://www.pexels.com/photo/photo-of-female-engineer-working-on-her-workspace-3862632/",
+    "photographer": "ThisIsEngineering",
     "location": "research.html: hero",
-    "alt": "Photorealistic generated IT research workspace with software tests and analytics on an unbranded monitor",
+    "alt": "Engineer working on a laptop in a research and testing lab",
     "width": 1120,
     "height": 1400,
-    "license": "Original AI-generated asset; built-in imagegen; no third-party stock photo",
-    "verified": "2026-10-02"
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "research-it-workspace-generated"
   },
   {
-    "asset": "research-practice",
-    "sourceId": "7413936",
-    "source": "https://www.pexels.com/photo/business-analytics-printout-on-wooden-table-7413936/",
+    "asset": "research-lab-collaboration",
+    "sourceId": "3861960",
+    "source": "https://www.pexels.com/photo/engineers-in-workshop-3861960/",
+    "photographer": "ThisIsEngineering",
     "location": "research.html: practice section",
-    "alt": "Business analytics printout on wooden table",
+    "alt": "Two engineers testing a prototype in a technology lab",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "research-practice"
   },
   {
-    "asset": "launchpad-hero",
-    "sourceId": "29521529",
-    "source": "https://www.pexels.com/photo/creative-brainstorming-session-with-sticky-notes-29521529/",
+    "asset": "launchpad-team-session",
+    "sourceId": "7792836",
+    "source": "https://www.pexels.com/photo/colleagues-working-in-an-office-7792836/",
+    "photographer": "Yan Krukau",
     "location": "launchpad.html: hero",
-    "alt": "Creative brainstorming session with sticky notes",
+    "alt": "Team working through plans with laptops and printouts",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "launchpad-hero"
   },
   {
     "asset": "launchpad-practice",
@@ -110,49 +124,69 @@
     "height": 853
   },
   {
-    "asset": "phase2-si-hero",
-    "sourceId": "phase2-image57",
-    "source": "assets/phase2-originals/image57.png",
+    "asset": "si-data-centre-engineer",
+    "sourceId": "1181316",
+    "source": "https://www.pexels.com/photo/engineer-holding-laptop-1181316/",
+    "photographer": "Christina Morillo",
     "location": "si.html: hero",
-    "alt": "Illustration of a researcher considering advanced AI possibilities",
+    "alt": "Engineer with a laptop walking through a data centre",
     "width": 1280,
-    "height": 722
+    "height": 722,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-si-hero"
   },
   {
-    "asset": "phase2-si-practice",
-    "sourceId": "phase2-image59",
-    "source": "assets/phase2-originals/image59.png",
+    "asset": "si-planning-whiteboard",
+    "sourceId": "3862370",
+    "source": "https://www.pexels.com/photo/engineers-planning-structure-3862370/",
+    "photographer": "ThisIsEngineering",
     "location": "si.html: practice section",
-    "alt": "Illustration of potential applications of advanced intelligence",
+    "alt": "Team planning an integration approach at a whiteboard",
     "width": 1280,
-    "height": 722
+    "height": 722,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-si-practice"
   },
   {
-    "asset": "service-ai-agents-hero",
-    "sourceId": "17485657",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-depicts-how-ai-could-adapt-to-an-infinite-amount-of-uses-it-was-created-by-nidia-dias-as-part-of-the-visualising-ai-pr-17485657/",
+    "asset": "ai-agents-code-review",
+    "sourceId": "7988747",
+    "source": "https://www.pexels.com/photo/men-looking-at-the-code-on-the-board-7988747/",
+    "photographer": "Mikhail Nilov",
     "location": "service-ai-agents.html: hero",
-    "alt": "Radiating connections in an abstract illustration of adaptable AI",
+    "alt": "Developers reviewing code together on a large screen",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "service-ai-agents-hero"
   },
   {
-    "asset": "ai-agent-evaluation",
-    "sourceId": "5475814",
-    "source": "https://www.pexels.com/photo/person-holding-black-tablet-computer-5475814/",
+    "asset": "ai-agent-review-session",
+    "sourceId": "7988745",
+    "source": "https://www.pexels.com/photo/young-professionals-working-with-computers-7988745/",
+    "photographer": "Mikhail Nilov",
     "location": "service-ai-agents.html: practice section",
-    "alt": "Colleagues reviewing technical charts and system behaviour on a laptop",
+    "alt": "Engineers reviewing system behaviour together on a desktop monitor",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "ai-agent-evaluation"
   },
   {
-    "asset": "services-ai-agents-hero",
-    "sourceId": "17483873",
-    "source": "https://www.pexels.com/photo/an-artist-s-illustration-of-artificial-intelligence-ai-this-image-was-inspired-neural-networks-used-in-deep-learning-it-was-created-by-novoto-studio-as-part-of-the-visualising-ai-proje-17483873/",
+    "asset": "ai-agents-stakeholder-review",
+    "sourceId": "7644076",
+    "source": "https://www.pexels.com/photo/a-group-of-people-in-a-meeting-using-video-call-7644076/",
+    "photographer": "MART PRODUCTION",
     "location": "services-ai-agents.html: hero",
-    "alt": "A glass cube of interconnected components illustrating neural networks",
+    "alt": "Team meeting with a remote colleague joining by video call",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "services-ai-agents-hero"
   },
   {
     "asset": "services-ai-agents-practice",
@@ -173,13 +207,17 @@
     "height": 853
   },
   {
-    "asset": "enterprise-architecture-user",
-    "sourceId": "user-enterprise-architecture-9",
-    "source": "assets/photography/enterprise-architecture-user-original.png",
+    "asset": "architecture-whiteboard-session",
+    "sourceId": "3913021",
+    "source": "https://www.pexels.com/photo/engineers-in-meeting-3913021/",
+    "photographer": "ThisIsEngineering",
     "location": "service-architecture.html: practice section",
-    "alt": "Enterprise architecture connecting people, processes, data, applications, technology, strategy, governance and integration",
+    "alt": "Engineers mapping a system design on a whiteboard",
     "width": 1280,
-    "height": 631
+    "height": 631,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "enterprise-architecture-user"
   },
   {
     "asset": "service-business-apps-hero",
@@ -254,13 +292,17 @@
     "height": 1924
   },
   {
-    "asset": "service-continuous-support-practice",
-    "sourceId": "5475750",
-    "source": "https://www.pexels.com/photo/close-up-shot-of-a-person-using-a-laptop-5475750/",
+    "asset": "support-engineer-desk",
+    "sourceId": "845451",
+    "source": "https://www.pexels.com/photo/man-with-headphones-facing-computer-monitor-845451/",
+    "photographer": "Andrea Piacquadio",
     "location": "service-continuous-support.html: practice section",
-    "alt": "Close up shot of a person using a laptop",
+    "alt": "Support engineer with a headset working at a monitor",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "service-continuous-support-practice"
   },
   {
     "asset": "services-support-hero",
@@ -362,49 +404,69 @@
     "height": 1920
   },
   {
-    "asset": "services-solution-design-hero",
-    "sourceId": "6340615",
-    "source": "https://www.pexels.com/photo/colleagues-having-a-business-meeting-6340615/",
+    "asset": "solution-design-collaboration",
+    "sourceId": "5186358",
+    "source": "https://www.pexels.com/photo/coworkers-working-together-5186358/",
+    "photographer": "Nataliya Vaitkevich",
     "location": "services-solution-design.html: hero",
-    "alt": "Colleagues having a business meeting",
+    "alt": "Two colleagues working through a solution together at a table",
     "width": 1280,
-    "height": 1917
+    "height": 1917,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "services-solution-design-hero"
   },
   {
-    "asset": "services-solution-design-practice",
-    "sourceId": "15543114",
-    "source": "https://www.pexels.com/photo/white-board-with-colorful-sticky-notes-15543114/",
+    "asset": "solution-design-schemes",
+    "sourceId": "5324965",
+    "source": "https://www.pexels.com/photo/group-of-colleagues-discussing-engineering-plan-on-papers-at-table-5324965/",
+    "photographer": "Anna Shvets",
     "location": "services-solution-design.html: practice section",
-    "alt": "White board with colorful sticky notes",
+    "alt": "Team sketching a design on paper at a shared table",
     "width": 1280,
-    "height": 1920
+    "height": 1920,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "services-solution-design-practice"
   },
   {
-    "asset": "talent-welcome-handshake",
-    "sourceId": "7644148",
-    "source": "https://www.pexels.com/photo/businesspeople-shaking-hands-7644148/",
+    "asset": "talent-mentoring-laptop",
+    "sourceId": "12903341",
+    "source": "https://www.pexels.com/photo/senior-specialist-pointing-crucial-points-to-young-worker-12903341/",
+    "photographer": "Mizuno K",
     "location": "service-talent.html: hero",
-    "alt": "Two business professionals shaking hands as they begin working together",
+    "alt": "Experienced colleague guiding a new team member at a laptop",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "talent-welcome-handshake"
   },
   {
-    "asset": "talent-training-wide",
-    "sourceId": "talent-training-wide",
-    "source": "Generated with built-in imagegen",
+    "asset": "talent-training-session",
+    "sourceId": "39204838",
+    "source": "https://www.pexels.com/photo/business-meeting-in-modern-office-with-presentation-39204838/",
+    "photographer": "Vitaly Gariev",
     "location": "service-talent.html: practice section",
-    "alt": "Team discussing talent development in a professional workshop",
+    "alt": "Trainer leading a workshop for colleagues with laptops",
     "width": 1280,
-    "height": 512
+    "height": 512,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "talent-training-wide"
   },
   {
-    "asset": "services-talent-hero",
-    "sourceId": "6340656",
-    "source": "https://www.pexels.com/photo/colleagues-having-a-business-meeting-6340656/",
+    "asset": "talent-workshop-audience",
+    "sourceId": "18999484",
+    "source": "https://www.pexels.com/photo/attentive-group-during-presentation-18999484/",
+    "photographer": "Matheus Bertelli",
     "location": "services-talent.html: hero",
-    "alt": "Colleagues having a business meeting",
+    "alt": "Presenter speaking to an attentive group at a workshop",
     "width": 1280,
-    "height": 854
+    "height": 854,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "services-talent-hero"
   },
   {
     "asset": "services-talent-practice",
@@ -434,22 +496,30 @@
     "height": 853
   },
   {
-    "asset": "phase2-tech-aws-bedrock-hero",
-    "sourceId": "phase2-image46",
-    "source": "assets/phase2-originals/image46.png",
+    "asset": "bedrock-developer-workstation",
+    "sourceId": "36706460",
+    "source": "https://www.pexels.com/photo/developer-working-on-code-in-a-modern-office-36706460/",
+    "photographer": "Zayed Hossain",
     "location": "tech-aws-bedrock.html: hero",
-    "alt": "Cloud AI services connecting enterprise data and applications",
+    "alt": "Developer writing code at a multi-monitor workstation",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-aws-bedrock-hero"
   },
   {
-    "asset": "tech-aws-bedrock-practice",
-    "sourceId": "19895773",
-    "source": "https://www.pexels.com/photo/a-person-usnig-a-laptop-19895773/",
+    "asset": "bedrock-developer-code",
+    "sourceId": "7988087",
+    "source": "https://www.pexels.com/photo/a-man-sitting-in-front-of-the-computer-while-working-7988087/",
+    "photographer": "Mikhail Nilov",
     "location": "tech-aws-bedrock.html: practice section",
-    "alt": "A person usnig a laptop",
+    "alt": "Developer working with code across a monitor, laptop and tablet",
     "width": 1280,
-    "height": 854
+    "height": 854,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "tech-aws-bedrock-practice"
   },
   {
     "asset": "tech-aws-google-hero",
@@ -470,40 +540,56 @@
     "height": 852
   },
   {
-    "asset": "phase2-tech-copilot-hero",
-    "sourceId": "phase2-image3c",
-    "source": "assets/phase2-originals/image3c.png",
+    "asset": "copilot-colleagues-laptop",
+    "sourceId": "17737188",
+    "source": "https://www.pexels.com/photo/colleagues-standing-and-looking-at-laptop-17737188/",
+    "photographer": "Walls.io",
     "location": "tech-copilot.html: hero",
-    "alt": "AI assistant connected to business applications",
+    "alt": "Two colleagues reviewing work on a laptop in a bright office",
     "width": 1280,
-    "height": 588
+    "height": 588,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-copilot-hero"
   },
   {
-    "asset": "phase2-tech-copilot-practice",
-    "sourceId": "phase2-image3e",
-    "source": "assets/phase2-originals/image3e.png",
+    "asset": "copilot-pair-review",
+    "sourceId": "7888673",
+    "source": "https://www.pexels.com/photo/a-man-and-a-woman-using-a-laptop-7888673/",
+    "photographer": "RDNE Stock project",
     "location": "tech-copilot.html: practice section",
-    "alt": "Person working with an AI assistant and business dashboard",
+    "alt": "Colleagues working through a task together on a laptop",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-copilot-practice"
   },
   {
-    "asset": "phase2-tech-d365-crm-hero",
-    "sourceId": "phase2-image36",
-    "source": "assets/phase2-originals/image36.png",
+    "asset": "d365-crm-service-team",
+    "sourceId": "7682087",
+    "source": "https://www.pexels.com/photo/call-center-agents-using-laptops-7682087/",
+    "photographer": "Mikhail Nilov",
     "location": "tech-d365-crm.html: hero",
-    "alt": "Sales and customer service analytics dashboard",
+    "alt": "Customer service team working on laptops with headsets",
     "width": 1280,
-    "height": 788
+    "height": 788,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-d365-crm-hero"
   },
   {
-    "asset": "phase2-tech-d365-crm-practice",
-    "sourceId": "phase2-image38",
-    "source": "assets/phase2-originals/image38.png",
+    "asset": "d365-crm-team-floor",
+    "sourceId": "7658362",
+    "source": "https://www.pexels.com/photo/people-working-in-front-of-their-computer-desks-7658362/",
+    "photographer": "Pavel Danilyuk",
     "location": "tech-d365-crm.html: practice section",
-    "alt": "Customer data connected to AI-powered insights",
+    "alt": "Customer-facing team working at their desks",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-d365-crm-practice"
   },
   {
     "asset": "tech-d365-finance-hero",
@@ -515,13 +601,17 @@
     "height": 854
   },
   {
-    "asset": "phase2-tech-d365-finance-practice",
-    "sourceId": "phase2-image3a",
-    "source": "assets/phase2-originals/image3a.png",
+    "asset": "d365-finance-report-review",
+    "sourceId": "7567533",
+    "source": "https://www.pexels.com/photo/marketing-man-laptop-technology-7567533/",
+    "photographer": "Tima Miroshnichenko",
     "location": "tech-d365-finance.html: practice section",
-    "alt": "Finance dashboard with revenue charts and reports",
+    "alt": "Finance professional reviewing a report alongside a laptop in a bright office",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-d365-finance-practice"
   },
   {
     "asset": "tech-fabric-hero",
@@ -533,40 +623,56 @@
     "height": 853
   },
   {
-    "asset": "fabric-analytics-user",
-    "sourceId": "fabric-analytics-user",
-    "source": "User-provided 7.png",
+    "asset": "fabric-analytics-laptop",
+    "sourceId": "7109291",
+    "source": "https://www.pexels.com/photo/a-purple-chart-on-a-computer-screen-7109291/",
+    "photographer": "Tiger Lily",
     "location": "tech-fabric.html: practice section",
-    "alt": "Data analytics dashboards connected to a laptop",
+    "alt": "Analyst reviewing a data chart on a laptop beside printed reports",
     "width": 1280,
-    "height": 768
+    "height": 768,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "fabric-analytics-user"
   },
   {
-    "asset": "phase2-tech-google-vertex-hero",
-    "sourceId": "phase2-image48",
-    "source": "assets/phase2-originals/image48.png",
+    "asset": "vertex-team-data-review",
+    "sourceId": "39190502",
+    "source": "https://www.pexels.com/photo/team-collaboration-in-modern-office-with-video-call-39190502/",
+    "photographer": "Vitaly Gariev",
     "location": "tech-google-vertex.html: hero",
-    "alt": "AI model development and evaluation platform",
+    "alt": "Team reviewing data and charts with a remote colleague on screen",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-google-vertex-hero"
   },
   {
-    "asset": "vertex-cloud-workflow-user",
-    "sourceId": "user-vertex-4",
-    "source": "User-provided image: 4.png",
+    "asset": "vertex-data-analysis-laptop",
+    "sourceId": "34804005",
+    "source": "https://www.pexels.com/photo/laptop-displaying-coding-and-data-analysis-interface-34804005/",
+    "photographer": "Daniil Komov",
     "location": "tech-google-vertex.html: practice section",
-    "alt": "Cloud AI connecting business data with analytics and applications",
+    "alt": "Laptop showing code and data analysis output",
     "width": 1280,
-    "height": 768
+    "height": 768,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "vertex-cloud-workflow-user"
   },
   {
-    "asset": "phase2-tech-iq-hero",
-    "sourceId": "phase2-image44",
-    "source": "assets/phase2-originals/image44.png",
+    "asset": "iq-research-workstation",
+    "sourceId": "4491451",
+    "source": "https://www.pexels.com/photo/concentrated-adult-female-thinking-about-business-project-in-office-4491451/",
+    "photographer": "Kaboompics",
     "location": "tech-iq.html: hero",
-    "alt": "Enterprise knowledge search across connected sources",
+    "alt": "Professional thinking through a problem at her workstation",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-iq-hero"
   },
   {
     "asset": "tech-iq-practice",
@@ -578,13 +684,17 @@
     "height": 853
   },
   {
-    "asset": "tech-microsoft-hero",
-    "sourceId": "7836576",
-    "source": "https://www.pexels.com/photo/laptop-and-a-cellphone-7836576/",
+    "asset": "microsoft-team-collaboration",
+    "sourceId": "3860819",
+    "source": "https://www.pexels.com/photo/smiling-group-of-colleagues-discussing-project-in-office-3860819/",
+    "photographer": "Andrea Piacquadio",
     "location": "tech-microsoft.html: hero",
-    "alt": "Laptop and a cellphone",
+    "alt": "Colleagues collaborating around a laptop in a bright office",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "tech-microsoft-hero"
   },
   {
     "asset": "tech-microsoft-practice",
@@ -596,40 +706,56 @@
     "height": 853
   },
   {
-    "asset": "phase2-tech-mobile-web-hero",
-    "sourceId": "phase2-image4c",
-    "source": "assets/phase2-originals/image4c.png",
+    "asset": "mobile-app-developer-testing",
+    "sourceId": "1181244",
+    "source": "https://www.pexels.com/photo/person-holding-smartphone-while-using-laptop-1181244/",
+    "photographer": "Christina Morillo",
     "location": "tech-mobile-web.html: hero",
-    "alt": "Responsive digital experiences across mobile and desktop devices",
+    "alt": "Developer testing a mobile app on a smartphone alongside code on a laptop",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-mobile-web-hero"
   },
   {
-    "asset": "phase2-tech-mobile-web-practice",
-    "sourceId": "phase2-image4e",
-    "source": "assets/phase2-originals/image4e.png",
+    "asset": "mobile-wireframe-notebook",
+    "sourceId": "196644",
+    "source": "https://www.pexels.com/photo/notebook-beside-the-iphone-on-table-196644/",
+    "photographer": "picjumbo.com",
     "location": "tech-mobile-web.html: practice section",
-    "alt": "Web and mobile application design and development",
+    "alt": "Mobile app wireframes sketched in a notebook beside a smartphone",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-mobile-web-practice"
   },
   {
-    "asset": "phase2-tech-purview-hero",
-    "sourceId": "phase2-image42",
-    "source": "assets/phase2-originals/image42.png",
+    "asset": "purview-document-review",
+    "sourceId": "8439654",
+    "source": "https://www.pexels.com/photo/lawyer-showing-documents-to-a-woman-and-using-a-laptop-8439654/",
+    "photographer": "Kampus Production",
     "location": "tech-purview.html: hero",
-    "alt": "Data governance connecting secure business information",
+    "alt": "Professionals reviewing documents and records on a laptop",
     "width": 1280,
-    "height": 720
+    "height": 720,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-tech-purview-hero"
   },
   {
-    "asset": "tech-purview-practice",
-    "sourceId": "7567307",
-    "source": "https://www.pexels.com/photo/printed-business-analytics-over-black-surface-7567307/",
+    "asset": "purview-laptop-office",
+    "sourceId": "17781874",
+    "source": "https://www.pexels.com/photo/man-typing-text-on-a-laptop-at-an-office-desk-17781874/",
+    "photographer": "iam hogir",
     "location": "tech-purview.html: practice section",
-    "alt": "Printed business analytics over black surface",
+    "alt": "Person typing on a laptop at an office desk",
     "width": 1280,
-    "height": 853
+    "height": 853,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "tech-purview-practice"
   },
   {
     "asset": "london",
@@ -638,13 +764,17 @@
     "location": "index.html: hero"
   },
   {
-    "asset": "home-ai-digital-hand",
-    "sourceId": "user-hd-1",
-    "source": "assets/photography/home-ai-digital-hand-original.png",
+    "asset": "home-ai-engineer-workstation",
+    "sourceId": "3861958",
+    "source": "https://www.pexels.com/photo/woman-coding-on-computer-3861958/",
+    "photographer": "ThisIsEngineering",
     "location": "index.html: AI card",
+    "alt": "Software engineer working across dual monitors in a modern office",
     "width": 1280,
     "height": 774,
-    "alt": "Digital robotic hand interacting with a glowing blue interface"
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "home-ai-digital-hand"
   },
   {
     "asset": "analytics",
@@ -683,31 +813,43 @@
     "height": 853
   },
   {
-    "asset": "phase2-about-life",
-    "sourceId": "phase2-image52",
-    "source": "assets/phase2-originals/image52.png",
+    "asset": "about-life-team-meeting",
+    "sourceId": "6914348",
+    "source": "https://www.pexels.com/photo/people-laughing-while-in-a-meeting-6914348/",
+    "photographer": "Tima Miroshnichenko",
     "location": "about.html: life at Active Brains",
-    "alt": "Colleagues celebrating shared progress",
+    "alt": "Colleagues sharing ideas and laughing together in a meeting room",
     "width": 1280,
-    "height": 721
+    "height": 721,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-about-life"
   },
   {
-    "asset": "phase2-about-values",
-    "sourceId": "phase2-image50",
-    "source": "assets/phase2-originals/image50.png",
+    "asset": "about-values-planning-wall",
+    "sourceId": "39204849",
+    "source": "https://www.pexels.com/photo/collaborative-office-team-brainstorming-39204849/",
+    "photographer": "Vitaly Gariev",
     "location": "about.html: values",
-    "alt": "Team planning, collaborating and reviewing improvements",
+    "alt": "Colleagues planning with sticky notes on a glass wall",
     "width": 1280,
-    "height": 561
+    "height": 561,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-about-values"
   },
   {
-    "asset": "phase2-about-capabilities",
-    "sourceId": "phase2-image54",
-    "source": "assets/phase2-originals/image54.png",
+    "asset": "about-capabilities-team",
+    "sourceId": "5256526",
+    "source": "https://www.pexels.com/photo/a-group-of-people-having-a-discussion-while-looking-at-laptop-5256526/",
+    "photographer": "Thirdman",
     "location": "about.html: capabilities",
-    "alt": "Team connecting trust, collaboration, growth and success",
+    "alt": "Colleagues gathered around a laptop working through a problem together",
     "width": 1280,
-    "height": 721
+    "height": 721,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "phase2-about-capabilities"
   },
   {
     "asset": "about-ecosystem",
@@ -719,13 +861,17 @@
     "height": 853
   },
   {
-    "asset": "privacy-policy-sidebar",
-    "sourceId": "5474301",
-    "source": "https://www.pexels.com/photo/close-up-shot-of-a-laptop-5474301/",
+    "asset": "privacy-laptop-desk",
+    "sourceId": "6177619",
+    "source": "https://www.pexels.com/photo/crop-person-typing-on-laptop-in-office-6177619/",
+    "photographer": "Cup of Couple",
     "location": "privacy-policy.html: sidebar",
-    "alt": "A laptop beside a physical security key",
+    "alt": "Person typing on a laptop at a tidy desk",
     "width": 1280,
-    "height": 1920
+    "height": 1920,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "privacy-policy-sidebar"
   },
   {
     "asset": "terms-of-service-sidebar",
@@ -764,23 +910,30 @@
     "height": 1919
   },
   {
-    "asset": "thank-you-photo",
-    "sourceId": "7518917",
-    "source": "https://www.pexels.com/photo/businesspeople-doing-a-hand-shake-7518917/",
+    "asset": "thank-you-office-desk",
+    "sourceId": "7222860",
+    "source": "https://www.pexels.com/photo/a-woman-sitting-at-a-desk-looking-at-her-computer-screen-7222860/",
+    "photographer": "MART PRODUCTION",
     "location": "thank-you.html: supporting image",
-    "alt": "Businesspeople doing a hand shake",
+    "alt": "Professional working at a laptop in a bright office",
     "width": 1280,
-    "height": 855
+    "height": 855,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "thank-you-photo"
   },
   {
-    "asset": "about-client-relationships-cc0",
-    "sourceId": "pxhere-1436889",
-    "source": "https://pxhere.com/en/photo/1436889",
-    "license": "CC0 1.0, as stated on source page; verified 2026-10-01",
+    "asset": "about-client-working-session",
+    "sourceId": "7979447",
+    "source": "https://www.pexels.com/photo/man-couple-love-people-7979447/",
+    "photographer": "Kindel Media",
     "location": "about.html: Client voices heading",
-    "alt": "Business colleagues shaking hands during a meeting",
+    "alt": "Consultants and client team in a working session around a meeting table",
     "width": 1200,
-    "height": 702
+    "height": 702,
+    "license": "Pexels License (free commercial use, no attribution required)",
+    "verified": "2026-11-27",
+    "replaces": "about-client-relationships-cc0"
   },
   {
     "asset": "about-strategy-meeting-cc0",
